@@ -1,0 +1,271 @@
+import type { ContentPageData } from "@/lib/content-types";
+
+export const treatmentPrograms: ContentPageData[] = [
+  {
+    slug: "detox",
+    metaTitle: "Alcohol & Drug Detox in Los Angeles, CA",
+    metaDescription:
+      "Safe, 24/7 medically supervised drug and alcohol detox in the Los Angeles area. Licensed clinicians manage withdrawal and prepare you for lasting recovery.",
+    eyebrow: "Medical Detox",
+    h1: "Drug & Alcohol Detox in Los Angeles, CA",
+    intro: "Safe, medically supervised detox to help you begin recovery with confidence.",
+    hero: "/images/DSC_6296-HDR.webp",
+    crumb: "Treatment / Detox",
+    sections: [
+      {
+        heading: "What Is Medical Detox?",
+        body: [
+          "Medical detox is the first and most important step in safely overcoming drug or alcohol dependence. At Wellness Detox LA, detox takes place in a controlled, medically supervised environment where licensed professionals monitor your health, manage withdrawal symptoms, and help your body begin stabilizing after prolonged substance use.",
+          "During detox, the body starts clearing the alcohol, opioids, benzodiazepines, stimulants, or other substances from the system. This process can cause uncomfortable and dangerous withdrawal symptoms. That's why medical detox is the safest and most effective way to begin recovery. Our team provides 24/7 clinical monitoring, supportive medications when appropriate, and compassionate care to keep you comfortable and protected at every stage.",
+          "Medical detox isn't just about removing substances, it's about creating the physical and emotional stability you need to move into deeper treatment. Once withdrawal has been safely managed, clients are better prepared to continue their recovery through residential treatment, therapy, and long-term support.",
+        ],
+      },
+      {
+        heading: "The Danger of Withdrawal Symptoms",
+        body: [
+          "Withdrawal can be unpredictable — and in some cases, life-threatening. When someone stops using drugs or alcohol, the body goes into a state of physiological shock. Over time, the brain adapts to the constant presence of substances by altering how it produces, regulates, and responds to key neurotransmitters such as dopamine, GABA, glutamate, and adrenaline.",
+          "When the substance is abruptly removed, the brain's regulatory systems become destabilized. This sudden imbalance causes the central nervous system to become overactive or underactive, triggering a wave of physical and psychological withdrawal symptoms that can range from uncomfortable to dangerously severe without medical supervision.",
+        ],
+        bullets: [
+          "Alcohol: shaking, hallucinations, rapid heartbeat, dangerous blood pressure spikes, seizures, and in severe cases delirium tremens (DTs).",
+          "Benzodiazepines (Xanax, Ativan, Valium): severe anxiety, panic episodes, insomnia, muscle spasms, confusion, hallucinations, or life-threatening seizures.",
+          "Opioids (heroin, fentanyl, prescription painkillers): vomiting, diarrhea, dehydration, fever, chills, heart rate changes, and overwhelming cravings.",
+          "Stimulants (cocaine, methamphetamine): severe fatigue, depression, irritability, intense cravings, sleep disturbances, and in some cases suicidal thoughts.",
+        ],
+      },
+      {
+        heading: "How Our Medical Detox Program Helps You Through Withdrawal",
+        body: [
+          "As the brain and body struggle to rebalance during withdrawal, symptoms can escalate quickly without proper support. Instead of facing unpredictable symptoms alone, clients receive round-the-clock care, targeted medical interventions, and emotional support designed to stabilize the nervous system, reduce discomfort, and prevent dangerous complications.",
+        ],
+        subsections: [
+          { heading: "Medical Stabilization", body: "Licensed medical staff intervene early to manage dangerous symptoms such as high blood pressure, dehydration, seizures, tremors, and severe anxiety, keeping the body stable while the nervous system adjusts." },
+          { heading: "Medication-Assisted Relief", body: "Evidence-based medications are used when appropriate to reduce cravings, ease physical discomfort, and regulate the chemical imbalances caused by withdrawal." },
+          { heading: "24/7 Monitoring & Safety", body: "Continuous monitoring ensures that any sudden changes — from heart rate spikes to hallucinations or panic — are addressed immediately, preventing complications that can occur during unsupervised detox." },
+          { heading: "Emotional & Psychological Support", body: "Our team provides calming support, reassurance, coping tools, and access to therapeutic services that help reduce fear, agitation, and emotional distress." },
+        ],
+      },
+      {
+        heading: "Why Choose Wellness Detox LA for Detox in Los Angeles",
+        body: [
+          "Choosing where to begin detox is one of the most important decisions in your recovery, and Wellness Detox LA offers an environment built for safety and peace of mind. Our medical team brings extensive experience in addiction medicine and withdrawal management, ensuring you receive attentive, individualized care from the moment you arrive.",
+          "Our facility is located in a quiet, easily accessible area of Los Angeles County, close enough for loved ones to stay involved yet set apart from the noise and stress of the city. At Wellness Detox LA, you receive more than medical stabilization — you get a compassionate team, a healing environment, and a smooth, guided transition into the next phase of care.",
+        ],
+      },
+    ],
+    levelsOfCare: true,
+    substances: true,
+    faqs: [
+      { q: "What is medical detox and why is it necessary?", a: "Medical detox is the first phase of addiction treatment where the body safely clears drugs or alcohol under 24/7 medical supervision. Because withdrawal affects the brain, cardiovascular system, and central nervous system, medically supervised detox helps stabilize vital signs, reduce symptoms, and prevent dangerous complications such as seizures, dehydration, or cardiac issues. At Wellness Detox LA, our clinical team provides continuous monitoring to ensure a safe and comfortable detox experience." },
+      { q: "How long does drug or alcohol detox take?", a: "The detox timeline varies depending on the substance, duration of use, and individual health factors. Most people complete detox in 3–7 days, but some withdrawal timelines — especially alcohol, benzodiazepines, or opioids — can extend up to 10–14 days with lingering symptoms. Our Los Angeles detox program customizes the timeline to each client and provides tapering, medication-assisted support, and extended stabilization when needed." },
+      { q: "What withdrawal symptoms should I expect during detox?", a: "Withdrawal symptoms vary by substance but may include anxiety, insomnia, sweating, nausea, vomiting, muscle pain, irritability, tremors, elevated heart rate, hallucinations, or intense cravings. In severe cases (especially alcohol or benzodiazepine withdrawal) seizures, delirium tremens (DTs), or psychosis can occur. Our medical team monitors you closely and provides medications to reduce discomfort and maintain safety throughout detox." },
+      { q: "Is detox dangerous without medical supervision?", a: "Yes. Unsupervised detox can be life-threatening depending on the substance. Alcohol and benzodiazepines can cause seizures, severe dehydration, and delirium tremens, while opioid withdrawal can lead to dangerous electrolyte imbalances, heart complications, or relapse due to intense cravings. Medical detox provides round-the-clock support, symptom management, and emergency care to prevent potentially fatal complications." },
+      { q: "Can you help if I have both addiction and mental health symptoms?", a: "Yes. Many clients experience anxiety, depression, trauma, bipolar disorder, or other mental health symptoms alongside substance use. Our dual diagnosis detox program stabilizes both withdrawal symptoms and mental health needs using integrated medical and therapeutic support, ensuring a safer and more effective transition into treatment." },
+      { q: "Do you use medications to help manage withdrawal?", a: "Yes. Wellness Detox LA uses evidence-based medication protocols to stabilize clients and reduce withdrawal symptoms. Medications such as buprenorphine, methadone, naltrexone, comfort meds, and non-addictive anxiety or sleep supports may be used depending on the substance. All medication plans are overseen by licensed medical providers to ensure safe and effective symptom relief." },
+      { q: "What substances do you treat at your detox center?", a: "We provide detox for a full range of substances, including alcohol, opioids (heroin, fentanyl, prescription painkillers), benzodiazepines (Xanax, Valium, Klonopin), methamphetamine, cocaine, prescription medications, and polysubstance use. Our Los Angeles detox team has experience treating complex withdrawal cases and dual diagnosis needs." },
+      { q: "Will I still experience cravings after detox?", a: "Yes, cravings can continue even after the body is stabilized because addiction also affects brain pathways and emotional regulation. Detox addresses the physical dependence, while further treatment — such as residential care, therapy, and relapse-prevention planning — helps address psychological triggers. This is why detox is only the first step in a complete recovery plan." },
+      { q: "What happens after detox is completed?", a: "After detox, clients transition into the level of care that best supports ongoing recovery. This may include residential treatment, partial hospitalization (PHP), intensive outpatient (IOP), dual diagnosis treatment, or aftercare planning. Our team helps guide you into the next phase seamlessly to ensure long-term stability and relapse prevention." },
+      { q: "Can I detox from home or stop using cold turkey?", a: "Detoxing at home is extremely risky and often unsuccessful. Sudden withdrawal can cause seizures, heart issues, hallucinations, dehydration, extreme anxiety, or medical emergencies that require immediate intervention. Professional detox ensures constant monitoring, medication support, and medical intervention if symptoms escalate." },
+      { q: "Will my insurance cover detox treatment in Los Angeles?", a: "Most PPO insurance plans provide coverage for drug and alcohol detox services. Wellness Detox LA verifies your benefits confidentially and helps you understand exactly what your insurance will cover. We work directly with your provider to minimize out-of-pocket costs and make treatment as accessible as possible. Call us at 866-591-0888 for more information." },
+      { q: "When is the right time to seek detox?", a: "If you experience withdrawal symptoms, increased tolerance, loss of control over use, or failed attempts to quit, detox should happen as soon as possible. Waiting increases the risk of medical complications and relapse. Our Los Angeles detox team is available 24/7 to help you begin the process safely and confidentially whenever you're ready." },
+    ],
+    cta: { title: "Begin detox safely — call our team 24/7" },
+  },
+  {
+    slug: "residential",
+    metaTitle: "Residential Inpatient Addiction Treatment in Los Angeles",
+    metaDescription:
+      "Residential inpatient addiction treatment in Los Angeles with 24/7 clinical care, evidence-based therapy, and a structured, home-like environment for recovery.",
+    eyebrow: "Residential Inpatient",
+    h1: "Residential Inpatient Treatment in Los Angeles, CA",
+    intro: "24/7 clinically supervised care in a safe, supportive environment.",
+    hero: "/images/DSC_6122-HDR.webp",
+    crumb: "Treatment / Residential",
+    sections: [
+      {
+        heading: "What Is Residential Inpatient Treatment?",
+        body: [
+          "Residential inpatient treatment is a highly structured level of care where clients live on-site and receive 24/7 supervision, clinical support, and intensive therapeutic programming.",
+          "While medical detox focuses on safely managing withdrawal and stabilizing the body, residential treatment shifts the focus to healing the mind, understanding the root causes of addiction, and addressing the emotional and psychological patterns that drive substance use.",
+        ],
+      },
+      {
+        heading: "Who Is Inpatient Rehab For?",
+        body: ["Residential inpatient treatment is ideal for individuals who need a higher level of support, structure, and stability than outpatient care can provide."],
+        bullets: [
+          "Have completed detox and require continued 24/7 supervision",
+          "Experience strong cravings or a history of relapse in early recovery",
+          "Struggle with co-occurring mental health conditions like anxiety, depression, or trauma",
+          "Need a structured environment free from stress, chaos, or access to substances",
+          "Benefit from daily therapeutic programming and consistent clinical support",
+          "Feel overwhelmed, unsafe, or unable to stay sober in their current living situation",
+        ],
+      },
+      {
+        heading: "Benefits of Our Inpatient Program",
+        subsections: [
+          { heading: "24/7 Clinical Support", body: "Clients receive round-the-clock medical and therapeutic care, ensuring safety, accountability, and consistent progress during the most vulnerable stages of recovery." },
+          { heading: "Structured, Trigger-Free Environment", body: "Living on-site removes everyday stressors, negative influences, and access to substances, creating the stability needed to fully focus on healing." },
+          { heading: "Supportive Peer Community", body: "Residents share their recovery journey with others who understand their struggles, fostering connection, motivation, and a sense of belonging." },
+          { heading: "Evidence-Based, Personalized Therapies", body: "Our clinical team uses proven approaches such as CBT, DBT, trauma-informed care, and family therapy to address the deeper roots of substance use." },
+        ],
+      },
+      {
+        heading: "What to Expect in Residential Treatment",
+        body: ["Each day is intentionally designed to balance clinical therapy, emotional stabilization, wellness activities, and personal growth."],
+        bullets: [
+          "Individual therapy sessions to explore triggers, past experiences, and recovery goals",
+          "Group therapy focused on peer support, communication, and relapse prevention",
+          "Family involvement to strengthen relationships and understanding",
+          "Holistic wellness activities such as mindfulness, grounding, and guided relaxation",
+          "Life-skills development workshops to rebuild structure, confidence, and independence",
+          "Continuous clinical and emotional support from a compassionate team",
+        ],
+      },
+    ],
+    levelsOfCare: true,
+    substances: true,
+    faqs: [
+      { q: "What is residential inpatient treatment?", a: "Residential inpatient treatment is a 24/7 level of care where clients live on-site and receive structured support, daily therapy, and continuous supervision. Unlike outpatient programs, inpatient rehab provides a safe, controlled environment that removes triggers and distractions. At Wellness Detox LA, clients receive individualized treatment, evidence-based therapies, and round-the-clock care from licensed clinicians to help stabilize early recovery and build long-term coping skills." },
+      { q: "How long does inpatient treatment usually last?", a: "Length of stay varies based on clinical need, mental health symptoms, substance use history, and progress in treatment. Most clients stay between 30–45 days, but some may benefit from longer stays such as 60–90 days for complex cases or dual diagnosis needs. Our team conducts ongoing assessments to recommend the ideal length of care for each individual." },
+      { q: "What is the difference between inpatient and outpatient treatment?", a: "Inpatient treatment provides 24/7 supervision, structured daily routines, and on-site living, which is best for individuals needing intensive support or a safe environment away from triggers. Outpatient treatment allows clients to live at home while attending scheduled therapy sessions. Inpatient care is recommended immediately following detox or for individuals with a history of relapse, severe cravings, or co-occurring mental health disorders." },
+      { q: "Who is a good candidate for residential inpatient rehab?", a: "Inpatient rehab is ideal for individuals who recently completed detox, struggle with cravings or relapse, have co-occurring mental health conditions, cannot maintain sobriety in their current environment, need structure and accountability, or require 24/7 supervision for safety and stabilization." },
+      { q: "What does a typical day in inpatient treatment look like?", a: "A typical day includes a mix of individual therapy, group counseling, skill-building workshops, holistic wellness activities, life-skills development, and structured downtime for reflection and rest." },
+      { q: "What therapies are offered in residential inpatient treatment?", a: "Wellness Detox LA provides a full range of evidence-based therapies tailored to each client's needs. These include Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), trauma-informed care, relapse prevention, motivational interviewing, holistic wellness practices, and family therapy." },
+      { q: "Can inpatient treatment help with mental health issues?", a: "Yes. Many individuals entering inpatient rehab experience co-occurring mental health conditions such as anxiety, depression, PTSD, or bipolar disorder. Our dual diagnosis approach addresses both addiction and mental health simultaneously through integrated therapy, medication management when needed, and ongoing psychiatric oversight." },
+      { q: "Is family involvement part of inpatient treatment?", a: "Family involvement is strongly encouraged and often essential for long-term recovery. Our program offers family therapy sessions, education on addiction and mental health, communication guidance, and ongoing support for loved ones. Helping families heal together strengthens relationships and supports the client's transition back home." },
+      { q: "What should I pack for residential inpatient treatment?", a: "Clients should bring comfortable clothing, personal hygiene items, necessary medications, and any approved personal items that support comfort during their stay. We provide a packing guide during admissions. Restricted items such as drugs, alcohol, weapons, and certain electronics must be left at home for the safety of all residents." },
+      { q: "What happens after residential inpatient treatment?", a: "After completing inpatient rehab, clients transition into the next appropriate level of care such as PHP, IOP, outpatient counseling, sober living, or aftercare planning. These step-down programs help clients maintain progress, build independence, and continue strengthening the coping skills needed for long-term sobriety." },
+      { q: "Will my insurance cover residential inpatient rehab?", a: "Many major PPO insurance plans cover some or all of the cost of inpatient rehab, depending on your benefits and clinical need. Our admissions team verifies insurance quickly and confidentially, explains your coverage, and outlines any out-of-pocket expenses before treatment begins. Call us at 866-591-0888 for more information." },
+    ],
+    cta: { title: "Build a stronger foundation in residential care" },
+  },
+  {
+    slug: "dual-diagnosis",
+    metaTitle: "Dual Diagnosis Treatment in Los Angeles",
+    metaDescription:
+      "Integrated dual diagnosis treatment in Los Angeles for co-occurring addiction and mental health conditions such as anxiety, depression, and trauma.",
+    eyebrow: "Dual Diagnosis",
+    h1: "Dual Diagnosis Treatment in Los Angeles, CA",
+    intro: "Treating mental health and addiction together.",
+    hero: "/images/wellness-1.webp",
+    crumb: "Treatment / Dual Diagnosis",
+    sections: [
+      {
+        heading: "What Is Dual Diagnosis?",
+        body: [
+          "Dual diagnosis (also known as co-occurring disorders) refers to when someone is experiencing both a substance use disorder and a mental health condition at the same time. This is extremely common, especially in Los Angeles, where high stress, trauma exposure, and fast-paced lifestyles often contribute to both emotional struggles and substance misuse.",
+          "What makes dual diagnosis different from standard addiction treatment is that both conditions must be treated at the same time. Mental health symptoms like anxiety, depression, trauma, or bipolar disorder can fuel addiction, and addiction can make those symptoms dramatically worse. When only one condition is treated, relapse becomes much more likely.",
+          "At Wellness Detox LA, our clinical and psychiatric team uses an integrated, evidence-based approach designed to stabilize the body, support the mind, and help you understand the root causes of addiction. This ensures that your treatment is not just about staying sober — it's about actually healing.",
+        ],
+      },
+      {
+        heading: "Who Dual Diagnosis Treatment Is For",
+        body: ["Dual diagnosis treatment is ideal for anyone who uses drugs or alcohol to manage emotional pain, stress, or untreated mental health symptoms. It's especially recommended for people who experience:"],
+        bullets: [
+          "Persistent anxiety, depression, trauma, or mood instability alongside substance use",
+          "Relapse after previous treatment because mental health symptoms weren't fully addressed",
+          "Difficulty functioning due to emotional overwhelm, panic, or intrusive thoughts",
+          "Using substances to cope with PTSD, grief, racing thoughts, or emotional dysregulation",
+          "Previous diagnoses like anxiety disorders, PTSD, bipolar disorder, ADHD, OCD, or personality disorders",
+          "Feeling mentally unstable or out of control when attempting sobriety",
+        ],
+      },
+      {
+        heading: "The Benefits of a Dual Diagnosis Program",
+        body: ["Addressing only addiction or only mental health leaves a major piece of the puzzle unresolved. By healing the mind and body simultaneously, clients build a true foundation for long-term sobriety."],
+        bullets: [
+          "Lower relapse risk by treating the emotional triggers that drive substance use",
+          "More stable emotions, better coping skills, and reduced symptoms of anxiety, depression, or trauma",
+          "Better long-term outcomes because both conditions are managed with an integrated plan",
+          "A whole-person recovery model supporting physical, emotional, and psychological wellbeing",
+        ],
+      },
+      {
+        heading: "What to Expect in Dual Diagnosis Treatment",
+        body: ["Our integrated program is built to treat addiction and mental health together, at the same time. Here's what your care includes:"],
+        subsections: [
+          { heading: "Comprehensive Mental Health & Addiction Assessment", body: "A thorough evaluation of your substance use, mental health history, and medical needs so we can build a truly individualized plan." },
+          { heading: "Integrated Therapy Approach", body: "Evidence-based therapies — including CBT, DBT, and trauma-focused work — that address both addiction and the underlying emotional patterns driving it." },
+          { heading: "Medication & Symptom Management", body: "Psychiatric providers manage medications when appropriate to stabilize mood, reduce anxiety, and support recovery safely." },
+          { heading: "Structured & Supportive Routine", body: "A predictable daily rhythm of therapy, rest, and connection that creates the stability healing requires." },
+          { heading: "Coping & Life-Skills Development", body: "Practical tools for managing stress, regulating emotions, and preventing relapse long after treatment ends." },
+          { heading: "Safe & Healing Environment", body: "A calm, home-like residential setting where you feel secure enough to focus fully on getting well." },
+        ],
+      },
+      {
+        heading: "Conditions We Treat",
+        body: ["Our clinical team specializes in treating the mental health disorders and substance use issues that frequently occur together, including anxiety disorders, depression and mood disorders, bipolar disorder, PTSD and trauma-related conditions, personality disorders, and psychotic disorders — alongside alcohol, benzodiazepine, cocaine, fentanyl, heroin, meth, and opioid addiction."],
+      },
+    ],
+    levelsOfCare: true,
+    faqs: [
+      { q: "What is dual diagnosis treatment?", a: "Dual diagnosis treatment is an integrated approach that addresses both mental health disorders and substance use disorders at the same time. Instead of treating addiction first and mental health later, our program combines psychiatric care and addiction treatment together, which significantly improves long-term recovery outcomes." },
+      { q: "Why is it important to treat mental health and addiction together?", a: "Mental health symptoms like anxiety, depression, trauma, or mood instability often fuel substance use, and substance use can make those symptoms worse. Treating only one condition leaves the other untreated, creating a cycle of relapse. Integrated dual diagnosis care stabilizes the mind and body simultaneously, leading to better emotional control and stronger long-term success." },
+      { q: "How do I know if I need dual diagnosis treatment?", a: "You may benefit from dual diagnosis care if you struggle with both emotional symptoms and substance use. Signs include using drugs or alcohol to cope with stress or mental health symptoms, repeated relapses, mood swings, panic or anxiety, trauma responses, difficulty functioning, or feeling 'unstable' without substances. A clinical assessment can confirm exactly what level of care you need." },
+      { q: "What mental health disorders are treated in a dual diagnosis program?", a: "Our dual diagnosis program treats a wide range of conditions including anxiety disorders, depression, PTSD, trauma-related disorders, bipolar disorder, personality disorders, OCD, ADHD, and mood instability. Treatment plans are personalized based on psychiatric evaluations and ongoing symptom monitoring." },
+      { q: "What types of therapy are used in dual diagnosis treatment?", a: "Clients receive evidence-based therapies such as CBT, DBT, trauma-focused therapy, relapse prevention, motivational interviewing, holistic practices, and family therapy. Each therapy is selected to treat both mental health symptoms and addiction patterns." },
+      { q: "Will I receive psychiatric medication if needed?", a: "Yes. If appropriate, clients may receive medication to stabilize mood, reduce anxiety, manage depression, or support recovery. All medication is prescribed and monitored by psychiatric providers who specialize in co-occurring disorders, ensuring safe and effective treatment throughout your stay." },
+      { q: "Can dual diagnosis treatment be done in residential inpatient care?", a: "Absolutely. Residential inpatient care is one of the most effective environments for dual diagnosis treatment. Clients receive 24/7 support, daily therapy, and a structured routine that promotes emotional stability. This level of care is especially beneficial for individuals who experience intense symptoms, frequent relapse, or unsafe home environments." },
+      { q: "How long does dual diagnosis treatment usually last?", a: "Length of care varies based on symptom severity, psychiatric needs, substance use history, and progress. Many clients benefit from 30–45 days in residential care, followed by PHP or IOP for continued support. Our team continually evaluates each client to determine the ideal length of treatment for long-term stability." },
+      { q: "What happens after dual diagnosis treatment?", a: "After completing treatment, clients transition into step-down programs such as PHP, IOP, outpatient therapy, medication management, and ongoing psychiatric support. A personalized aftercare plan ensures clients continue strengthening skills, managing symptoms, and preventing relapse." },
+      { q: "Can dual diagnosis treatment help with trauma-related addiction?", a: "Yes. Many clients with trauma experience heightened emotional distress, which often leads to self-medicating with substances. Dual diagnosis programs address trauma through specialized therapy, emotional regulation techniques, and psychiatric support to help clients process experiences safely." },
+      { q: "Is dual diagnosis treatment covered by insurance?", a: "Many PPO plans cover dual diagnosis treatment, including residential, therapy, and psychiatric care. The best way to know your benefits is to have our team verify your insurance. We review your coverage, explain costs clearly, and help you understand your options — all confidential and obligation-free. Call us at 866-591-0888." },
+    ],
+    cta: { title: "Heal the whole person — mind and body" },
+  },
+  {
+    slug: "aftercare",
+    metaTitle: "Aftercare Program in Los Angeles",
+    metaDescription:
+      "Aftercare and relapse-prevention support in Los Angeles — ongoing therapy, coaching, and check-ins that help you sustain recovery after treatment.",
+    eyebrow: "Aftercare",
+    h1: "Addiction Aftercare Services in Los Angeles",
+    intro: "Continued guidance for lasting recovery.",
+    hero: "/images/wellness-2.webp",
+    crumb: "Treatment / Aftercare",
+    sections: [
+      {
+        heading: "What Is Aftercare?",
+        body: [
+          "Aftercare is the continued support you receive after completing structured drug & alcohol addiction treatment such as detox, residential care, PHP, or IOP. It focuses on helping you maintain stability, build healthy routines, and navigate real-life stressors without returning to substance use.",
+          "Through ongoing therapy, mental health support, and personalized recovery planning, our aftercare program strengthens the foundation you built in treatment and prepares you for lasting change.",
+        ],
+      },
+      {
+        heading: "Who Aftercare Is For",
+        body: ["Aftercare is recommended for anyone completing a structured level of treatment or stepping back into daily responsibilities. It's especially helpful for individuals who:"],
+        bullets: [
+          "Want continued therapy and emotional support",
+          "Need help managing stress, triggers, or cravings",
+          "Have co-occurring mental health conditions",
+          "Benefit from accountability and structured guidance",
+          "Are building new routines after residential or outpatient care",
+          "Want access to a community and continued clinical support",
+        ],
+      },
+      {
+        heading: "What to Expect in Our Aftercare Program",
+        body: ["Aftercare is designed to guide you through the transition from treatment back into everyday life, with ongoing emotional support, continued therapy, and practical tools."],
+        subsections: [
+          { heading: "Ongoing Individual Therapy", body: "Continue meeting with a therapist to work through stress, triggers, emotional patterns, and life changes as you adjust to daily life in recovery." },
+          { heading: "Continued Group Support", body: "Group sessions offer encouragement, accountability, and connection with others who understand the realities of early recovery." },
+          { heading: "Relapse Prevention Planning", body: "Work with your team to strengthen coping skills, identify risks, and build strategies to stay grounded during difficult moments." },
+          { heading: "Psychiatric & Medication Support", body: "For clients managing anxiety, depression, trauma, or mood symptoms, psychiatric follow-ups help maintain emotional stability and prevent setbacks." },
+          { heading: "Life-Skills Coaching", body: "Guidance on rebuilding routines, managing responsibilities, improving communication, and developing healthy habits for long-term success." },
+          { heading: "Consistent Check-Ins & Accountability", body: "Regular contact with your care team keeps you supported and on track, so you never feel alone in your recovery journey." },
+        ],
+      },
+    ],
+    levelsOfCare: true,
+    faqs: [
+      { q: "What is aftercare?", a: "Aftercare is ongoing support provided after completing structured treatment. It includes therapy, coaching, psychiatric care, and regular check-ins designed to help you stay stable, confident, and connected as you transition back into everyday life." },
+      { q: "Why is aftercare important for long-term sobriety?", a: "The first months after treatment are when relapse risk is highest. Aftercare provides continued structure, accountability, and emotional support, helping you manage stress, triggers, and real-world challenges with confidence." },
+      { q: "How long does aftercare usually last?", a: "The length of aftercare varies based on individual needs, but most clients participate for several months to a year. Some choose ongoing support longer to maintain consistency, emotional stability, and healthy routines." },
+      { q: "Do I still receive therapy during aftercare?", a: "Yes. Aftercare includes continued individual therapy and may also include group support, family sessions, and psychiatric follow-ups. Therapy helps you process challenges, strengthen coping skills, and prevent relapse." },
+      { q: "Is aftercare covered by insurance?", a: "Many insurance plans cover ongoing therapy, psychiatric services, and other components of aftercare. Our team can verify your benefits quickly and explain what your plan includes so you can continue receiving support without worry. Call us at 866-591-0888 for more details." },
+      { q: "What if I feel stable — do I still need aftercare?", a: "Even when you feel strong, aftercare helps reinforce healthy habits and prepares you for unexpected stress or triggers. Many clients find that ongoing support keeps them grounded and significantly improves long-term outcomes." },
+    ],
+    cta: { title: "Keep your recovery strong for the long term" },
+  },
+];

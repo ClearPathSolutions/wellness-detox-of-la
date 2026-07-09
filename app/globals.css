@@ -1,26 +1,215 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Wellness Detox of LA — design tokens
+   Brand palette derived from the existing site:
+   rose/mauve #D86C97 · cream #F6F2EF · soft pink #f7dede · charcoal #282828
+   · deep navy #262c3c
+--------------------------------------------------------------------------- */
+@theme {
+  --color-cream: #f7f3ef;
+  --color-sand: #ece3da;
+  --color-ink: #23272f;
+  --color-ink-700: #333a45;
+  --color-ink-500: #5a616c;
+  --color-rose: #d86c97;
+  --color-rose-dark: #be5580;
+  --color-rose-soft: #f8e7ef;
+  --color-muted: #61646e; /* darkened slightly to clear WCAG AA (4.5:1) on cream/sand */
+  --color-line: #e7ddd3;
+
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+
+  --shadow-soft: 0 10px 40px -12px rgba(35, 39, 47, 0.18);
+  --shadow-card: 0 4px 24px -8px rgba(35, 39, 47, 0.12);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 6rem; /* offset for sticky header on anchor jumps */
+  overflow-x: clip; /* clip any horizontal overflow at the viewport level */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: clip; /* guarantee nothing hangs off horizontally */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings inherit the ink body color by default, but must let text-* utilities
+   (e.g. text-white on dark heroes/sections) win — so no explicit color here. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Reusable eyebrow / label */
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-rose-dark);
+}
+
+/* Subtle entrance animation, respectful of reduced-motion */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::selection {
+  background: var(--color-rose);
+  color: #fff;
+}
+
+/* Long-form article typography (blog posts) */
+.prose {
+  color: var(--color-ink-700);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.prose > * + * {
+  margin-top: 1.15rem;
+}
+/* Lede / standfirst: first paragraph before the first H2 */
+.prose > p:first-of-type {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+/* H2s become clear section breaks that echo the jump nav */
+.prose h2 {
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin-top: 3rem;
+  margin-bottom: 0.35rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--color-line);
+}
+.prose > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+.prose h4 {
+  font-size: 1.05rem;
+  margin-top: 1.4rem;
+}
+.prose p {
+  color: var(--color-ink-700);
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li::marker {
+  color: var(--color-rose-dark);
+}
+.prose a {
+  color: var(--color-rose-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+/* Roomier lists */
+.prose ul,
+.prose ol {
+  gap: 0.6rem;
+}
+
+/* Statistic / pull-quote callout — reuses the blockquote hook as a rose-soft card */
+.prose blockquote {
+  border-left: 3px solid var(--color-rose);
+  background: var(--color-rose-soft);
+  padding: 1rem 1.25rem;
+  border-radius: 0 1.25rem 1.25rem 0;
+  font-style: normal;
+  color: var(--color-ink-700);
+}
+.prose blockquote strong {
+  color: var(--color-rose-dark);
+}
+
+/* Phone CTA callout (auto-emitted by the paragraph renderer) */
+.prose-callout--phone {
+  display: block;
+  background: var(--color-rose-soft);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  padding: 1rem 1.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.prose-callout--phone a {
+  color: var(--color-rose-dark);
+  text-decoration: none;
+  white-space: nowrap;
 }
