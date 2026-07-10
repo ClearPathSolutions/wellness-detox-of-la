@@ -30,6 +30,14 @@ export const site = {
     linkedin: "https://www.linkedin.com/company/wellness-detox-la/",
   },
   analyticsId: "GT-WP5ML73R",
+  widgets: {
+    // Clarion Labs — chat widget + insurance/contact form capture.
+    // Keys pulled from this site's Clarion snippet.
+    clarion: {
+      siteKey: "cpx_z3FKaToYcnTHoiq_DkjggXUUisaY3zfA",
+      api: "https://api.clarionlabs.ai",
+    },
+  },
 } as const;
 
 export type NavChild = { label: string; href: string };

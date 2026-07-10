@@ -291,7 +291,7 @@ export function CtaBanner({
           <Button href={site.phoneHref} size="lg">
             Call {site.phone}
           </Button>
-          <Button href="/admissions#insurance" variant="white" size="lg">
+          <Button href="/admissions/verify-your-insurance" variant="white" size="lg">
             Verify Your Insurance
           </Button>
         </div>
@@ -383,7 +383,7 @@ export function InsuranceStrip() {
               Send us your information and our team will confirm your coverage — no obligation.
             </p>
             <div className="mt-5 flex flex-col gap-2.5">
-              <Button href="/admissions#insurance" className="w-full">
+              <Button href="/admissions/verify-your-insurance" className="w-full">
                 Verify Insurance
               </Button>
               <Button href={site.phoneHref} variant="outline" className="w-full">

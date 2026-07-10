@@ -1,27 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { site } from "@/lib/site";
+import { CLARION_FORM_KEY } from "@/lib/clarion";
 import { CheckIcon, PhoneIcon } from "./ui";
 
 /**
- * Confidential contact form. Out of the box it hands off to the visitor's mail
- * client (no backend secrets required, works immediately on Vercel). To capture
- * submissions server-side instead, replace the `handleSubmit` body with a POST
- * to a form endpoint (Formspree, Resend, or a Next.js route handler / server action).
+ * Confidential contact form. Submissions are captured by Clarion Labs
+ * (window.ClarionForms.submit; forms-capture script is loaded site-wide in the
+ * root layout) and a mailto handoff runs as a best-effort fallback so no lead is
+ * lost if Clarion hasn't loaded. We handle submit manually rather than using the
+ * data-clarion-form auto-capture, which does not preventDefault and would reload
+ * the page.
  */
 export function ContactForm() {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const inFlight = useRef(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (inFlight.current) return; // synchronous guard against double-click double-POST
     const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = (data.get("name") as string)?.trim();
-    const phone = (data.get("phone") as string)?.trim();
-    const email = (data.get("email") as string)?.trim();
-    const message = (data.get("message") as string)?.trim();
+    const raw = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+    const get = (k: string) => (raw[k] ?? "").toString().trim();
+    const name = get("name");
+    const phone = get("phone");
+    const email = get("email");
+    const message = get("message");
 
     const next: Record<string, string> = {};
     if (!name) next.name = "Please enter your name.";
@@ -30,11 +36,22 @@ export function ContactForm() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
+    inFlight.current = true;
+    try {
+      // Primary: capture to Clarion (best-effort — never blocks the success UI).
+      await window.ClarionForms?.submit({
+        form_key: CLARION_FORM_KEY.contact,
+        data: { ...raw, intent: "contact" },
+      });
+    } catch {
+      // swallow — mailto fallback below still fires
+    }
+
     const body = [
       `Name: ${name}`,
       `Phone: ${phone || "—"}`,
       `Email: ${email || "—"}`,
-      `Seeking help for: ${data.get("who") || "—"}`,
+      `Seeking help for: ${get("who") || "—"}`,
       "",
       message || "",
     ].join("\n");
@@ -42,7 +59,9 @@ export function ContactForm() {
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
       `Website inquiry from ${name}`
     )}&body=${encodeURIComponent(body)}`;
+    form.reset();
     setSent(true);
+    inFlight.current = false;
   }
 
   if (sent) {

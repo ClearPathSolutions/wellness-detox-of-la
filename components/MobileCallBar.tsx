@@ -19,7 +19,7 @@ export function MobileCallBar() {
           Call Now
         </a>
         <Link
-          href="/admissions#insurance"
+          href="/admissions/verify-your-insurance"
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ink py-3 font-display text-sm font-semibold text-white active:scale-[0.98]"
         >
           <ShieldIcon width={17} height={17} />

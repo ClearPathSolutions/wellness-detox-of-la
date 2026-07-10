@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
+import Clarion from "@/components/Clarion";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -97,6 +98,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable} antialiased`}>
+      <head>
+        {/* Site-wide tracking script — loads on every page. */}
+        <script async src="//264810.tctm.co/t.js" />
+      </head>
       <body className="flex min-h-dvh flex-col bg-cream">
         <script
           type="application/ld+json"
@@ -109,6 +114,8 @@ export default function RootLayout({
         {/* Spacer so the fixed mobile call bar never covers footer content. */}
         <div aria-hidden className="h-16 lg:hidden" />
         <MobileCallBar />
+        {/* Clarion Labs chat widget + form capture (loads site-wide). */}
+        <Clarion />
         {/* Google tag (gtag.js) — mirrors the analytics on the existing site. */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`}

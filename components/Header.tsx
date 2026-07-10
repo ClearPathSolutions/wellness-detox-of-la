@@ -129,7 +129,7 @@ export function Header() {
               <PhoneIcon width={16} height={16} className="text-rose-dark" />
               {site.phone}
             </a>
-            <Button href="/admissions#insurance" size="sm">
+            <Button href="/admissions/verify-your-insurance" size="sm">
               Verify Insurance
             </Button>
           </div>
@@ -230,7 +230,7 @@ export function Header() {
               <PhoneIcon width={18} height={18} />
               Call {site.phone}
             </Button>
-            <Button href="/admissions#insurance" variant="dark" size="lg" className="w-full">
+            <Button href="/admissions/verify-your-insurance" variant="dark" size="lg" className="w-full">
               Verify Your Insurance
             </Button>
           </div>
