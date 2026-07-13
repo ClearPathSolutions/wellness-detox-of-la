@@ -37,28 +37,36 @@ export function ContactForm() {
     if (Object.keys(next).length) return;
 
     inFlight.current = true;
+    // Primary: capture to Clarion. Only fall back to the visitor's mail client
+    // if Clarion isn't loaded or the capture fails — otherwise a successful
+    // submit would needlessly pop open their email app.
+    let captured = false;
     try {
-      // Primary: capture to Clarion (best-effort — never blocks the success UI).
-      await window.ClarionForms?.submit({
-        form_key: CLARION_FORM_KEY.contact,
-        data: { ...raw, intent: "contact" },
-      });
+      if (window.ClarionForms) {
+        const res = await window.ClarionForms.submit({
+          form_key: CLARION_FORM_KEY.contact,
+          data: { ...raw, intent: "contact" },
+        });
+        captured = res.ok;
+      }
     } catch {
-      // swallow — mailto fallback below still fires
+      captured = false; // fall back to mailto below
     }
 
-    const body = [
-      `Name: ${name}`,
-      `Phone: ${phone || "—"}`,
-      `Email: ${email || "—"}`,
-      `Seeking help for: ${get("who") || "—"}`,
-      "",
-      message || "",
-    ].join("\n");
+    if (!captured) {
+      const body = [
+        `Name: ${name}`,
+        `Phone: ${phone || "—"}`,
+        `Email: ${email || "—"}`,
+        `Seeking help for: ${get("who") || "—"}`,
+        "",
+        message || "",
+      ].join("\n");
 
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      `Website inquiry from ${name}`
-    )}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+        `Website inquiry from ${name}`
+      )}&body=${encodeURIComponent(body)}`;
+    }
     form.reset();
     setSent(true);
     inFlight.current = false;
@@ -72,8 +80,8 @@ export function ContactForm() {
         </span>
         <h3 className="text-xl text-ink">Thank you for reaching out</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm text-muted">
-          Your message is ready to send from your email app. Prefer to talk now? Our admissions team
-          is available 24/7.
+          We&apos;ve received your message and our team will get back to you shortly. Prefer to talk
+          now? Our admissions team is available 24/7.
         </p>
         <a
           href={site.phoneHref}

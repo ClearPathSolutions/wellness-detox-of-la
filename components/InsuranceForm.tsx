@@ -52,30 +52,38 @@ export function InsuranceForm() {
     }
 
     try {
-      // Primary: capture to Clarion (best-effort — never blocks the success UI).
+      // Primary: capture to Clarion. Only fall back to the visitor's mail
+      // client if Clarion isn't loaded or the capture fails — otherwise a
+      // successful submit would needlessly pop open their email app.
+      let captured = false;
       try {
-        await window.ClarionForms?.submit({
-          form_key: CLARION_FORM_KEY.verify,
-          data: { ...raw, intent: "verify" },
-        });
+        if (window.ClarionForms) {
+          const res = await window.ClarionForms.submit({
+            form_key: CLARION_FORM_KEY.verify,
+            data: { ...raw, intent: "verify" },
+          });
+          captured = res.ok;
+        }
       } catch {
-        // swallow — fallback below still fires
+        captured = false; // fall back to mailto below
       }
 
-      // Fallback: hand off to the visitor's mail client so no lead is lost.
-      const body = [
-        `Name: ${name}`,
-        `Date of birth: ${dob || "—"}`,
-        `Phone: ${phone || "—"}`,
-        `Email: ${email || "—"}`,
-        `Insurance provider: ${provider}`,
-        `Member ID: ${get("memberId") || "—"}`,
-        "",
-        get("message"),
-      ].join("\n");
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-        `Insurance verification request — ${name}`
-      )}&body=${encodeURIComponent(body)}`;
+      if (!captured) {
+        // Fallback: hand off to the visitor's mail client so no lead is lost.
+        const body = [
+          `Name: ${name}`,
+          `Date of birth: ${dob || "—"}`,
+          `Phone: ${phone || "—"}`,
+          `Email: ${email || "—"}`,
+          `Insurance provider: ${provider}`,
+          `Member ID: ${get("memberId") || "—"}`,
+          "",
+          get("message"),
+        ].join("\n");
+        window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+          `Insurance verification request — ${name}`
+        )}&body=${encodeURIComponent(body)}`;
+      }
 
       form.reset();
       setStatus("success");
