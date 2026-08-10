@@ -174,7 +174,9 @@ const areas: Area[] = [
         label: "combined experience within the Quadrant Health Group",
       },
     ],
-    hero: "/images/nature-wide.webp",
+    // Regional page — an aerial of the actual neighbourhood with the San Gabriel
+    // range behind it, rather than the stock beach photo this used to carry.
+    hero: "/images/DJI_20250325105854_0099_D.webp",
   },
 ];
 
@@ -201,3 +203,17 @@ export function getAreaPage(slug: string) {
 
 export const areaSlugs = areaPages.map((p) => p.slug);
 export const areaList = areas.map((a) => ({ slug: a.slug, name: a.name }));
+
+/**
+ * Communities served that do not have a dedicated page. Single canonical list —
+ * the homepage and the Areas We Serve page previously kept two different
+ * hand-maintained versions of this and contradicted each other.
+ */
+export const additionalCommunities: string[] = [
+  "Pasadena", "Glendale", "Long Beach", "Santa Monica", "Torrance", "Beverly Hills",
+  "Culver City", "Orange County", "West Covina", "El Monte", "Arcadia", "Alhambra",
+  "Inglewood", "Whittier", "San Gabriel Valley", "La Puente", "Huntington Park",
+  "Redondo Beach", "Manhattan Beach", "Riverside County", "Irvine", "Santa Ana",
+  "Garden Grove", "Sherman Oaks", "Studio City", "West Hollywood",
+  "San Bernardino County",
+];

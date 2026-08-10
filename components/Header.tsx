@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { nav, site } from "@/lib/site";
+import { slugify } from "@/lib/slug";
 import { Logo } from "./Logo";
 import { Button, ChevronDown, CloseIcon, MenuIcon, PhoneIcon, ShieldIcon } from "./ui";
 
@@ -12,6 +13,10 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
   const pathname = usePathname();
+  // Nested routes count as active: on /treatment/detox the "Treatment" item should
+  // highlight. Blog posts live at the root, so they map back to the Blog entry.
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
   const [prevPathname, setPrevPathname] = useState(pathname);
 
   // Close the mobile menu on route change. Derived during render (per React's
@@ -29,11 +34,33 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while the mobile menu is open.
+  // Lock body scroll while the mobile menu is open. `overflow: hidden` alone is
+  // ignored by iOS Safari, so the body is also pinned with `position: fixed` at
+  // the current offset and restored on close.
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+
+    const scrollY = window.scrollY;
+    const { body } = document;
+    const prev = {
+      overflow: body.style.overflow,
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+    };
+
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+
     return () => {
-      document.body.style.overflow = "";
+      body.style.overflow = prev.overflow;
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.width = prev.width;
+      // Restore the reading position the pin discarded.
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
 
@@ -43,7 +70,7 @@ export function Header() {
       <div className="hidden lg:block bg-ink text-white/75">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-8 py-2 text-xs">
           <span className="flex items-center gap-2">
-            <ShieldIcon width={14} height={14} className="text-rose" />
+            <ShieldIcon width={14} height={14} className="text-rose-soft" />
             State-Licensed Treatment · {site.license}
           </span>
           <span className="flex items-center gap-5">
@@ -71,10 +98,23 @@ export function Header() {
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {nav.map((item) =>
               item.groups ? (
-                <div key={item.label} className="group relative">
+                <div
+                  key={item.label}
+                  className="group relative"
+                  // The dropdown is CSS-driven (group-hover / group-focus-within),
+                  // so Escape collapses it by removing focus from the group. No
+                  // `aria-expanded` here on purpose: without JS state it could not
+                  // be kept truthful, and a stale value misleads more than none.
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") (e.target as HTMLElement).blur();
+                  }}
+                >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-ink transition-colors hover:text-rose-dark"
+                    aria-haspopup="true"
+                    className={`flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:text-rose-dark ${
+                      isActive(item.href) ? "text-rose-dark" : "text-ink"
+                    }`}
                   >
                     {item.label}
                     <ChevronDown
@@ -111,7 +151,7 @@ export function Header() {
                   key={item.label}
                   href={item.href}
                   className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:text-rose-dark ${
-                    pathname === item.href ? "text-rose-dark" : "text-ink"
+                    isActive(item.href) ? "text-rose-dark" : "text-ink"
                   }`}
                 >
                   {item.label}
@@ -173,6 +213,7 @@ export function Header() {
                   type="button"
                   onClick={() => setExpanded((v) => (v === item.label ? null : item.label))}
                   aria-expanded={expanded === item.label}
+                  aria-controls={`mobile-submenu-${slugify(item.label)}`}
                   className="flex w-full items-center justify-between py-4 text-left font-display text-lg font-semibold text-ink"
                 >
                   {item.label}
@@ -182,7 +223,12 @@ export function Header() {
                     }`}
                   />
                 </button>
+                {/* `inert` (not just zero height) so the collapsed links leave the
+                    tab order and the accessibility tree — a 0fr grid row still
+                    leaves focusable children reachable. */}
                 <div
+                  id={`mobile-submenu-${slugify(item.label)}`}
+                  inert={expanded !== item.label}
                   className={`grid transition-all duration-300 ${
                     expanded === item.label ? "grid-rows-[1fr] pb-4" : "grid-rows-[0fr]"
                   }`}

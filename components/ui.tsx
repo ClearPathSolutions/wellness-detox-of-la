@@ -22,9 +22,18 @@ export function Container({
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "dark" | "outline" | "ghost" | "white";
+  variant?: "primary" | "dark" | "outline" | "white";
   size?: "sm" | "md" | "lg";
   className?: string;
+  /** Open in a new tab with a safe `rel`. For links that leave the site. */
+  external?: boolean;
+  /**
+   * Attribution label for `tel:` / `mailto:` clicks, read by the delegated
+   * listener in `components/Analytics.tsx`. Without it a link falls back to
+   * header / footer / "body", which cannot distinguish the sticky mobile bar
+   * from an in-page CTA — the comparison that actually informs layout work.
+   */
+  trackAs?: string;
 };
 
 const base =
@@ -35,7 +44,6 @@ const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   dark: "bg-ink text-white hover:bg-ink-700 hover:-translate-y-0.5",
   outline: "border border-ink/20 text-ink hover:border-rose hover:text-rose-dark",
   white: "bg-white text-ink shadow-card hover:-translate-y-0.5",
-  ghost: "text-ink hover:text-rose-dark",
 };
 
 const sizes: Record<NonNullable<ButtonProps["size"]>, string> = {
@@ -50,12 +58,22 @@ export function Button({
   variant = "primary",
   size = "md",
   className = "",
+  external = false,
+  trackAs,
 }: ButtonProps) {
   const cls = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
-  const isExternal = href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:");
-  if (isExternal) {
+  // tel:/mailto: and off-site URLs are plain anchors, not client-side routes.
+  const isPlainAnchor =
+    href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:");
+
+  if (isPlainAnchor) {
     return (
-      <a href={href} className={cls}>
+      <a
+        href={href}
+        className={cls}
+        {...(trackAs ? { "data-call-location": trackAs } : {})}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         {children}
       </a>
     );

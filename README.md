@@ -15,7 +15,25 @@ npm install
 npm run dev      # http://localhost:3000 — development
 npm run build    # production build
 npm start        # serve the production build
+
+npm run lint     # eslint
+npm run check    # content integrity: links, images, sitemap coverage, phone number
+npm run verify   # lint + check + build (what CI runs)
 ```
+
+### `npm run check`
+
+A dependency-free script (`scripts/check-content.mjs`) that catches the class of bug TypeScript and
+ESLint can't see:
+
+- an internal `href` pointing at a route that doesn't exist
+- a nav entry pointing at a missing page
+- an `<Image src>` whose file isn't in `public/images`
+- an **indexable** page missing from `sitemap.ts` (pages that set `robots: { index: false }` are
+  exempt, which is how `/privacy-policy` is excluded)
+- a hard-coded phone number anywhere outside `lib/site.ts`
+
+It runs in CI on every push and pull request (`.github/workflows/ci.yml`).
 
 ## Deploying to Vercel
 
@@ -50,14 +68,33 @@ npm start        # serve the production build
 **To change the phone number, address, programs, or navigation, edit `lib/site.ts`** — it is the
 single source of truth used across every page, the header, footer, and metadata.
 
-## The contact form
+## The forms
 
-Out of the box, the form (`components/ContactForm.tsx`) validates input and hands off to the
-visitor's email client via `mailto:` — this works immediately with no backend or secrets.
+There are two lead forms — `components/ContactForm.tsx` and `components/InsuranceForm.tsx`. Both
+submit to Server Actions in `app/actions/leads.ts`, which validate server-side and hand the lead to
+`lib/leads.ts` for delivery. They work without JavaScript (progressive enhancement), show per-field
+errors and a pending state, and — importantly — **only show the thank-you panel when the lead was
+actually delivered**. If delivery fails they say so and surface the phone number, so a submission is
+never silently lost.
 
-To capture submissions server-side instead, replace the `handleSubmit` body with a POST to a form
-service (e.g. **Formspree**, **Resend**, or a Next.js Route Handler / Server Action). The spot is
-marked with a comment in the file.
+Set `LEAD_WEBHOOK_URL` (see `.env.example`) to the endpoint that should receive leads.
+
+> ⚠️ **HIPAA.** The insurance form collects PHI — full name, date of birth, insurance provider and
+> member/policy ID. `LEAD_WEBHOOK_URL` **must** point at an endpoint covered by a Business Associate
+> Agreement. A plain inbox, a Zapier/Make webhook, or a marketing-automation endpoint is not
+> sufficient. Field *values* are never written to application logs.
+
+## Analytics & consent
+
+Google Analytics does **not** load until the visitor opts in via the consent banner
+(`components/Analytics.tsx`). This is deliberate: URLs like `/treatment/heroin-addiction` combined
+with an IP address are the kind of disclosure HHS OCR's tracking-technology guidance warns about,
+and CCPA applies to the business.
+
+Once consent is granted, a single delegated click listener records `phone_call_click` and
+`email_click` for every `tel:`/`mailto:` link on the site (including ones inside blog markdown), and
+each accepted form submission fires `generate_lead`. Phone calls are the primary conversion, so this
+is what makes marketing spend measurable.
 
 ## Google reviews (homepage testimonials)
 
@@ -78,10 +115,27 @@ Until the key is set, the section simply doesn't render — no empty placeholder
 Only reviews of 4★+ with text are shown. Logic lives in `lib/reviews.ts`; the UI is
 `components/Reviews.tsx`.
 
+> The section deliberately emits **no** `Review` / `AggregateRating` structured data. These reviews
+> are collected on Google, not on this site, and Google's review-snippet guidelines disallow marking
+> up third-party-sourced ratings as your own. On a rehab site a structured-data manual action would
+> cost far more than the star snippet is worth.
+
 ## Brand
 
-Palette carried over from the original site: rose/mauve `#D86C97`, cream `#F7F3EF`, soft pink
-`#F8E7EF`, charcoal `#23272F`. Fonts: **Poppins** (headings) + **Inter** (body).
+Palette carried over from the original site: cream `#F7F3EF`, soft pink `#F8E7EF`, charcoal
+`#23272F`. Fonts: **Poppins** (headings) + **Inter** (body).
+
+The rose ramp is contrast-tuned so every real usage clears WCAG AA (4.5:1) — see the comment at the
+top of `app/globals.css`:
+
+| Token | Value | Role | Contrast |
+| --- | --- | --- | --- |
+| `--color-rose` | `#bd4b79` | **background** behind white text (buttons, badges) | white on it — 4.72:1 |
+| `--color-rose-dark` | `#a8446d` | **text** on light surfaces (links, eyebrows, errors) | 5.66:1 on white, 5.12:1 on cream, 4.76:1 on rose-soft |
+| `--color-rose-soft` | `#f8e7ef` | text/icons on the dark ink surfaces | 12.6:1 on ink |
+
+Because `--color-rose` is dark enough to carry white text, it is **not** legible as text on the ink
+panels — use `rose-soft` there instead.
 
 ## Notes
 

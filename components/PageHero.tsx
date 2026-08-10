@@ -13,7 +13,10 @@ export function PageHero({
   title: string;
   intro?: string;
   crumb?: string;
-  bg?: string; // optional full-bleed background image (dark hero variant)
+  /** RESERVED: full-bleed dark hero variant. Currently unused by any route, kept
+   *  deliberately because it is a complete, working alternative treatment. If it
+   *  is ever used, re-check text contrast against the chosen image (see WDL-025). */
+  bg?: string;
 }) {
   if (bg) {
     return (

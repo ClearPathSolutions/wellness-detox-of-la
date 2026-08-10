@@ -8,9 +8,12 @@ import { CtaBanner } from "./blocks";
 import { JumpNav, type JumpNavItem } from "./JumpNav";
 import { ArrowRight, Container } from "./ui";
 
-const PHONE = "866-591-0888";
-const PHONE_TEL = "+18665910888";
 const HEADING_SCROLL_MT = "scroll-mt-8 lg:scroll-mt-20"; // unify with ContentPage targets
+
+/** Escape a string for safe use inside a RegExp (the phone number has dashes). */
+function escapeRe(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 function renderPost(body: string): { html: string; toc: JumpNavItem[] } {
   const toc: JumpNavItem[] = [];
@@ -30,10 +33,10 @@ function renderPost(body: string): { html: string; toc: JumpNavItem[] } {
       // Auto-promote the phone CTA line to a callout (unique token → no false positives).
       paragraph({ tokens }) {
         const inner = this.parser.parseInline(tokens);
-        if (inner.includes(PHONE)) {
+        if (inner.includes(site.phone)) {
           const linked = inner.replace(
-            new RegExp(PHONE, "g"),
-            `<a href="tel:${PHONE_TEL}">${PHONE}</a>`
+            new RegExp(escapeRe(site.phone), "g"),
+            `<a href="${site.phoneHref}">${site.phone}</a>`
           );
           return `<p class="prose-callout--phone">${linked}</p>`;
         }
@@ -89,6 +92,11 @@ export function BlogPostView({ post }: { post: BlogPost }) {
         <JumpNav items={toc} />
 
         <Container className="py-12 lg:py-16">
+          {/* SAFETY: `html` comes from `marked` over post bodies authored as
+              first-party template literals in lib/data/blog.ts. There is no user
+              or third-party input path, so the output is trusted and unsanitised.
+              If authoring ever moves to a CMS, form, or any external source, add
+              a sanitiser (rehype-sanitize / DOMPurify) BEFORE that change ships. */}
           <div className="prose mx-auto max-w-3xl" dangerouslySetInnerHTML={{ __html: html }} />
           <div className="mx-auto mt-12 max-w-3xl border-t border-line pt-8">
             <Link href="/blog" className="inline-flex items-center gap-2 font-display font-semibold text-rose-dark">

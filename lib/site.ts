@@ -6,7 +6,6 @@
 export const site = {
   name: "Wellness Detox of LA",
   shortName: "Wellness Detox LA",
-  tagline: "Your Journey to Wellness Begins Today",
   description:
     "Wellness Detox of LA is a licensed drug & alcohol detox and residential treatment center in the Los Angeles area. Safe, compassionate, evidence-based care.",
   url: "https://wellnessdetoxla.com",
@@ -23,6 +22,10 @@ export const site = {
   license: "DHCS License #191425AP",
   licenseExpires: "4/30/2027",
   network: "Quadrant Health Group",
+  /** Parent network site. The network is named 20+ times across the site and the
+   *  "15+ years" claim rests on it, so the affiliation is linked rather than
+   *  merely asserted. */
+  networkUrl: "https://quadranthealthgroup.com",
   yearsExperience: "15+",
   social: {
     facebook: "https://www.facebook.com/wellnessdetoxla",
@@ -141,54 +144,65 @@ export type Program = {
   title: string;
   blurb: string;
   points: string[];
+  /** Route slug under /treatment. Lives on the object so reordering `programs`
+   *  can never silently repoint a card at the wrong page. */
+  slug: string;
 };
 
 export const programs: Program[] = [
   {
     title: "Alcohol & Drug Detox",
+    slug: "detox",
     blurb:
       "Medically supervised detox that keeps you safe and comfortable as your body clears substances, with 24/7 clinical monitoring.",
     points: ["24/7 medical monitoring", "Withdrawal management", "Comfort-focused care"],
   },
   {
     title: "Residential Inpatient",
+    slug: "residential",
     blurb:
       "Structured, home-like residential care that surrounds you with therapy, routine, and round-the-clock support during early recovery.",
     points: ["Structured daily routine", "Evidence-based therapy", "Safe, home-like setting"],
   },
   {
     title: "Dual Diagnosis",
+    slug: "dual-diagnosis",
     blurb:
       "Integrated treatment for addiction and co-occurring mental health conditions such as anxiety, depression, and trauma.",
     points: ["Co-occurring care", "Psychiatric support", "Whole-person healing"],
   },
   {
     title: "Aftercare Program",
+    slug: "aftercare",
     blurb:
       "Ongoing support and relapse-prevention planning that helps you carry your progress forward long after you leave.",
     points: ["Relapse prevention", "Continued support", "Long-term recovery focus"],
   },
 ];
 
-export const substances: string[] = [
-  "Alcohol",
-  "Benzodiazepines",
-  "Cocaine",
-  "Fentanyl",
-  "Heroin",
-  "Methamphetamine",
-  "Opioids",
-  "Prescription Drugs",
+export type Substance = { name: string; slug: string };
+
+/** Slug travels with the name so renaming a label cannot break its link. */
+export const substances: Substance[] = [
+  { name: "Alcohol", slug: "alcohol-addiction" },
+  { name: "Benzodiazepines", slug: "benzo-addiction" },
+  { name: "Cocaine", slug: "cocaine-addiction" },
+  { name: "Fentanyl", slug: "fentanyl-addiction" },
+  { name: "Heroin", slug: "heroin-addiction" },
+  { name: "Methamphetamine", slug: "meth-addiction" },
+  { name: "Opioids", slug: "opioid-addiction" },
+  { name: "Prescription Drugs", slug: "prescription-drug-addiction" },
 ];
 
-export type Therapy = { title: string; blurb: string };
+/** `slug` only where a dedicated /treatment page exists; the rest are descriptive. */
+export type Therapy = { title: string; blurb: string; slug?: string };
 
 export const therapies: Therapy[] = [
   { title: "Cognitive Behavioral Therapy (CBT)", blurb: "Identify harmful thought patterns and build healthier coping strategies." },
   { title: "Dialectical Behavior Therapy (DBT)", blurb: "Strengthen emotional regulation and resilience under stress." },
-  { title: "Individual Therapy", blurb: "One-on-one sessions focused on your personal history and healing." },
-  { title: "Group Therapy", blurb: "Peer-supported accountability and connection in a safe space." },
-  { title: "Family Support Programs", blurb: "Rebuild trust and communication with the people who matter most." },
+  { slug: "individual-therapy", title: "Individual Therapy", blurb: "One-on-one sessions focused on your personal history and healing." },
+  { slug: "group-therapy", title: "Group Therapy", blurb: "Peer-supported accountability and connection in a safe space." },
+  { slug: "family-therapy", title: "Family Support Programs", blurb: "Rebuild trust and communication with the people who matter most." },
   { title: "Trauma-Informed Care", blurb: "Address the unresolved trauma that often underlies addiction." },
   { title: "Holistic Healing Services", blurb: "Mindfulness and wellness practices that restore mind and body." },
   { title: "Relapse Prevention Planning", blurb: "Practical tools and a clear plan for maintaining lasting sobriety." },
@@ -233,32 +247,17 @@ export const admissionSteps: AdmissionStep[] = [
   },
 ];
 
-export const featuredAreas: string[] = [
-  "Los Angeles, CA",
-  "North Hollywood, CA",
-  "Burbank, CA",
-  "Pomona, CA",
-  "Orange County, CA",
-  "Southern California",
-];
-
-export const moreAreas: string[] = [
-  "Pasadena",
-  "Beverly Hills",
-  "Santa Monica",
-  "San Bernardino County",
-  "Long Beach",
-  "Sherman Oaks",
-  "Studio City",
-  "West Hollywood",
-];
-
 export type GalleryImage = { src: string; alt: string };
 export type GalleryCategory = { label: string; images: GalleryImage[] };
 
 /**
  * The facility tour, organized into the same three sections as the live site.
  * These are the real professional photographs of the Pomona residence.
+ *
+ * Alt text describes what is actually in each frame. Several entries previously
+ * described a different room than the photograph showed (three kitchens labelled
+ * as lounges, a building facade labelled a patio, and an outdoor lawn labelled an
+ * interior dining space) — corrected against the source shoot.
  */
 export const galleryCategories: GalleryCategory[] = [
   {
@@ -266,39 +265,48 @@ export const galleryCategories: GalleryCategory[] = [
     images: [
       { src: "/images/DSC_6218-HDR.webp", alt: "The gated Spanish-style exterior of the Wellness Detox of LA residential facility in Pomona" },
       { src: "/images/DSC_6224-HDR.webp", alt: "Landscaped front lawn and walkway outside the facility" },
-      { src: "/images/DSC_6289-HDR.webp", alt: "Private outdoor courtyard at the residential facility" },
+      { src: "/images/DSC_6289-HDR.webp", alt: "Back lawn and shaded pergola beside the residence" },
       { src: "/images/DSC_6278-HDR.webp", alt: "Peaceful outdoor seating area for clients" },
       { src: "/images/DJI_20250325110211_0107_D.webp", alt: "Aerial view of the tree-lined neighborhood surrounding the facility" },
-      { src: "/images/DSC_6265-HDR.webp", alt: "Sunlit patio space outside the residence" },
+      { src: "/images/DSC_6265-HDR.webp", alt: "Front elevation of the residence with its arched entry and stone detailing" },
       { src: "/images/DJI_20250325105814_0096_D.webp", alt: "Aerial view of the Wellness Detox of LA property with the San Gabriel Mountains beyond" },
-      { src: "/images/DSC_6236-HDR.webp", alt: "Exterior grounds of the residential treatment home" },
+      { src: "/images/DJI_20250325110028_0103_D.webp", alt: "Aerial view looking down the private driveway alongside the residence" },
+      { src: "/images/DSC_6236-HDR.webp", alt: "Gated driveway entrance shaded by a mature olive tree" },
       { src: "/images/DSC_6274-HDR.webp", alt: "Quiet outdoor area for rest and reflection" },
       { src: "/images/DSC_6233-HDR.webp", alt: "Brick walkway leading to the arched front entrance across a green lawn" },
       { src: "/images/DSC_6283-HDR.webp", alt: "Landscaped backyard with a winding brick path behind the residence" },
+      // Moved here from "Living Room & Common Spaces" — this frame is an outdoor lawn, not an interior.
+      { src: "/images/DSC_6268-HDR.webp", alt: "Back lawn with a brick path leading to the shaded pergola" },
       { src: "/images/DSC_6293-HDR.webp", alt: "Front of the home with private driveway and attached garage" },
     ],
   },
   {
-    label: "Living Room & Common Spaces",
+    label: "Living, Dining & Common Spaces",
     images: [
-      { src: "/images/DSC_6116-HDR.webp", alt: "Bright, comfortable shared living room inside the facility" },
-      { src: "/images/DSC_6113-HDR.webp", alt: "Welcoming common area with natural light" },
-      { src: "/images/DSC_6119-HDR.webp", alt: "Cozy seating in a shared common space" },
-      { src: "/images/DSC_6248-HDR.webp", alt: "Open communal gathering area for clients" },
-      { src: "/images/DSC_6296-HDR.webp", alt: "Relaxed lounge space for group connection" },
-      { src: "/images/DSC_6257-HDR.webp", alt: "Warm, home-like interior common room" },
-      { src: "/images/DSC_6268-HDR.webp", alt: "Dining and shared living space inside the residence" },
-      { src: "/images/DSC_6301-HDR-1.webp", alt: "Comfortable common area designed for calm and rest" },
+      { src: "/images/DSC_6116-HDR.webp", alt: "Bright, comfortable shared living room with a fireplace and wall-mounted television" },
+      { src: "/images/DSC_6086-HDR.webp", alt: "Shared living room with sunlight across the hardwood floor" },
+      { src: "/images/DSC_6095-HDR.webp", alt: "Living room seating arranged around the fireplace" },
+      { src: "/images/DSC_6134-HDR.webp", alt: "Second view of the living room with its fireplace and corner windows" },
+      { src: "/images/DSC_6257-HDR.webp", alt: "Warm, home-like common room with sectional seating" },
+      { src: "/images/DSC_6248-HDR.webp", alt: "Group room with armchairs arranged in a circle for therapy sessions" },
+      { src: "/images/DSC_6113-HDR.webp", alt: "Dining table beside the kitchen, lit by the patio doors" },
+      { src: "/images/DSC_6107-HDR.webp", alt: "Round dining table set for shared meals next to the kitchen" },
       { src: "/images/DSC_6302-HDR.webp", alt: "Open dining area and fully equipped kitchen with stainless appliances" },
+      { src: "/images/DSC_6104-HDR.webp", alt: "Kitchen with breakfast bar, stainless appliances, and adjoining dining space" },
+      { src: "/images/DSC_6119-HDR.webp", alt: "Shared kitchen with breakfast bar, dishwasher, and gas range" },
+      { src: "/images/DSC_6296-HDR.webp", alt: "Second kitchen with a full-size range, refrigerator, and generous counter space" },
+      { src: "/images/DSC_6301-HDR-1.webp", alt: "Kitchen island with seating alongside the dining area" },
     ],
   },
   {
     label: "Bedrooms",
     images: [
       { src: "/images/DSC_6122-HDR.webp", alt: "A bright, home-like bedroom with fresh linens and welcome amenities" },
-      { src: "/images/DSC_6209-HDR.webp", alt: "Restful private bedroom with natural light" },
+      { src: "/images/DSC_6209-HDR.webp", alt: "Bedroom with two beds and warm natural light" },
       { src: "/images/DSC_6254-HDR-1.webp", alt: "Comfortable client bedroom in the residential facility" },
       { src: "/images/DSC_6143-HDR-1.webp", alt: "Clean, calming bedroom prepared for a new client" },
+      { src: "/images/DSC_6140-HDR.webp", alt: "Bedroom with two beds between twin windows and a wooden dresser" },
+      { src: "/images/DSC_6153-HDR.webp", alt: "Bedroom with two beds, a dresser, and a wall-mounted television" },
       { src: "/images/DSC_6254-HDR.webp", alt: "Shared bedroom with two beds, dresser, and a wall-mounted television" },
     ],
   },
@@ -306,12 +314,12 @@ export const galleryCategories: GalleryCategory[] = [
 
 /** Curated flat mix used for the homepage tour preview. */
 export const gallery: GalleryImage[] = [
-  { src: "/images/DSC_6218-HDR.webp", alt: "The gated Spanish-style exterior of the Wellness Detox of LA residential facility in Pomona" },
-  { src: "/images/DSC_6116-HDR.webp", alt: "Bright, comfortable shared living room inside the facility" },
+  { src: "/images/DSC_6233-HDR.webp", alt: "Brick walkway leading to the arched front entrance across a green lawn" },
+  { src: "/images/DSC_6116-HDR.webp", alt: "Bright, comfortable shared living room with a fireplace and wall-mounted television" },
   { src: "/images/DSC_6122-HDR.webp", alt: "A bright, home-like bedroom with fresh linens and welcome amenities" },
   { src: "/images/DJI_20250325105814_0096_D.webp", alt: "Aerial view of the Wellness Detox of LA property with the San Gabriel Mountains beyond" },
-  { src: "/images/DSC_6265-HDR.webp", alt: "Sunlit patio space outside the residence" },
-  { src: "/images/DSC_6257-HDR.webp", alt: "Warm, home-like interior common room" },
-  { src: "/images/DSC_6209-HDR.webp", alt: "Restful private bedroom with natural light" },
+  { src: "/images/DSC_6302-HDR.webp", alt: "Open dining area and fully equipped kitchen with stainless appliances" },
+  { src: "/images/DSC_6257-HDR.webp", alt: "Warm, home-like common room with sectional seating" },
+  { src: "/images/DSC_6209-HDR.webp", alt: "Bedroom with two beds and warm natural light" },
   { src: "/images/DSC_6274-HDR.webp", alt: "Quiet outdoor area for rest and reflection" },
 ];

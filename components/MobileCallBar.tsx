@@ -13,6 +13,7 @@ export function MobileCallBar() {
       <div className="flex items-stretch gap-2 border-t border-line bg-cream/95 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur-md">
         <a
           href={site.phoneHref}
+          data-call-location="mobile-sticky-bar"
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-rose py-3 font-display text-sm font-semibold text-white shadow-card active:scale-[0.98]"
         >
           <PhoneIcon width={17} height={17} />

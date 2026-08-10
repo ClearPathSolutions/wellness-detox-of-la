@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { ContentPage } from "@/components/ContentPage";
 import { getTreatmentPage, treatmentSlugs } from "@/lib/data/treatment";
@@ -20,7 +21,12 @@ export async function generateMetadata({
   return {
     title: page.metaTitle,
     description: page.metaDescription ?? page.intro,
-    alternates: { canonical: `/treatment/${slug}` },
+    ...pageMeta({
+      path: `/treatment/${slug}`,
+      title: page.metaTitle,
+      description: page.metaDescription ?? page.intro,
+      ...(page.hero ? { image: { url: page.hero, alt: page.h1 } } : {}),
+    }),
   };
 }
 

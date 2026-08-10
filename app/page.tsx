@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
@@ -28,7 +29,7 @@ import {
 export const metadata: Metadata = {
   title: `${site.name} | Drug & Alcohol Detox & Rehab in Los Angeles`,
   description: site.description,
-  alternates: { canonical: "/" },
+  ...pageMeta({ path: "/", title: `${site.name} | Drug & Alcohol Detox & Rehab in Los Angeles`, description: site.description }),
 };
 
 export default function Home() {
@@ -36,10 +37,13 @@ export default function Home() {
     <>
       {/* ------------------------------- Hero ------------------------------ */}
       <section className="relative overflow-hidden">
-        {/* Southern California coast backdrop */}
+        {/* The actual Pomona residence. Chosen over the other exteriors because it
+            keeps white headline text above 4.5:1 at every breakpoint (measured
+            ~7.5:1 desktop, ~6.4:1 at 390px, ~5.5:1 at 768px) — the lawn and
+            pergola sit behind the copy while the building stays right of it. */}
         <div aria-hidden className="absolute inset-0">
           <Image
-            src="/images/nature-wide.webp"
+            src="/images/DSC_6289-HDR.webp"
             alt=""
             fill
             priority
@@ -68,7 +72,7 @@ export default function Home() {
               deserve at every stage.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={site.phoneHref} size="lg">
+              <Button href={site.phoneHref} size="lg" trackAs="homepage-hero">
                 <PhoneIcon width={18} height={18} />
                 Call {site.phone}
               </Button>

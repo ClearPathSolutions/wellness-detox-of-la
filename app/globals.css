@@ -3,8 +3,17 @@
 /* ---------------------------------------------------------------------------
    Wellness Detox of LA — design tokens
    Brand palette derived from the existing site:
-   rose/mauve #D86C97 · cream #F6F2EF · soft pink #f7dede · charcoal #282828
+   rose/mauve · cream #F6F2EF · soft pink #f7dede · charcoal #282828
    · deep navy #262c3c
+
+   The rose ramp is tuned so every real usage clears WCAG AA (4.5:1):
+     --color-rose       is a BACKGROUND behind white text (buttons, badges).
+                        White on it = 4.72:1.
+     --color-rose-dark  is TEXT on light surfaces (links, eyebrows, errors).
+                        5.66:1 on white, 5.12:1 on cream, 4.76:1 on rose-soft.
+     --color-rose-soft  is text/icons on the dark ink surfaces. 12.6:1 on ink.
+   Because rose is dark enough to carry white text, it is NOT legible as text on
+   ink — use rose-soft there instead.
 --------------------------------------------------------------------------- */
 @theme {
   --color-cream: #f7f3ef;
@@ -12,10 +21,10 @@
   --color-ink: #23272f;
   --color-ink-700: #333a45;
   --color-ink-500: #5a616c;
-  --color-rose: #d86c97;
-  --color-rose-dark: #be5580;
+  --color-rose: #bd4b79;
+  --color-rose-dark: #a8446d;
   --color-rose-soft: #f8e7ef;
-  --color-muted: #61646e; /* darkened slightly to clear WCAG AA (4.5:1) on cream/sand */
+  --color-muted: #61646e; /* clears WCAG AA (4.5:1) on cream/sand */
   --color-line: #e7ddd3;
 
   --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
@@ -65,14 +74,21 @@ p {
   text-wrap: pretty;
 }
 
-/* Reusable eyebrow / label */
-.eyebrow {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-rose-dark);
+/* Reusable eyebrow / label.
+   Declared in @layer components, NOT unlayered, so Tailwind utilities can
+   override it. Unlayered CSS beats every layer regardless of source order, so
+   an unlayered `.eyebrow` silently defeats `text-rose-soft` (colour) and
+   `text-[0.65rem]` (size) at the call site — this is the same hazard the
+   h1–h4 rule above avoids by declaring no colour. */
+@layer components {
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-rose-dark);
+  }
 }
 
 /* Subtle entrance animation, respectful of reduced-motion */

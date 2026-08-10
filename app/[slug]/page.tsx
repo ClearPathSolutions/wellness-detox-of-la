@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { BlogPostView } from "@/components/BlogPostView";
 import { getPost, postSlugs } from "@/lib/data/blog";
-import { site } from "@/lib/site";
 
 // Root-level blog post URLs, preserved 1:1 from the original WordPress site.
 export function generateStaticParams() {
@@ -22,15 +22,14 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/${slug}` },
-    openGraph: {
-      type: "article",
+    ...pageMeta({
+      path: `/${slug}`,
       title: post.title,
       description: post.excerpt,
-      url: `${site.url}/${slug}`,
-      images: [{ url: post.hero }],
+      type: "article",
+      image: { url: post.hero, alt: post.title },
       publishedTime: post.date,
-    },
+    }),
   };
 }
 

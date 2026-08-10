@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { ContentPage } from "@/components/ContentPage";
 import { getAreaPage, areaSlugs } from "@/lib/data/areas";
@@ -20,7 +21,12 @@ export async function generateMetadata({
   return {
     title: page.metaTitle,
     description: page.metaDescription ?? page.intro,
-    alternates: { canonical: `/about/areas-we-serve/${area}` },
+    ...pageMeta({
+      path: `/about/areas-we-serve/${area}`,
+      title: page.metaTitle,
+      description: page.metaDescription ?? page.intro,
+      ...(page.hero ? { image: { url: page.hero, alt: page.h1 } } : {}),
+    }),
   };
 }
 

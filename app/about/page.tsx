@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Founded in 2025, Wellness Detox LA brings the proven quality and compassion of the Quadrant Health Group to Los Angeles — backed by 15+ years of recovery experience.",
-  alternates: { canonical: "/about" },
+  ...pageMeta({ path: "/about", title: "About Us", description: "Founded in 2025, Wellness Detox LA brings the proven quality and compassion of the Quadrant Health Group to Los Angeles — backed by 15+ years of recovery experience." }),
 };
 
 const links = [
@@ -87,7 +88,14 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-muted">
-            {site.license} · Expires {site.licenseExpires} · Part of the {site.network}
+            {site.license} · Expires {site.licenseExpires} · Part of the <a
+              href={site.networkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-line underline-offset-2 transition-colors hover:text-rose-dark"
+            >
+              {site.network}
+            </a>
           </p>
         </Container>
       </section>

@@ -22,6 +22,9 @@ export default function ClarionBlog() {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Capture the node now: by cleanup time the ref may point elsewhere (or at
+    // null), which would leave the injected markup behind on unmount.
+    const mount = mountRef.current;
     const script = document.createElement("script");
     script.src = BLOG_EMBED_SRC;
     script.async = true;
@@ -31,7 +34,7 @@ export default function ClarionBlog() {
 
     return () => {
       script.remove();
-      if (mountRef.current) mountRef.current.innerHTML = "";
+      if (mount) mount.innerHTML = "";
     };
   }, [siteKey, api]);
 

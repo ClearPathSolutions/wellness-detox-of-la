@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui";
 import ClarionBlog from "@/components/ClarionBlog";
-import { blogPosts } from "@/lib/data/blog";
+import { postsByDate } from "@/lib/data/blog";
 
 export const metadata: Metadata = {
   title: "Addiction Recovery Blog",
   description:
     "Helpful insights on addiction, mental health, treatment options, and life in recovery — written to support individuals and families across Los Angeles.",
-  alternates: { canonical: "/blog" },
+  ...pageMeta({ path: "/blog", title: "Addiction Recovery Blog", description: "Helpful insights on addiction, mental health, treatment options, and life in recovery — written to support individuals and families across Los Angeles." }),
 };
 
 export default function BlogIndex() {
@@ -43,7 +44,7 @@ export default function BlogIndex() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((post) => (
+            {postsByDate.map((post) => (
               <Link
                 key={post.slug}
                 href={`/${post.slug}`}

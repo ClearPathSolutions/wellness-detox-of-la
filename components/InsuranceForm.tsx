@@ -12,8 +12,12 @@ import { CheckIcon, PhoneIcon, ShieldIcon } from "./ui";
  * forms-capture script is loaded site-wide in the root layout. We handle submit
  * manually (NOT the data-clarion-form auto-capture) because auto-capture does not
  * preventDefault, which would trigger a native submit and reload the page with the
- * fields in the URL. A mailto handoff remains as a best-effort fallback so the lead
- * is never lost if Clarion hasn't loaded.
+ * fields in the URL.
+ *
+ * Unlike the contact form there is deliberately NO mailto fallback here: this
+ * payload carries date of birth and insurance member ID, so a failed capture
+ * surfaces a visible error with the phone number rather than routing PHI through
+ * the visitor's unencrypted personal email.
  */
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -65,24 +69,19 @@ export function InsuranceForm() {
           captured = res.ok;
         }
       } catch {
-        captured = false; // fall back to mailto below
+        captured = false; // surfaces the error state below
       }
 
       if (!captured) {
-        // Fallback: hand off to the visitor's mail client so no lead is lost.
-        const body = [
-          `Name: ${name}`,
-          `Date of birth: ${dob || "—"}`,
-          `Phone: ${phone || "—"}`,
-          `Email: ${email || "—"}`,
-          `Insurance provider: ${provider}`,
-          `Member ID: ${get("memberId") || "—"}`,
-          "",
-          get("message"),
-        ].join("\n");
-        window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-          `Insurance verification request — ${name}`
-        )}&body=${encodeURIComponent(body)}`;
+        // Deliberately NO mailto fallback on this form. The payload carries date
+        // of birth and insurance member ID, and a mailto: handoff would put that
+        // in a URL and send it over the visitor's unencrypted personal email —
+        // which the on-page "100% private & protected" promise cannot cover.
+        // Losing the lead to a visible error the visitor can act on is the safer
+        // failure, so surface the phone number instead.
+        setStatus("error");
+        inFlight.current = false;
+        return;
       }
 
       form.reset();
