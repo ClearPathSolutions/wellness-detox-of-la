@@ -1,4 +1,5 @@
 import type { ContentPageData } from "@/lib/content-types";
+import { site } from "@/lib/site";
 
 /**
  * Verbatim substance-page content migrated from wellnessdetoxla.com.
@@ -11,7 +12,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Alcohol Addiction Treatment in Los Angeles, CA",
     intro:
       "Alcohol addiction affects millions of people each year, but with the right clinical support, recovery is absolutely possible. At Wellness Detox LA, our team provides medically informed treatment to help you break free from alcohol and rebuild your life with confidence and clarity.",
-    hero: "/images/wellness-2.webp",
     crumb: "Treatment / Alcohol",
     sections: [
       {
@@ -94,7 +94,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Benzo Addiction Treatment in Los Angeles, CA",
     intro:
       "Benzodiazepine addiction can take hold quickly, especially with medications like Xanax, Klonopin, Ativan, and Valium. At Wellness Detox LA, our clinical team provides safe, medically managed benzo detox in Los Angeles to help you stabilize, ease withdrawal, and begin long-term recovery with confidence.",
-    hero: "/images/wellness-1.webp",
     crumb: "Treatment / Benzodiazepines",
     sections: [
       {
@@ -155,7 +154,7 @@ export const treatmentSubstances: ContentPageData[] = [
       { q: "How dangerous is mixing benzos with alcohol or opioids?", a: "Extremely dangerous. These combinations slow breathing, heart rate, and cognitive function, dramatically increasing the risk of overdose and fatal respiratory depression. A large portion of benzo-related deaths involve another substance, most commonly opioids." },
       { q: "What if I have anxiety, trauma, or another mental-health condition?", a: "Benzo addiction often overlaps with anxiety disorders, PTSD, and insomnia. Dual diagnosis treatment addresses both the addiction and the underlying mental-health condition to improve long-term outcomes." },
       { q: "How long does benzo addiction treatment take?", a: "It depends on the individual and their substance use history, but most clients complete detox in 5–14 days and continue residential treatment for 20–45 days, depending on severity, mental-health needs, and progress in therapy." },
-      { q: "How does insurance work for benzo addiction treatment?", a: "Most insurance plans cover benzo addiction treatment, including medical detox, residential care, and dual diagnosis services. Our team can verify your insurance benefits quickly and explain what your plan covers before you begin. Call 866-591-0888." },
+      { q: "How does insurance work for benzo addiction treatment?", a: `Most insurance plans cover benzo addiction treatment, including medical detox, residential care, and dual diagnosis services. Our team can verify your insurance benefits quickly and explain what your plan covers before you begin. Call ${site.phone}.` },
     ],
     cta: { title: "Recover safely from benzodiazepine dependence" },
   },
@@ -166,7 +165,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Cocaine Addiction Treatment in Los Angeles, CA",
     intro:
       "Cocaine addiction can take hold quickly, leading to intense cravings, emotional instability, and dangerous changes in the brain's reward system. At Wellness Detox LA, our medical and therapeutic teams provide a structured, evidence-based program to help you stabilize, regain control, and begin long-term recovery from cocaine or crack cocaine misuse.",
-    hero: "/images/wellness-1.webp",
     crumb: "Treatment / Cocaine",
     sections: [
       {
@@ -232,7 +230,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Fentanyl Addiction Treatment in Los Angeles, CA",
     intro:
       "Fentanyl addiction can escalate rapidly due to the drug's extreme potency and high overdose risk. At Wellness Detox LA, we provide evidence-based medical detox and residential treatment designed to stabilize withdrawal, restore safety, and help clients begin long-term recovery from fentanyl addiction.",
-    hero: "/images/facility-1.webp",
     crumb: "Treatment / Fentanyl",
     sections: [
       {
@@ -298,7 +295,7 @@ export const treatmentSubstances: ContentPageData[] = [
       { q: "What is the risk of overdose with fentanyl?", a: "Fentanyl has an extremely high overdose risk because even a few grains of powder can suppress breathing. Overdoses happen quickly and may require multiple doses of naloxone to reverse. Mixing fentanyl with alcohol, benzodiazepines, or other depressants increases the risk significantly." },
       { q: "How does naloxone (Narcan) work for fentanyl overdose?", a: "Naloxone rapidly blocks opioid receptors, reversing the life-threatening effects of fentanyl. However, because fentanyl is so potent, multiple doses may be needed. Naloxone provides temporary reversal; emergency medical treatment is still required immediately after." },
       { q: "What treatments are most effective for fentanyl addiction?", a: "The most effective approach combines medical detox, medication-assisted treatment (MAT), residential inpatient care, dual diagnosis support, and long-term relapse-prevention planning — addressing both physical dependence and the mental-health factors driving opioid use." },
-      { q: "Does insurance cover fentanyl addiction treatment?", a: "Most insurance plans cover medical detox, residential treatment, MAT, and dual diagnosis services for fentanyl addiction. Wellness Detox LA can verify your benefits quickly and explain exactly what your plan covers. Call 866-591-0888." },
+      { q: "Does insurance cover fentanyl addiction treatment?", a: `Most insurance plans cover medical detox, residential treatment, MAT, and dual diagnosis services for fentanyl addiction. Wellness Detox LA can verify your benefits quickly and explain exactly what your plan covers. Call ${site.phone}.` },
       { q: "When is the right time to seek treatment for fentanyl addiction?", a: "As soon as fentanyl use begins, even before full addiction symptoms appear. Fentanyl is so potent that if you're using it recreationally, without a prescription, or taking more than prescribed, it's critical to get help immediately. Early treatment reduces overdose risk and prevents dependence from developing rapidly." },
     ],
     cta: { title: "Get safe help for fentanyl addiction now" },
@@ -310,7 +307,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Heroin Addiction Treatment in Los Angeles, CA",
     intro:
       "Heroin addiction can develop quickly and lead to severe physical dependence, dangerous withdrawal symptoms, and a high risk of overdose. At Wellness Detox LA, we provide medical detox and residential treatment designed to stabilize the body, support emotional recovery, and help clients break free from heroin safely.",
-    hero: "/images/facility-1.webp",
     crumb: "Treatment / Heroin",
     sections: [
       {
@@ -374,7 +370,7 @@ export const treatmentSubstances: ContentPageData[] = [
       { q: "How long does heroin detox take?", a: "Most clients complete the acute detox phase in 5–7 days, though some may take longer depending on severity of use, method of use (smoking vs. injection), and co-occurring health conditions." },
       { q: "What is the risk of overdose with heroin?", a: "Heroin overdose is extremely dangerous because it slows or stops breathing. The risk increases dramatically when heroin is mixed with fentanyl, alcohol, or benzodiazepines. Overdose requires immediate emergency care." },
       { q: "How does naloxone (Narcan) work in a heroin overdose?", a: "Naloxone rapidly displaces opioids from the brain's receptors, reversing the life-threatening effects of heroin. It restores breathing temporarily, but emergency medical attention is still required as effects can wear off quickly." },
-      { q: "Does insurance cover heroin addiction treatment?", a: "Most insurance plans cover heroin detox, residential treatment, MAT, and dual diagnosis services. Wellness Detox LA offers fast, confidential insurance verification. Call 866-591-0888." },
+      { q: "Does insurance cover heroin addiction treatment?", a: `Most insurance plans cover heroin detox, residential treatment, MAT, and dual diagnosis services. Wellness Detox LA offers fast, confidential insurance verification. Call ${site.phone}.` },
       { q: "When should someone seek treatment for heroin addiction?", a: "As soon as heroin use begins, even before addiction fully develops. Heroin should never be used recreationally, and early treatment dramatically reduces overdose risk and long-term dependence." },
     ],
     cta: { title: "Claim your life back — get help today" },
@@ -386,7 +382,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Meth Addiction Treatment in Los Angeles, CA",
     intro:
       "Methamphetamine addiction causes rapid changes in mood, energy, and brain function, often leading to severe psychological symptoms, dangerous behaviors, and intense cravings.",
-    hero: "/images/wellness-1.webp",
     crumb: "Treatment / Methamphetamine",
     sections: [
       {
@@ -451,7 +446,7 @@ export const treatmentSubstances: ContentPageData[] = [
       { q: "Can meth cause psychosis?", a: "Yes. Meth-induced psychosis is common and may involve paranoia, delusions, hallucinations, and extreme agitation. Psychosis can occur during heavy use or withdrawal and requires clinical intervention." },
       { q: "How long does meth detox take?", a: "Most clients stabilize within 7–10 days, although psychological symptoms like cravings and mood changes may continue for weeks." },
       { q: "What is the risk of overdose with meth?", a: "Meth overdose can cause dangerously high blood pressure, stroke, heart attack, seizures, overheating, and organ failure. Risk increases when mixed with fentanyl." },
-      { q: "When should someone seek treatment for meth addiction?", a: "Treatment should be sought as soon as meth use begins, even before addiction fully develops. Early intervention reduces medical and psychiatric risks. Call 866-591-0888." },
+      { q: "When should someone seek treatment for meth addiction?", a: `Treatment should be sought as soon as meth use begins, even before addiction fully develops. Early intervention reduces medical and psychiatric risks. Call ${site.phone}.` },
     ],
     cta: { title: "Compassionate meth addiction treatment" },
   },
@@ -462,7 +457,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Opioid Addiction Treatment in Los Angeles, CA",
     intro:
       "Opioid addiction can develop quickly, whether someone is using prescription pain medications or illicit opioids like heroin or fentanyl. At Wellness Detox LA, we provide medically supervised detox and residential treatment that stabilizes withdrawal, restores safety, and helps clients rebuild long-term recovery.",
-    hero: "/images/facility-1.webp",
     crumb: "Treatment / Opioids",
     sections: [
       {
@@ -526,7 +520,7 @@ export const treatmentSubstances: ContentPageData[] = [
       { q: "What is the difference between prescription opioids and illicit opioids?", a: "Prescription opioids (oxycodone, hydrocodone, morphine) are used medically but can be misused. Illicit opioids (heroin, illegal fentanyl) have no quality control and carry a significantly higher overdose risk. Both can cause severe dependence." },
       { q: "What increases the risk of opioid overdose?", a: "Overdose risk increases when opioids are mixed with alcohol, benzodiazepines, or fentanyl-contaminated drugs. Taking higher doses than prescribed or using opioids after a period of abstinence (reduced tolerance) also greatly increases risk." },
       { q: "How does naloxone (Narcan) reverse an opioid overdose?", a: "Naloxone rapidly blocks opioid receptors, reversing slowed or stopped breathing. Its effects are temporary, so emergency medical help is required even after naloxone is administered." },
-      { q: "Does insurance cover opioid addiction treatment?", a: "Most insurance plans cover opioid detox, residential treatment, medication-assisted treatment, and dual diagnosis services. Wellness Detox LA provides fast, confidential insurance verification. Call 866-591-0888." },
+      { q: "Does insurance cover opioid addiction treatment?", a: `Most insurance plans cover opioid detox, residential treatment, medication-assisted treatment, and dual diagnosis services. Wellness Detox LA provides fast, confidential insurance verification. Call ${site.phone}.` },
       { q: "When should someone seek treatment for opioid addiction?", a: "As soon as opioid misuse begins, even before addiction fully develops. Early intervention is critical to prevent dependence, withdrawal complications, and overdose." },
     ],
     cta: { title: "Start opioid recovery safely today" },
@@ -538,7 +532,6 @@ export const treatmentSubstances: ContentPageData[] = [
     h1: "Prescription Drug Addiction Treatment in Los Angeles, CA",
     intro:
       "Prescription drug addiction can begin with a legitimate medical need but quickly escalate into dependence, cravings, and dangerous misuse.",
-    hero: "/images/wellness-2.webp",
     crumb: "Treatment / Prescription Drugs",
     sections: [
       {
@@ -600,7 +593,7 @@ export const treatmentSubstances: ContentPageData[] = [
       { q: "How is prescription drug addiction treated at Wellness Detox LA?", a: "Treatment includes medical detox, medication-assisted support when appropriate, residential therapy, dual diagnosis treatment, and relapse-prevention planning." },
       { q: "Can you recover from prescription drug addiction without detox?", a: "Most people cannot. Stopping suddenly (\"cold turkey\") from opioids, benzos, or sedatives can be dangerous and increases relapse risk." },
       { q: "What happens if someone mixes prescription drugs with alcohol or other substances?", a: "Mixing drugs — especially benzos, opioids, alcohol, or sleep meds — severely increases overdose risk." },
-      { q: "Does insurance cover prescription drug addiction treatment?", a: "Most insurance plans cover detox, residential treatment, medication-assisted care, and dual diagnosis services. Call 866-591-0888 for a fast, confidential verification." },
+      { q: "Does insurance cover prescription drug addiction treatment?", a: `Most insurance plans cover detox, residential treatment, medication-assisted care, and dual diagnosis services. Call ${site.phone} for a fast, confidential verification.` },
       { q: "When should someone seek treatment for prescription drug addiction?", a: "As soon as misuse begins — such as taking higher doses, craving medication, or feeling unable to cut back." },
     ],
     cta: { title: "Discreet, medically managed prescription drug treatment" },

@@ -2,12 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement, SVGProps } from "react";
 import type { BulletGroup, GroupAccent, Stat, Subsection, SubsectionIcon } from "@/lib/content-types";
+import { additionalCommunities, areaList } from "@/lib/data/areas";
 import {
   admissionSteps,
-  featuredAreas,
   gallery,
   galleryCategories,
-  moreAreas,
   principles,
   programs,
   site,
@@ -59,7 +58,6 @@ export function TrustBar() {
 /* ----------------------------- Program grid ------------------------------ */
 
 const programIcons = [LeafIcon, HeartIcon, SparkIcon, ShieldIcon];
-const programSlugs = ["detox", "residential", "dual-diagnosis", "aftercare"];
 
 export function ProgramGrid() {
   return (
@@ -68,8 +66,8 @@ export function ProgramGrid() {
         const Icon = programIcons[i % programIcons.length];
         return (
           <Link
-            key={p.title}
-            href={`/treatment/${programSlugs[i] ?? ""}`}
+            key={p.slug}
+            href={`/treatment/${p.slug}`}
             className="group flex flex-col rounded-2xl border border-line bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-soft sm:p-7"
           >
             <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-rose-soft text-rose-dark transition-colors group-hover:bg-rose group-hover:text-white">
@@ -97,28 +95,17 @@ export function ProgramGrid() {
 
 /* ---------------------------- Substance grid ----------------------------- */
 
-const substanceSlugs: Record<string, string> = {
-  Alcohol: "alcohol-addiction",
-  Benzodiazepines: "benzo-addiction",
-  Cocaine: "cocaine-addiction",
-  Fentanyl: "fentanyl-addiction",
-  Heroin: "heroin-addiction",
-  Methamphetamine: "meth-addiction",
-  Opioids: "opioid-addiction",
-  "Prescription Drugs": "prescription-drug-addiction",
-};
-
 export function SubstanceGrid() {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       {substances.map((s) => (
         <Link
-          key={s}
-          href={`/treatment/${substanceSlugs[s] ?? ""}`}
+          key={s.slug}
+          href={`/treatment/${s.slug}`}
           className="group flex items-center gap-2.5 rounded-xl border border-line bg-white px-4 py-3.5 text-sm font-medium text-ink shadow-card transition-colors hover:border-rose"
         >
           <span className="h-2 w-2 flex-shrink-0 rounded-full bg-rose transition-transform group-hover:scale-125" />
-          {s}
+          {s.name}
         </Link>
       ))}
     </div>
@@ -130,15 +117,30 @@ export function SubstanceGrid() {
 export function TherapyGrid() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-      {therapies.map((t) => (
-        <div
-          key={t.title}
-          className="rounded-2xl border border-line bg-white p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft"
-        >
-          <h3 className="font-display text-base font-semibold text-ink">{t.title}</h3>
-          <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.blurb}</p>
-        </div>
-      ))}
+      {therapies.map((t) => {
+        const card = (
+          <>
+            <h3 className="font-display text-base font-semibold text-ink">{t.title}</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.blurb}</p>
+          </>
+        );
+        const cls =
+          "rounded-2xl border border-line bg-white p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft";
+        // Only the three therapies with their own page become links; the rest are
+        // descriptive and would otherwise point nowhere.
+        return t.slug ? (
+          <Link key={t.title} href={`/treatment/${t.slug}`} className={`group block ${cls} hover:border-rose`}>
+            {card}
+            <span className="mt-3 inline-block text-sm font-semibold text-rose-dark opacity-0 transition-opacity group-hover:opacity-100">
+              Learn more →
+            </span>
+          </Link>
+        ) : (
+          <div key={t.title} className={cls}>
+            {card}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -187,19 +189,22 @@ export function PrinciplesGrid() {
 export function AreasServed() {
   return (
     <div>
+      {/* Driven by areaList so the homepage links every area page that exists —
+          these were previously unlinked divs, stranding 6 indexable pages. */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {featuredAreas.map((a) => (
-          <div
-            key={a}
-            className="flex items-center gap-2.5 rounded-xl bg-white px-4 py-3.5 text-sm font-medium text-ink shadow-card"
+        {areaList.map((a) => (
+          <Link
+            key={a.slug}
+            href={`/about/areas-we-serve/${a.slug}`}
+            className="group flex items-center gap-2.5 rounded-xl bg-white px-4 py-3.5 text-sm font-medium text-ink shadow-card transition-colors hover:text-rose-dark"
           >
             <MapPinIcon width={17} height={17} className="flex-shrink-0 text-rose-dark" />
-            {a}
-          </div>
+            {/County|California/.test(a.name) ? a.name : `${a.name}, CA`}
+          </Link>
         ))}
       </div>
       <div className="mt-5 flex flex-wrap gap-2">
-        {moreAreas.map((a) => (
+        {additionalCommunities.map((a) => (
           <span
             key={a}
             className="rounded-full border border-line bg-cream px-3.5 py-1.5 text-xs font-medium text-ink-700"
@@ -284,14 +289,15 @@ export function CtaBanner({
   return (
     <section className="px-5 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[2rem] bg-ink px-6 py-14 text-center sm:px-12 lg:py-20">
-        <span className="eyebrow text-rose">Get Started Today</span>
+        {/* rose-soft, not rose: this sits on the dark ink panel. */}
+        <span className="eyebrow text-rose-soft">Get Started Today</span>
         <h2 className="mx-auto mt-3 max-w-2xl text-3xl text-white sm:text-4xl">{title}</h2>
         <p className="mx-auto mt-4 max-w-xl text-white/70">{intro}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button href={site.phoneHref} size="lg">
+          <Button href={site.phoneHref} size="lg" trackAs="cta-banner">
             Call {site.phone}
           </Button>
-          <Button href="/admissions#insurance" variant="white" size="lg">
+          <Button href="/admissions/verify-your-insurance" variant="white" size="lg">
             Verify Your Insurance
           </Button>
         </div>
@@ -383,10 +389,10 @@ export function InsuranceStrip() {
               Send us your information and our team will confirm your coverage — no obligation.
             </p>
             <div className="mt-5 flex flex-col gap-2.5">
-              <Button href="/admissions#insurance" className="w-full">
+              <Button href="/admissions/verify-your-insurance" className="w-full">
                 Verify Insurance
               </Button>
-              <Button href={site.phoneHref} variant="outline" className="w-full">
+              <Button href={site.phoneHref} variant="outline" className="w-full" trackAs="insurance-strip">
                 Call {site.phone}
               </Button>
             </div>

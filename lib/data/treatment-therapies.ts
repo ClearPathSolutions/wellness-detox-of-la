@@ -1,4 +1,5 @@
 import type { ContentPageData } from "@/lib/content-types";
+import { site } from "@/lib/site";
 
 export const treatmentTherapies: ContentPageData[] = [
   {
@@ -9,7 +10,6 @@ export const treatmentTherapies: ContentPageData[] = [
     eyebrow: "Therapy",
     h1: "Individual Therapy for Addiction Treatment in Los Angeles",
     intro: "One-on-one therapeutic support integrated throughout every level of care.",
-    hero: "/images/wellness-1.webp",
     crumb: "Treatment / Individual Therapy",
     sections: [
       {
@@ -75,7 +75,6 @@ export const treatmentTherapies: ContentPageData[] = [
     eyebrow: "Therapy",
     h1: "Group Therapy for Addiction Treatment in Los Angeles",
     intro: "Peer-supported sessions that build connection, accountability, and lasting recovery skills.",
-    hero: "/images/people-community.webp",
     crumb: "Treatment / Group Therapy",
     sections: [
       {
@@ -116,7 +115,7 @@ export const treatmentTherapies: ContentPageData[] = [
       { q: "Is group therapy effective for drug and alcohol addiction?", a: "Yes. Group therapy increases accountability, reduces isolation, and strengthens motivation. Research shows that group-based work improves long-term recovery outcomes." },
       { q: "What makes group therapy different from individual therapy?", a: "Group therapy focuses on shared experiences and peer feedback. It helps clients practice communication, build confidence, and see their patterns reflected in others. Individual therapy is more private and focused on personal history. Both work together to support recovery." },
       { q: "Are group therapy sessions confidential?", a: "Yes. All members follow confidentiality guidelines. Clinicians remind the group of these expectations and create a safe, respectful space so clients can speak openly." },
-      { q: "Does insurance cover group therapy?", a: "Most insurance plans cover group therapy when it is part of detox, residential treatment, or dual diagnosis care. Our team verifies benefits quickly and confidentially. Call 866-591-0888 to get started." },
+      { q: "Does insurance cover group therapy?", a: `Most insurance plans cover group therapy when it is part of detox, residential treatment, or dual diagnosis care. Our team verifies benefits quickly and confidentially. Call ${site.phone} to get started.` },
     ],
   },
   {
@@ -127,7 +126,6 @@ export const treatmentTherapies: ContentPageData[] = [
     eyebrow: "Therapy",
     h1: "Family Therapy for Addiction Treatment in Los Angeles",
     intro: "A safe space for real connection — because recovery is stronger with family.",
-    hero: "/images/wellness-2.webp",
     crumb: "Treatment / Family Therapy",
     sections: [
       {

@@ -45,13 +45,18 @@ export function Footer() {
       {/* Main footer */}
       <div className="mx-auto grid max-w-[1600px] gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
         <div>
-          <Image
-            src="/images/logo-white.png"
-            alt={site.name}
-            width={640}
-            height={438}
-            className="h-16 w-auto"
-          />
+          {/* Official stacked lockup. Renders at h-16 (64px), which keeps the
+              "DETOX OF LA" subline legible — it is not usable at the header's
+              h-8/h-9, where that line would fall to ~4px. */}
+          <Link href="/" aria-label={`${site.name} — home`} className="inline-block">
+            <Image
+              src="/images/logo-lockup-white.webp"
+              alt={site.name}
+              width={600}
+              height={433}
+              className="h-16 w-auto"
+            />
+          </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed">
             A licensed drug &amp; alcohol detox and residential treatment center providing safe,
             compassionate, evidence-based care in the Los Angeles area.
@@ -110,18 +115,18 @@ export function Footer() {
           <ul className="space-y-3 text-sm">
             <li>
               <a href={site.phoneHref} className="flex items-start gap-2.5 hover:text-white">
-                <PhoneIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose" />
+                <PhoneIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose-soft" />
                 {site.phone}
               </a>
             </li>
             <li>
               <a href={`mailto:${site.email}`} className="flex items-start gap-2.5 hover:text-white">
-                <MailIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose" />
+                <MailIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose-soft" />
                 {site.email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <MapPinIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose" />
+              <MapPinIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose-soft" />
               <span>{site.address.street}<br />{site.address.city}, {site.address.state} {site.address.zip}</span>
             </li>
           </ul>

@@ -1,4 +1,5 @@
 import type { ContentPageData } from "@/lib/content-types";
+import { site } from "@/lib/site";
 
 export const treatmentPrograms: ContentPageData[] = [
   {
@@ -9,7 +10,6 @@ export const treatmentPrograms: ContentPageData[] = [
     eyebrow: "Medical Detox",
     h1: "Drug & Alcohol Detox in Los Angeles, CA",
     intro: "Safe, medically supervised detox to help you begin recovery with confidence.",
-    hero: "/images/DSC_6296-HDR.webp",
     crumb: "Treatment / Detox",
     sections: [
       {
@@ -66,7 +66,7 @@ export const treatmentPrograms: ContentPageData[] = [
       { q: "Will I still experience cravings after detox?", a: "Yes, cravings can continue even after the body is stabilized because addiction also affects brain pathways and emotional regulation. Detox addresses the physical dependence, while further treatment — such as residential care, therapy, and relapse-prevention planning — helps address psychological triggers. This is why detox is only the first step in a complete recovery plan." },
       { q: "What happens after detox is completed?", a: "After detox, clients transition into the level of care that best supports ongoing recovery. This may include residential treatment, partial hospitalization (PHP), intensive outpatient (IOP), dual diagnosis treatment, or aftercare planning. Our team helps guide you into the next phase seamlessly to ensure long-term stability and relapse prevention." },
       { q: "Can I detox from home or stop using cold turkey?", a: "Detoxing at home is extremely risky and often unsuccessful. Sudden withdrawal can cause seizures, heart issues, hallucinations, dehydration, extreme anxiety, or medical emergencies that require immediate intervention. Professional detox ensures constant monitoring, medication support, and medical intervention if symptoms escalate." },
-      { q: "Will my insurance cover detox treatment in Los Angeles?", a: "Most PPO insurance plans provide coverage for drug and alcohol detox services. Wellness Detox LA verifies your benefits confidentially and helps you understand exactly what your insurance will cover. We work directly with your provider to minimize out-of-pocket costs and make treatment as accessible as possible. Call us at 866-591-0888 for more information." },
+      { q: "Will my insurance cover detox treatment in Los Angeles?", a: `Most PPO insurance plans provide coverage for drug and alcohol detox services. Wellness Detox LA verifies your benefits confidentially and helps you understand exactly what your insurance will cover. We work directly with your provider to minimize out-of-pocket costs and make treatment as accessible as possible. Call us at ${site.phone} for more information.` },
       { q: "When is the right time to seek detox?", a: "If you experience withdrawal symptoms, increased tolerance, loss of control over use, or failed attempts to quit, detox should happen as soon as possible. Waiting increases the risk of medical complications and relapse. Our Los Angeles detox team is available 24/7 to help you begin the process safely and confidentially whenever you're ready." },
     ],
     cta: { title: "Begin detox safely — call our team 24/7" },
@@ -79,7 +79,6 @@ export const treatmentPrograms: ContentPageData[] = [
     eyebrow: "Residential Inpatient",
     h1: "Residential Inpatient Treatment in Los Angeles, CA",
     intro: "24/7 clinically supervised care in a safe, supportive environment.",
-    hero: "/images/DSC_6122-HDR.webp",
     crumb: "Treatment / Residential",
     sections: [
       {
@@ -136,7 +135,7 @@ export const treatmentPrograms: ContentPageData[] = [
       { q: "Is family involvement part of inpatient treatment?", a: "Family involvement is strongly encouraged and often essential for long-term recovery. Our program offers family therapy sessions, education on addiction and mental health, communication guidance, and ongoing support for loved ones. Helping families heal together strengthens relationships and supports the client's transition back home." },
       { q: "What should I pack for residential inpatient treatment?", a: "Clients should bring comfortable clothing, personal hygiene items, necessary medications, and any approved personal items that support comfort during their stay. We provide a packing guide during admissions. Restricted items such as drugs, alcohol, weapons, and certain electronics must be left at home for the safety of all residents." },
       { q: "What happens after residential inpatient treatment?", a: "After completing inpatient rehab, clients transition into the next appropriate level of care such as PHP, IOP, outpatient counseling, sober living, or aftercare planning. These step-down programs help clients maintain progress, build independence, and continue strengthening the coping skills needed for long-term sobriety." },
-      { q: "Will my insurance cover residential inpatient rehab?", a: "Many major PPO insurance plans cover some or all of the cost of inpatient rehab, depending on your benefits and clinical need. Our admissions team verifies insurance quickly and confidentially, explains your coverage, and outlines any out-of-pocket expenses before treatment begins. Call us at 866-591-0888 for more information." },
+      { q: "Will my insurance cover residential inpatient rehab?", a: `Many major PPO insurance plans cover some or all of the cost of inpatient rehab, depending on your benefits and clinical need. Our admissions team verifies insurance quickly and confidentially, explains your coverage, and outlines any out-of-pocket expenses before treatment begins. Call us at ${site.phone} for more information.` },
     ],
     cta: { title: "Build a stronger foundation in residential care" },
   },
@@ -148,7 +147,6 @@ export const treatmentPrograms: ContentPageData[] = [
     eyebrow: "Dual Diagnosis",
     h1: "Dual Diagnosis Treatment in Los Angeles, CA",
     intro: "Treating mental health and addiction together.",
-    hero: "/images/wellness-1.webp",
     crumb: "Treatment / Dual Diagnosis",
     sections: [
       {
@@ -210,7 +208,7 @@ export const treatmentPrograms: ContentPageData[] = [
       { q: "How long does dual diagnosis treatment usually last?", a: "Length of care varies based on symptom severity, psychiatric needs, substance use history, and progress. Many clients benefit from 30–45 days in residential care, followed by PHP or IOP for continued support. Our team continually evaluates each client to determine the ideal length of treatment for long-term stability." },
       { q: "What happens after dual diagnosis treatment?", a: "After completing treatment, clients transition into step-down programs such as PHP, IOP, outpatient therapy, medication management, and ongoing psychiatric support. A personalized aftercare plan ensures clients continue strengthening skills, managing symptoms, and preventing relapse." },
       { q: "Can dual diagnosis treatment help with trauma-related addiction?", a: "Yes. Many clients with trauma experience heightened emotional distress, which often leads to self-medicating with substances. Dual diagnosis programs address trauma through specialized therapy, emotional regulation techniques, and psychiatric support to help clients process experiences safely." },
-      { q: "Is dual diagnosis treatment covered by insurance?", a: "Many PPO plans cover dual diagnosis treatment, including residential, therapy, and psychiatric care. The best way to know your benefits is to have our team verify your insurance. We review your coverage, explain costs clearly, and help you understand your options — all confidential and obligation-free. Call us at 866-591-0888." },
+      { q: "Is dual diagnosis treatment covered by insurance?", a: `Many PPO plans cover dual diagnosis treatment, including residential, therapy, and psychiatric care. The best way to know your benefits is to have our team verify your insurance. We review your coverage, explain costs clearly, and help you understand your options — all confidential and obligation-free. Call us at ${site.phone}.` },
     ],
     cta: { title: "Heal the whole person — mind and body" },
   },
@@ -222,7 +220,6 @@ export const treatmentPrograms: ContentPageData[] = [
     eyebrow: "Aftercare",
     h1: "Addiction Aftercare Services in Los Angeles",
     intro: "Continued guidance for lasting recovery.",
-    hero: "/images/wellness-2.webp",
     crumb: "Treatment / Aftercare",
     sections: [
       {
@@ -263,7 +260,7 @@ export const treatmentPrograms: ContentPageData[] = [
       { q: "Why is aftercare important for long-term sobriety?", a: "The first months after treatment are when relapse risk is highest. Aftercare provides continued structure, accountability, and emotional support, helping you manage stress, triggers, and real-world challenges with confidence." },
       { q: "How long does aftercare usually last?", a: "The length of aftercare varies based on individual needs, but most clients participate for several months to a year. Some choose ongoing support longer to maintain consistency, emotional stability, and healthy routines." },
       { q: "Do I still receive therapy during aftercare?", a: "Yes. Aftercare includes continued individual therapy and may also include group support, family sessions, and psychiatric follow-ups. Therapy helps you process challenges, strengthen coping skills, and prevent relapse." },
-      { q: "Is aftercare covered by insurance?", a: "Many insurance plans cover ongoing therapy, psychiatric services, and other components of aftercare. Our team can verify your benefits quickly and explain what your plan includes so you can continue receiving support without worry. Call us at 866-591-0888 for more details." },
+      { q: "Is aftercare covered by insurance?", a: `Many insurance plans cover ongoing therapy, psychiatric services, and other components of aftercare. Our team can verify your benefits quickly and explain what your plan includes so you can continue receiving support without worry. Call us at ${site.phone} for more details.` },
       { q: "What if I feel stable — do I still need aftercare?", a: "Even when you feel strong, aftercare helps reinforce healthy habits and prepares you for unexpected stress or triggers. Many clients find that ongoing support keeps them grounded and significantly improves long-term outcomes." },
     ],
     cta: { title: "Keep your recovery strong for the long term" },

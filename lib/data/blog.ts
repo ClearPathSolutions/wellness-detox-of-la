@@ -1,3 +1,4 @@
+import { site } from "@/lib/site";
 export type BlogPost = {
   slug: string;
   title: string;
@@ -113,7 +114,7 @@ Fentanyl addiction can feel overwhelming, but recovery is possible with the righ
 
 ## Taking the First Step Toward Recovery
 
-If you or a loved one is struggling with fentanyl addiction, professional detox and treatment can help provide the structure and support needed to begin recovery safely. Call Wellness Detox LA at 866-591-0888.`,
+If you or a loved one is struggling with fentanyl addiction, professional detox and treatment can help provide the structure and support needed to begin recovery safely. Call Wellness Detox LA at ${site.phone}.`,
   },
   {
     slug: "medical-detox-los-angeles",
@@ -174,7 +175,7 @@ The environment where detox takes place can have a major impact on the recovery 
 
 Wellness Detox LA provides treatment in a private residential setting designed to reduce stress and promote stabilization during early recovery. Clients receive personalized care from a clinical team with experience treating substance use disorders and co-occurring mental health conditions.
 
-Deciding to seek help for addiction can feel overwhelming, but detox provides a structured starting point for recovery. Call Wellness Detox LA at 866-591-0888 to take the first step.`,
+Deciding to seek help for addiction can feel overwhelming, but detox provides a structured starting point for recovery. Call Wellness Detox LA at ${site.phone} to take the first step.`,
   },
   {
     slug: "los-angeles-addiction-treatment-guide",
@@ -230,7 +231,7 @@ Throughout treatment, licensed professionals provide guidance, monitoring, and e
 
 ## Take the Next Step Toward Recovery
 
-Healing from addiction begins with the right support, strong clinical care, and a plan for lasting wellness. From medically supervised detox to residential programs and dual diagnosis care, every step is designed to strengthen your foundation for a healthier future. Call 866-591-0888 to get started.`,
+Healing from addiction begins with the right support, strong clinical care, and a plan for lasting wellness. From medically supervised detox to residential programs and dual diagnosis care, every step is designed to strengthen your foundation for a healthier future. Call ${site.phone} to get started.`,
   },
   {
     slug: "why-residential-treatment-matters",
@@ -284,7 +285,7 @@ At Wellness Detox of LA, we don't see residential treatment as an endpoint. It's
 
 Residential treatment isn't just for people with severe substance use disorders. It can be for anyone who needs a solid foundation of support, structure, and clinical care to begin fresh. Whether you're transitioning from detox, found outpatient care hasn't been enough, or simply want to invest in your long-term wellbeing, our Los Angeles residential program can give you the time, space, and comprehensive support to heal.
 
-If you or a loved one is considering residential treatment, our admissions team is available 24/7 at 866-591-0888. Don't wait — take the step toward a life of wellness today.`,
+If you or a loved one is considering residential treatment, our admissions team is available 24/7 at ${site.phone}. Don't wait — take the step toward a life of wellness today.`,
   },
   {
     slug: "dry-january-in-los-angeles-when-a-reset-requires-medical-oversight",
@@ -336,7 +337,7 @@ If you are currently attempting a dry month and experience any of the following,
 
 ## Start Your Real Recovery at Wellness Detox of LA
 
-Recovery is more than just a 31-day challenge; it's about rebuilding a life of purpose. Whether you are coming from Burbank, Santa Monica, or Downtown LA, Wellness Detox of LA provides the safe, discreet, and clinical foundation you need to make this your last "Dry January" and your first year of true wellness. Call our admissions team anytime at 866-591-0888.`,
+Recovery is more than just a 31-day challenge; it's about rebuilding a life of purpose. Whether you are coming from Burbank, Santa Monica, or Downtown LA, Wellness Detox of LA provides the safe, discreet, and clinical foundation you need to make this your last "Dry January" and your first year of true wellness. Call our admissions team anytime at ${site.phone}.`,
   },
   {
     slug: "what-happens-to-your-brain-during-the-first-30-days-of-recovery",
@@ -387,7 +388,7 @@ Addiction carved a deep neural superhighway. Recovery begins by creating new, he
 
 Early recovery is one of the most neurologically vulnerable stages of healing. Support during this phase can reduce relapse risk, ease brain-based symptoms, and help the nervous system stabilize more safely.
 
-If you or someone you love is struggling with drug or alcohol addiction and wants to reclaim their life in a safe way, Wellness Detox LA is here to help. Call today at 866-591-0888 to speak with a specialist.`,
+If you or someone you love is struggling with drug or alcohol addiction and wants to reclaim their life in a safe way, Wellness Detox LA is here to help. Call today at ${site.phone} to speak with a specialist.`,
   },
   {
     slug: "how-to-talk-to-loved-ones-about-going-to-rehab-a-guide-for-la-families-during-the-holidays",
@@ -424,7 +425,7 @@ Before talking to your loved one, take a moment to prepare. This helps the discu
 1. **Be clear about your goal.** You're not trying to criticize them. You want to support their safety and well-being.
 2. **Stay centered and calm.** If you feel anxious or upset, pause and take a breath. Your tone matters more than your exact words.
 3. **Choose the right moment.** Avoid speaking during a crisis, a fight, or while they are intoxicated.
-4. **Know your options.** Treatment choices include medical detox, residential treatment, dual diagnosis programs, and intensive outpatient care. You can call anytime at 866-591-0888 for a quick, free assessment.
+4. **Know your options.** Treatment choices include medical detox, residential treatment, dual diagnosis programs, and intensive outpatient care. You can call anytime at ${site.phone} for a quick, free assessment.
 
 And keep in mind, you don't need to have all the answers. Your presence is what matters more.
 
@@ -455,12 +456,20 @@ Many people in Los Angeles choose to enter treatment in December or early Januar
 
 ## You're Not Alone in This Conversation
 
-Talking to a loved one about rehab is hard, but you don't have to carry it alone. The Wellness Detox LA team can guide you through the process, explain treatment options, and support your family every step of the way. Help is available 24/7 at 866-591-0888. Healing can start today.`,
+Talking to a loved one about rehab is hard, but you don't have to carry it alone. The Wellness Detox LA team can guide you through the process, explain treatment options, and support your family every step of the way. Help is available 24/7 at ${site.phone}. Healing can start today.`,
   },
 ];
 
 export function getPost(slug: string) {
   return blogPosts.find((p) => p.slug === slug);
 }
+
+/**
+ * Newest first, derived from `date` rather than array order — appending a post
+ * to the end of `blogPosts` shouldn't bury it at the bottom of the index.
+ */
+export const postsByDate: BlogPost[] = [...blogPosts].sort((a, b) =>
+  b.date.localeCompare(a.date)
+);
 
 export const postSlugs = blogPosts.map((p) => p.slug);
