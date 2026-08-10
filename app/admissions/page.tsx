@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FAQ } from "@/components/FAQ";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
   title: "Admissions",
   description:
     "Starting treatment is simple at Wellness Detox of LA. Our confidential, compassionate admissions process guides you from the first call through arrival — 24/7.",
-  alternates: { canonical: "/admissions" },
+  ...pageMeta({ path: "/admissions", title: "Admissions", description: "Starting treatment is simple at Wellness Detox of LA. Our confidential, compassionate admissions process guides you from the first call through arrival — 24/7." }),
 };
 
 const faqs = [
@@ -121,14 +123,9 @@ export default function AdmissionsPage() {
             title="Answers to common questions"
             className="mb-10"
           />
-          <div className="grid gap-4 md:grid-cols-2">
-            {faqs.map((f) => (
-              <div key={f.q} className="rounded-2xl border border-line bg-white p-6 shadow-card">
-                <h3 className="font-display text-base font-semibold text-ink">{f.q}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{f.a}</p>
-              </div>
-            ))}
-          </div>
+          {/* Shared accordion rather than static cards — matches every other FAQ
+              on the site and inherits the inert/aria-controls handling. */}
+          <FAQ faqs={faqs} />
 
           {/* Full FAQ resource library */}
           <div className="mt-12">

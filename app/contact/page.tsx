@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { MapEmbed } from "@/components/MapEmbed";
+import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
@@ -6,12 +8,9 @@ import { ClockIcon, Container, MailIcon, MapPinIcon, PhoneIcon } from "@/compone
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description:
-    "Reach out to Wellness Detox of LA. Call 866-591-0888 or send a confidential message and our admissions team will help you take the next step toward recovery.",
-  alternates: { canonical: "/contact" },
+  description: `Reach out to Wellness Detox of LA. Call ${site.phone} or send a confidential message and our admissions team will help you take the next step toward recovery.`,
+  ...pageMeta({ path: "/contact", title: "Contact Us", description: `Reach out to Wellness Detox of LA. Call ${site.phone} or send a confidential message and our admissions team will help you take the next step toward recovery.` }),
 };
-
-const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.address.full)}&output=embed`;
 
 export default function ContactPage() {
   const details = [
@@ -58,17 +57,8 @@ export default function ContactPage() {
               </div>
             ))}
           </div>
-
-          <div className="mt-6 overflow-hidden rounded-2xl border border-line shadow-card">
-            <iframe
-              title={`Map to ${site.name}`}
-              src={mapSrc}
-              width="100%"
-              height="260"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="block w-full border-0"
-            />
+          <div className="mt-6">
+            <MapEmbed />
           </div>
           <p className="mt-4 text-xs text-muted">
             {site.license} · Expires {site.licenseExpires}

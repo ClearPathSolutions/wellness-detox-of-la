@@ -1,27 +1,37 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner } from "@/components/blocks";
 import { Container } from "@/components/ui";
+import { facilityTeam, initials, regionalTeam, type TeamMember } from "@/lib/data/team";
 
 export const metadata: Metadata = {
   title: "Meet the Team",
   description:
     "Meet the licensed clinicians, medical professionals, and staff at Wellness Detox of LA — bringing 15+ years of trusted addiction treatment experience to every client.",
-  alternates: { canonical: "/about/meet-the-team" },
+  ...pageMeta({ path: "/about/meet-the-team", title: "Meet the Team", description: "Meet the licensed clinicians, medical professionals, and staff at Wellness Detox of LA — bringing 15+ years of trusted addiction treatment experience to every client." }),
 };
 
-type Member = { name: string; role: string; photo?: string };
-
-const team: Member[] = [
-  { name: "Janee Young, LMFT", role: "Clinical Director", photo: "/images/team-janee-young.webp" },
-  { name: "Adrian Diaz, RADT", role: "Director of Operations", photo: "/images/team-adrian-diaz.webp" },
-  { name: "Selin Simmonds", role: "Fitness Guru" },
-  { name: "Crystal Clements", role: "Fitness Guru" },
-];
-
-function initials(name: string) {
-  return name.replace(/,.*$/, "").split(" ").map((n) => n[0]).slice(0, 2).join("");
+function MemberCard({ m }: { m: TeamMember }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+      <div className="relative aspect-[4/5] bg-rose-soft">
+        {m.photo ? (
+          <Image src={m.photo} alt={m.name} fill sizes="(max-width: 640px) 100vw, 25vw" className="object-cover" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <span className="font-display text-4xl font-semibold text-rose-dark/60">{initials(m.name)}</span>
+          </div>
+        )}
+      </div>
+      <div className="p-5">
+        <h3 className="font-display text-lg font-semibold text-ink">{m.name}</h3>
+        <p className="mt-0.5 text-sm text-rose-dark">{m.role}</p>
+      </div>
+    </div>
+  );
 }
 
 export default function MeetTheTeamPage() {
@@ -37,37 +47,42 @@ export default function MeetTheTeamPage() {
       <Container className="py-14 lg:py-20">
         <div className="mx-auto mb-12 max-w-3xl text-center text-muted">
           <p>
-            As part of the Quadrant Health Group, our Los Angeles center is backed by more than
+            As part of the{" "}
+            <a
+              href={site.networkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-line underline-offset-2 transition-colors hover:text-rose-dark"
+            >
+              {site.network}
+            </a>
+            , our Los Angeles center is backed by more than
             15 years of leadership and proven results in addiction and mental health recovery. Every
             team member shares a single mission: to deliver exceptional care that transforms lives.
           </p>
         </div>
 
+        <h2 className="mb-6 text-2xl text-ink sm:text-3xl">Our Pomona Team</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m) => (
-            <div key={m.name} className="overflow-hidden rounded-2xl border border-line bg-white shadow-card">
-              <div className="relative aspect-[4/5] bg-rose-soft">
-                {m.photo ? (
-                  <Image src={m.photo} alt={m.name} fill sizes="(max-width: 640px) 100vw, 25vw" className="object-cover" />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <span className="font-display text-4xl font-semibold text-rose-dark/60">{initials(m.name)}</span>
-                  </div>
-                )}
-              </div>
-              <div className="p-5">
-                <h3 className="font-display text-lg font-semibold text-ink">{m.name}</h3>
-                <p className="mt-0.5 text-sm text-rose-dark">{m.role}</p>
-              </div>
-            </div>
+          {facilityTeam.map((m) => (
+            <MemberCard key={m.slug} m={m} />
           ))}
-          {/* Coming soon placeholders */}
-          {[0, 1].map((i) => (
-            <div key={`cs-${i}`} className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-line bg-cream p-8 text-center">
-              <span className="font-display text-lg font-semibold text-muted">Coming Soon</span>
-              <p className="mt-1 text-sm text-muted">More of our team, introduced soon.</p>
-            </div>
-          ))}
+        </div>
+
+        {/* Regional leadership — scope stated so these roles are never read as
+            Pomona-exclusive; each remit spans several Southern California centers. */}
+        <div className="mt-16">
+          <h2 className="text-2xl text-ink sm:text-3xl">Southern California Leadership</h2>
+          <p className="mt-2 max-w-2xl text-muted">
+            Quadrant Health Group leaders who support Wellness Detox of LA alongside our other
+            Southern California treatment centers, overseeing clinical programming, nursing, and case
+            management across the region.
+          </p>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {regionalTeam.map((m) => (
+              <MemberCard key={m.slug} m={m} />
+            ))}
+          </div>
         </div>
       </Container>
 

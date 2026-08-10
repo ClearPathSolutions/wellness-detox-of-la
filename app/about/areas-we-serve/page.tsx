@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner } from "@/components/blocks";
@@ -11,21 +12,14 @@ import {
   SectionHeading,
   UsersIcon,
 } from "@/components/ui";
-import { areaList } from "@/lib/data/areas";
+import { additionalCommunities, areaList } from "@/lib/data/areas";
 
 export const metadata: Metadata = {
   title: "Areas We Serve",
   description:
     "Wellness Detox of LA provides drug & alcohol detox and residential treatment across Los Angeles, Pomona, North Hollywood, Burbank, Orange County, and Southern California.",
-  alternates: { canonical: "/about/areas-we-serve" },
+  ...pageMeta({ path: "/about/areas-we-serve", title: "Areas We Serve", description: "Wellness Detox of LA provides drug & alcohol detox and residential treatment across Los Angeles, Pomona, North Hollywood, Burbank, Orange County, and Southern California." }),
 };
-
-const additional = [
-  "Pasadena", "Glendale", "Long Beach", "Santa Monica", "Torrance", "Beverly Hills",
-  "Culver City", "Orange County", "West Covina", "El Monte", "Arcadia", "Alhambra",
-  "Inglewood", "Whittier", "San Gabriel Valley", "La Puente", "Huntington Park",
-  "Redondo Beach", "Manhattan Beach", "Riverside County", "Irvine", "Santa Ana", "Garden Grove",
-];
 
 export default function AreasWeServePage() {
   return (
@@ -68,7 +62,7 @@ export default function AreasWeServePage() {
             Additional Communities Served
           </h3>
           <div className="flex flex-wrap gap-2">
-            {additional.map((a) => (
+            {additionalCommunities.map((a) => (
               <span key={a} className="rounded-full border border-line bg-cream px-3.5 py-1.5 text-sm text-ink-700">
                 {a}, CA
               </span>

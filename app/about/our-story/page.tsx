@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner, PrinciplesGrid, SplitFeature } from "@/components/blocks";
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   title: "Our Story",
   description:
     "The story behind Wellness Detox of LA — a new Los Angeles treatment center built on 15+ years of recovery excellence through the Quadrant Health Group.",
-  alternates: { canonical: "/about/our-story" },
+  ...pageMeta({ path: "/about/our-story", title: "Our Story", description: "The story behind Wellness Detox of LA — a new Los Angeles treatment center built on 15+ years of recovery excellence through the Quadrant Health Group." }),
 };
 
 export default function OurStoryPage() {
@@ -79,7 +80,14 @@ export default function OurStoryPage() {
             for life.
           </p>
           <p className="mt-6 text-sm text-muted">
-            {site.license} · Expires {site.licenseExpires} · Part of the {site.network}
+            {site.license} · Expires {site.licenseExpires} · Part of the <a
+              href={site.networkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-line underline-offset-2 transition-colors hover:text-rose-dark"
+            >
+              {site.network}
+            </a>
           </p>
         </div>
       </Container>

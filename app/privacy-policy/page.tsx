@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui";
@@ -6,7 +7,7 @@ import { Container } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `Privacy policy for ${site.name}.`,
-  alternates: { canonical: "/privacy-policy" },
+  ...pageMeta({ path: "/privacy-policy", title: "Privacy Policy", description: `Privacy policy for ${site.name}.` }),
   robots: { index: false, follow: true },
 };
 

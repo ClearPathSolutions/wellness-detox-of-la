@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { InsuranceForm } from "@/components/InsuranceForm";
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: "Verify Your Insurance",
   description:
     "Find out what your insurance covers for addiction treatment at Wellness Detox of LA. Fast, confidential benefits verification — we handle it directly with your provider.",
-  alternates: { canonical: "/admissions/verify-your-insurance" },
+  ...pageMeta({ path: "/admissions/verify-your-insurance", title: "Verify Your Insurance", description: "Find out what your insurance covers for addiction treatment at Wellness Detox of LA. Fast, confidential benefits verification — we handle it directly with your provider." }),
 };
 
 const steps = [

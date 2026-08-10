@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import {
   CtaBanner,
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   title: "Treatment Programs",
   description:
     "Medical detox, residential inpatient, dual diagnosis, and aftercare — plus evidence-based therapies for a wide range of substances at Wellness Detox of LA.",
-  alternates: { canonical: "/treatment" },
+  ...pageMeta({ path: "/treatment", title: "Treatment Programs", description: "Medical detox, residential inpatient, dual diagnosis, and aftercare — plus evidence-based therapies for a wide range of substances at Wellness Detox of LA." }),
 };
 
 export default function TreatmentPage() {

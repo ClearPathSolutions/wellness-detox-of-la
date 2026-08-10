@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
+import { Analytics } from "@/components/Analytics";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -35,10 +35,13 @@ export const metadata: Metadata = {
     "dual diagnosis treatment",
     "Pomona detox center",
   ],
+  // NOTE: deliberately no `url` here. Next merges metadata shallowly, so this
+  // object is inherited wholesale by any page that does not set its own
+  // `openGraph` — a site-wide `url` therefore made 36 pages claim to be the
+  // homepage. Pages set their own via `pageMeta()` in lib/seo.ts.
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: site.url,
     siteName: site.name,
     title: `${site.name} | Drug & Alcohol Detox & Rehab in Los Angeles`,
     description: site.description,
@@ -52,10 +55,17 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-// Structured data for local SEO (rich results).
+/**
+ * Structured data for local SEO (rich results).
+ *
+ * `@id` is a stable identifier for the business so any other node on the site
+ * can reference this one entity instead of describing a second, competing copy
+ * of the same business (which is what used to happen in Reviews.tsx).
+ */
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
+  "@id": `${site.url}/#business`,
   name: site.name,
   description: site.description,
   url: site.url,
@@ -84,6 +94,21 @@ const jsonLd = {
     opens: "00:00",
     closes: "23:59",
   },
+  // Confirms the profiles that represent this business, so the entity resolves
+  // to the same organisation across platforms.
+  sameAs: [site.social.facebook, site.social.instagram, site.social.linkedin],
+  hasMap: `https://www.google.com/maps?q=${encodeURIComponent(site.address.full)}`,
+  areaServed: [
+    { "@type": "City", name: "Los Angeles" },
+    { "@type": "City", name: "Pomona" },
+    { "@type": "AdministrativeArea", name: "Los Angeles County" },
+    { "@type": "AdministrativeArea", name: "Southern California" },
+  ],
+  parentOrganization: {
+    "@type": "Organization",
+    name: site.network,
+    url: site.networkUrl,
+  },
 };
 
 export const viewport: Viewport = {
@@ -102,24 +127,24 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
+        {/* First focusable element: lets keyboard users bypass the 15-item nav. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:font-display focus:text-sm focus:font-semibold focus:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         <Header />
         {/* Header is fixed; offset content by its height (mobile bar + desktop utility+bar). */}
-        <main className="flex-1 pt-16 lg:pt-[7.5rem]">{children}</main>
+        <main id="main" className="flex-1 pt-16 lg:pt-[7.5rem]">
+          {children}
+        </main>
         <Footer />
         {/* Spacer so the fixed mobile call bar never covers footer content. */}
         <div aria-hidden className="h-16 lg:hidden" />
         <MobileCallBar />
-        {/* Google tag (gtag.js) — mirrors the analytics on the existing site. */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${site.analyticsId}');`}
-        </Script>
+        {/* Google Analytics — loaded only after the visitor opts in. */}
+        <Analytics />
       </body>
     </html>
   );
