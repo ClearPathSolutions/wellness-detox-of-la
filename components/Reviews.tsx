@@ -1,5 +1,4 @@
 import { getGoogleReviews, type GoogleReview } from "@/lib/reviews";
-import { site } from "@/lib/site";
 import { ArrowRight, Button, Container, SectionHeading } from "./ui";
 
 /* Amber stars to match Google's own review styling. */
@@ -84,32 +83,19 @@ export async function ReviewsSection() {
   // render nothing rather than an empty placeholder.
   if (!data) return null;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    name: site.name,
-    url: site.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: data.rating,
-      reviewCount: data.total,
-      bestRating: 5,
-      worstRating: 1,
-    },
-    review: data.reviews.map((r) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: r.author },
-      reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5, worstRating: 1 },
-      reviewBody: r.text,
-    })),
-  };
+  /**
+   * Deliberately NO Review / AggregateRating structured data here.
+   *
+   * These reviews are collected on Google, not on this site. Google's
+   * review-snippet guidelines disallow marking up ratings aggregated from a
+   * third-party platform as the business's own — doing so risks a structured
+   * data manual action, which on a rehab site would cost far more than the star
+   * snippet is worth. The reviews stay visible to humans; Google already has
+   * the rating from the Business Profile.
+   */
 
   return (
     <section className="px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
       <Container className="px-0">
         <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
@@ -137,7 +123,7 @@ export async function ReviewsSection() {
         </div>
 
         <div className="mt-8">
-          <Button href={data.mapsUri} variant="outline">
+          <Button href={data.mapsUri} variant="outline" external>
             Read All Reviews on Google
             <ArrowRight width={17} height={17} />
           </Button>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner, TourGallery } from "@/components/blocks";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: "Tour the Facility",
   description:
     "Explore Wellness Detox of LA — from serene bedrooms to bright common areas and peaceful outdoor spaces, our home-like facility is designed to promote comfort, calm, and healing.",
-  alternates: { canonical: "/tour" },
+  ...pageMeta({ path: "/tour", title: "Tour the Facility", description: "Explore Wellness Detox of LA — from serene bedrooms to bright common areas and peaceful outdoor spaces, our home-like facility is designed to promote comfort, calm, and healing." }),
 };
 
 const amenities = [
