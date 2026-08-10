@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { Analytics } from "@/components/Analytics";
+import Clarion from "@/components/Clarion";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -122,6 +123,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable} antialiased`}>
+      <head>
+        {/* Site-wide tracking script — loads on every page. */}
+        <script async src="//264810.tctm.co/t.js" />
+      </head>
       <body className="flex min-h-dvh flex-col bg-cream">
         <script
           type="application/ld+json"
@@ -143,7 +148,12 @@ export default function RootLayout({
         {/* Spacer so the fixed mobile call bar never covers footer content. */}
         <div aria-hidden className="h-16 lg:hidden" />
         <MobileCallBar />
-        {/* Google Analytics — loaded only after the visitor opts in. */}
+        {/* Clarion Labs chat widget + form capture. Functional rather than
+            analytical — it carries the lead pipeline — so it loads site-wide. */}
+        <Clarion />
+        {/* Google Analytics. Loads gtag itself, only after the visitor opts in —
+            the raw <Script> tags that used to sit here loaded it unconditionally,
+            which would defeat the consent gate if both were kept. */}
         <Analytics />
       </body>
     </html>

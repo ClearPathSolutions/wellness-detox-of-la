@@ -16,6 +16,10 @@ const isDev = process.env.NODE_ENV === "development";
  *   google-analytics.com      — GA collect endpoint + tracking pixel
  *   *.googleusercontent.com   — Google reviewer avatars (<img> in Reviews.tsx)
  *   google.com/maps + *.gstatic — embedded map iframe on /contact
+ *   tctm.co                   — CallTrackingMetrics t.js, loaded in <head>.
+ *                               Phone calls are the primary conversion, so this
+ *                               is functional; without it in script-src the
+ *                               tracking number swap silently stops working.
  *   clarionlabs.ai            — Clarion Labs chat widget (widget.v1.js) and
  *                               form capture (forms-capture.v1.js), loaded in the
  *                               root layout. Without this the widget is blocked
@@ -23,11 +27,11 @@ const isDev = process.env.NODE_ENV === "development";
  */
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarionlabs.ai`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarionlabs.ai https://*.tctm.co`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://*.googleusercontent.com https://www.google-analytics.com https://www.googletagmanager.com https://*.gstatic.com https://maps.gstatic.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.clarionlabs.ai",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.clarionlabs.ai https://*.tctm.co",
   "frame-src https://www.google.com https://maps.google.com",
   "object-src 'none'",
   "base-uri 'self'",
