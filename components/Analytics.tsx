@@ -81,12 +81,18 @@ gtag('config', '${site.analyticsId}', { anonymize_ip: true });`}
       )}
 
       {consent === "none" && (
+        // The wrapper spans the full viewport width but is only visible where
+        // the card is. Without `pointer-events-none` it swallowed every click in
+        // its transparent margins — roughly 370px either side of the card on a
+        // 1512px screen — so links near the bottom of the page silently did
+        // nothing. Verified with a real browser: `elementFromPoint` returned
+        // this div, not the link. The card re-enables pointer events for itself.
         <div
           role="region"
           aria-label="Privacy and analytics consent"
-          className="fixed inset-x-0 bottom-16 z-50 px-3 pb-3 lg:bottom-0 lg:px-6 lg:pb-6"
+          className="pointer-events-none fixed inset-x-0 bottom-16 z-50 px-3 pb-3 lg:bottom-0 lg:px-6 lg:pb-6"
         >
-          <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft sm:flex-row sm:items-center sm:gap-6">
+          <div className="pointer-events-auto mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft sm:flex-row sm:items-center sm:gap-6">
             <p className="text-sm leading-relaxed text-ink-700">
               We&apos;d like to use analytics cookies to understand how visitors find and use this
               site. Nothing is loaded unless you agree, and browsing without analytics works exactly
