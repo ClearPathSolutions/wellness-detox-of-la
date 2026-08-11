@@ -1,5 +1,61 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import type { Crumb } from "@/components/ui";
+
+/* ------------------------------ Breadcrumbs ------------------------------ */
+
+/**
+ * Section landing pages, keyed by the breadcrumb label the content files
+ * already use. Content pages store their trail as a flat `"Parent / Leaf"`
+ * string; this resolves the parent half to a real URL so the middle level
+ * becomes a link instead of dead text.
+ */
+const CRUMB_PARENTS: Record<string, string> = {
+  Treatment: "/treatment",
+  Admissions: "/admissions",
+  "Areas We Serve": "/about/areas-we-serve",
+  About: "/about",
+};
+
+/**
+ * Turns `"Treatment / Detox"` into a linked trail:
+ * Home → Treatment → Detox.
+ *
+ * Unknown parents degrade to plain text rather than guessing a URL, so a new
+ * section added to the content files cannot silently emit a 404 link.
+ */
+export function crumbsFrom(crumb?: string): Crumb[] {
+  const trail: Crumb[] = [{ label: "Home", href: "/" }];
+  if (!crumb) return trail;
+
+  const parts = crumb.split("/").map((s) => s.trim()).filter(Boolean);
+  parts.forEach((label, i) => {
+    const isLast = i === parts.length - 1;
+    const href = isLast ? undefined : CRUMB_PARENTS[label];
+    trail.push(href ? { label, href } : { label });
+  });
+  return trail;
+}
+
+/**
+ * BreadcrumbList JSON-LD for the same trail. Driven off the identical array the
+ * visible breadcrumb renders, so the two cannot disagree.
+ *
+ * `item` is omitted on the final entry per Google's guidance — the current page
+ * needs no URL.
+ */
+export function breadcrumbLd(items: Crumb[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.label,
+      ...(c.href && i < items.length - 1 ? { item: `${site.url}${c.href === "/" ? "" : c.href}` } : {}),
+    })),
+  };
+}
 
 /**
  * Per-page canonical + Open Graph metadata.

@@ -78,7 +78,7 @@ export function ContactForm() {
         <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rose-soft text-rose-dark">
           <CheckIcon width={26} height={26} />
         </span>
-        <h3 className="text-xl text-ink">Thank you for reaching out</h3>
+        <h3 className="t-h3 text-ink">Thank you for reaching out</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm text-muted">
           We&apos;ve received your message and our team will get back to you shortly. Prefer to talk
           now? Our admissions team is available 24/7.

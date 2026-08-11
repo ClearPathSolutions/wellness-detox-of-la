@@ -9,8 +9,8 @@ import { Container } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Verify Your Insurance",
   description:
-    "Find out what your insurance covers for addiction treatment at Wellness Detox of LA. Fast, confidential benefits verification — we handle it directly with your provider.",
-  ...pageMeta({ path: "/admissions/verify-your-insurance", title: "Verify Your Insurance", description: "Find out what your insurance covers for addiction treatment at Wellness Detox of LA. Fast, confidential benefits verification — we handle it directly with your provider." }),
+    "Find out what your insurance covers for addiction treatment. Fast, confidential benefits verification handled directly with your provider.",
+  ...pageMeta({ path: "/admissions/verify-your-insurance", title: "Verify Your Insurance", description: "Find out what your insurance covers for addiction treatment. Fast, confidential benefits verification handled directly with your provider." }),
 };
 
 const steps = [
@@ -34,20 +34,20 @@ export default function VerifyInsurancePage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
           {/* Steps */}
           <div>
-            <h2 className="text-2xl text-ink sm:text-3xl">How insurance verification works</h2>
+            <h2 className="t-h2 text-ink">How insurance verification works</h2>
             <div className="mt-6 space-y-5">
               {steps.map((s) => (
                 <div key={s.n} className="flex gap-4">
                   <span className="font-display text-2xl font-bold text-rose/30">{s.n}</span>
                   <div>
-                    <h3 className="font-display text-base font-semibold text-ink">{s.title}</h3>
+                    <h3 className="t-h4 text-ink">{s.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-muted">{s.body}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="mt-8 rounded-2xl bg-rose-soft/60 p-6">
-              <h3 className="font-display text-lg font-semibold text-ink">We accept most insurances</h3>
+              <h3 className="t-h3 text-ink">We accept most insurances</h3>
               <p className="mt-2 text-sm text-muted">
                 We partner with most major insurance companies to make treatment accessible and
                 affordable. If you prefer to verify over the phone, call us anytime at{" "}
@@ -58,7 +58,7 @@ export default function VerifyInsurancePage() {
 
           {/* Form */}
           <div>
-            <h2 className="mb-4 text-2xl text-ink sm:text-3xl">Check your coverage</h2>
+            <h2 className="mb-4 t-h2 text-ink">Check your coverage</h2>
             <InsuranceForm />
           </div>
         </div>

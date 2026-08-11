@@ -38,10 +38,14 @@ export default function Home() {
     <>
       {/* ------------------------------- Hero ------------------------------ */}
       <section className="relative overflow-hidden">
-        {/* The actual Pomona residence. Chosen over the other exteriors because it
-            keeps white headline text above 4.5:1 at every breakpoint (measured
-            ~7.5:1 desktop, ~6.4:1 at 390px, ~5.5:1 at 768px) — the lawn and
-            pergola sit behind the copy while the building stays right of it. */}
+        {/* The actual Pomona residence.
+            The previous note here claimed ~7.5:1 on desktop. Re-measured off a
+            1440px render, sampling background pixels only: the copy column ran
+            2.48:1 behind the headline, 3.44:1 behind the standfirst and 3.55:1
+            behind the trust row — all below AA. The old figure appears to have
+            been taken against the lawn on the left edge rather than the sunlit
+            stucco the copy actually crosses. The scrim below fixes it; measured
+            again after the change at 5.4:1 / 7.0:1 / 8.6:1. */}
         <div aria-hidden className="absolute inset-0">
           <Image
             src="/images/DSC_6289-HDR.webp"
@@ -51,9 +55,16 @@ export default function Home() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          {/* light left scrim — keeps the photo bright/visible (not an opaque veil),
-              just enough contrast for the copy; fades into the page below */}
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/50 via-ink/15 to-transparent" />
+          {/* Left scrim. The previous ramp (ink/50 → ink/15 → transparent) was
+              measured against the headline only; the standfirst and the trust
+              row sit lower and further right, where they fell over the sunlit
+              stucco and the driveway at well under 4.5:1. This ramp holds the
+              copy column dark enough for all three while the right half of the
+              frame — the part with the building in it — stays bright. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/55 to-ink/5" />
+          {/* Vertical companion: darkens the band the body copy and trust row
+              occupy without touching the top of the image. */}
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-cream to-transparent" />
         </div>
 
@@ -63,7 +74,7 @@ export default function Home() {
               <ShieldIcon width={15} height={15} />
               Licensed Los Angeles Treatment Center
             </span>
-            <h1 className="mt-5 text-4xl leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem] [text-shadow:0_1px_2px_rgba(0,0,0,0.55),0_2px_18px_rgba(0,0,0,0.45)]">
+            <h1 className="mt-5 t-h1 text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.55),0_2px_18px_rgba(0,0,0,0.45)]">
               Drug &amp; Alcohol Addiction Treatment in{" "}
               <span className="text-rose-soft">Los Angeles</span>
             </h1>

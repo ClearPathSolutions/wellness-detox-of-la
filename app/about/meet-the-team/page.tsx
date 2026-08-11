@@ -10,8 +10,8 @@ import { facilityTeam, initials, regionalTeam, type TeamMember } from "@/lib/dat
 export const metadata: Metadata = {
   title: "Meet the Team",
   description:
-    "Meet the licensed clinicians, medical professionals, and staff at Wellness Detox of LA — bringing 15+ years of trusted addiction treatment experience to every client.",
-  ...pageMeta({ path: "/about/meet-the-team", title: "Meet the Team", description: "Meet the licensed clinicians, medical professionals, and staff at Wellness Detox of LA — bringing 15+ years of trusted addiction treatment experience to every client." }),
+    "Meet the licensed clinicians and medical staff at Wellness Detox of LA, backed by 15+ years of addiction treatment experience.",
+  ...pageMeta({ path: "/about/meet-the-team", title: "Meet the Team", description: "Meet the licensed clinicians and medical staff at Wellness Detox of LA, backed by 15+ years of addiction treatment experience." }),
 };
 
 function MemberCard({ m }: { m: TeamMember }) {
@@ -27,7 +27,7 @@ function MemberCard({ m }: { m: TeamMember }) {
         )}
       </div>
       <div className="p-5">
-        <h3 className="font-display text-lg font-semibold text-ink">{m.name}</h3>
+        <h3 className="t-h3 text-ink">{m.name}</h3>
         <p className="mt-0.5 text-sm text-rose-dark">{m.role}</p>
       </div>
     </div>
@@ -38,7 +38,7 @@ export default function MeetTheTeamPage() {
   return (
     <>
       <PageHero
-        crumb="Meet the Team"
+        crumb="About / Meet the Team"
         eyebrow="Meet the Team"
         title="The people who care for you"
         intro="Recovery begins with people who care. Our team of licensed clinicians, medical professionals, therapists, and dedicated support staff works together to ensure every client receives effective, individualized treatment."
@@ -62,7 +62,7 @@ export default function MeetTheTeamPage() {
           </p>
         </div>
 
-        <h2 className="mb-6 text-2xl text-ink sm:text-3xl">Our Pomona Team</h2>
+        <h2 className="mb-6 t-h2 text-ink">Our Pomona Team</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {facilityTeam.map((m) => (
             <MemberCard key={m.slug} m={m} />
@@ -72,7 +72,7 @@ export default function MeetTheTeamPage() {
         {/* Regional leadership — scope stated so these roles are never read as
             Pomona-exclusive; each remit spans several Southern California centers. */}
         <div className="mt-16">
-          <h2 className="text-2xl text-ink sm:text-3xl">Southern California Leadership</h2>
+          <h2 className="t-h2 text-ink">Southern California Leadership</h2>
           <p className="mt-2 max-w-2xl text-muted">
             Quadrant Health Group leaders who support Wellness Detox of LA alongside our other
             Southern California treatment centers, overseeing clinical programming, nursing, and case

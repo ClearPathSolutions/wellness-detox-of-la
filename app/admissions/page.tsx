@@ -69,7 +69,7 @@ export default function AdmissionsPage() {
             <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
               <HeartIcon width={22} height={22} />
             </span>
-            <h2 className="text-xl text-ink">Get help for yourself</h2>
+            <h2 className="t-h2 text-ink">Get help for yourself</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
               Taking the first step takes courage. We&apos;ll meet you with understanding and a clear,
               judgment-free path forward.
@@ -84,7 +84,7 @@ export default function AdmissionsPage() {
             <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
               <UsersIcon width={22} height={22} />
             </span>
-            <h2 className="text-xl text-ink">Get help for a loved one</h2>
+            <h2 className="t-h2 text-ink">Get help for a loved one</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
               Worried about someone you love? We&apos;ll help you understand the options and how to
               approach the conversation with care.
@@ -129,7 +129,7 @@ export default function AdmissionsPage() {
 
           {/* Full FAQ resource library */}
           <div className="mt-12">
-            <h3 className="text-xl text-ink sm:text-2xl">Everything you need to know before you begin</h3>
+            <h3 className="t-h3 text-ink">Everything you need to know before you begin</h3>
             <p className="mt-2 max-w-2xl text-sm text-muted">
               Explore our detailed FAQ guides for clear, in-depth answers on addiction, admissions,
               insurance, and treatment.
@@ -141,7 +141,7 @@ export default function AdmissionsPage() {
                   href={r.href}
                   className="group flex flex-col rounded-2xl border border-line bg-white p-6 shadow-card transition-all hover:-translate-y-0.5 hover:border-rose hover:shadow-soft"
                 >
-                  <h4 className="font-display text-base font-semibold text-ink">{r.label}</h4>
+                  <h4 className="t-h4 text-ink">{r.label}</h4>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{r.desc}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-dark">
                     Read the FAQ

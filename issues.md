@@ -1635,7 +1635,22 @@ for f in public/images/*; do grep -qxF "/images/$(basename "$f")" /tmp/used.txt 
 ---
 
 #### WDL-040 · Swap eyebrow and heading order across 13 section headers
-**Status:** `OPEN` · **Severity:** P2 · **Area:** Design system · `[SHEET visual ×13]`
+**Status:** `DISPUTED` — two sources disagree, needs your ruling · **Severity:** P2 · **Area:** Design system · `[SHEET visual ×13]`
+
+> **Applied 2026-08-10, then deliberately reverted 2026-08-11. Now a genuine disagreement between two sources.**
+>
+> **S-001 rows (×13) ask for the swap:** "Replace and switch the small pink text with the header." I implemented the literal reading — heading first, eyebrow beneath as a kicker.
+>
+> **The revert's reasoning, which is stronger than mine:**
+> 1. An eyebrow exists to frame the heading *before* you read it; placed after, it reads as an orphaned uppercase fragment.
+> 2. **Accessibility:** a screen reader announces the heading and then a stray label with no antecedent.
+> 3. **It caught a real flaw in my change.** I swapped `SectionHeading` and `PageHero` but *not* `ContentPage`'s section eyebrows, which already rendered eyebrow-first. So my version made the same element sit on opposite sides of the heading depending on which template drew the page — an inconsistency I introduced and did not notice.
+>
+> **Current state: eyebrow-first (reverted).** Verified in the built homepage.
+>
+> **Your ruling needed.** The reviewer who wrote 13 rows wants them swapped; the implementation argues eyebrow-first is correct on accessibility and consistency grounds. My own view, having seen point 3: **the revert is right, and the 13 rows should be pushed back to S-001 as declined with this reasoning** — but the reviewer may have meant something else entirely by "replace and switch", in which case a screenshot resolves it in seconds.
+>
+> Whichever way it goes, it must be applied in **three** places to stay consistent: `SectionHeading`, `PageHero` (both variants), and `ContentPage`'s section eyebrows.
 
 **Rows** 1659, 1660, 1661, 1662, 1663 (homepage) · 1665 (`/about`) · 1667 (`/about/our-story`) · 1669 (`/about/meet-the-team`) · 1672, 1674 (`/treatment`) · 1676, 1677 (`/tour`) · 1679 (`/admissions`)
 

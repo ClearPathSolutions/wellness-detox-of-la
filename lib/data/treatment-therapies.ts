@@ -4,7 +4,8 @@ import { site } from "@/lib/site";
 export const treatmentTherapies: ContentPageData[] = [
   {
     slug: "individual-therapy",
-    metaTitle: "Individual Therapy for Addiction in Los Angeles",
+    cta: { title: "Start one-on-one therapy with a licensed clinician" },
+    metaTitle: "Individual Therapy for Addiction in LA",
     metaDescription:
       "One-on-one addiction therapy in Los Angeles using CBT, DBT, and trauma-informed care to address the root causes of substance use and build coping skills.",
     eyebrow: "Therapy",
@@ -15,8 +16,8 @@ export const treatmentTherapies: ContentPageData[] = [
       {
         heading: "What Is Individual Therapy?",
         body: [
-          "Individual therapy is a confidential, one-on-one therapeutic process where clients work directly with a licensed clinician to explore the emotional, behavioral, and psychological patterns connected to addiction. Unlike group settings, individual therapy provides deeper exploration and a safe space to address trauma, mental-health concerns, unresolved stress, or challenges that are difficult to discuss in a group environment.",
-          "Sessions typically involve evidence-based modalities such as CBT, DBT, motivational interviewing, trauma-informed therapy, and relapse-prevention strategies. This approach helps clients understand the root causes of substance use, reshape harmful thought-patterns, and build stronger emotional regulation and coping skills.",
+          "Individual therapy is private, one-on-one work with a licensed clinician. Together you look at the feelings, behaviors, and thought patterns tied to your addiction. Because no one else is in the room, it is often where trauma, mental-health worries, and other hard subjects finally get said out loud.",
+          "Sessions draw on proven methods: CBT, DBT, motivational interviewing, trauma-informed therapy, and relapse prevention. The goal is to understand what drives your substance use, change the thinking that keeps it going, and build steadier ways to cope.",
         ],
       },
       {
@@ -34,8 +35,9 @@ export const treatmentTherapies: ContentPageData[] = [
       {
         heading: "How Individual Therapy Supports Recovery",
         body: [
-          "One-on-one work with a licensed therapist allows deeper exploration, personalized guidance, and targeted strategies that address the specific issues driving substance use. Over time, clients develop stronger emotional regulation and a clearer understanding of themselves — all essential for long-term sobriety.",
-          "According to the American Psychological Association, on average 15 to 20 individual therapy sessions are needed for 50% of patients to show measurable symptom improvement — underscoring why consistent, ongoing therapy is central to lasting recovery.",
+          "Working one-on-one lets your therapist go deeper and tailor the work to you. Over time you handle emotions better and understand yourself more clearly. Both matter for staying sober.",
+          "Individual sessions run throughout your stay — beginning during [medical detox](/treatment/detox), deepening in [residential treatment](/treatment/residential), and continuing into [aftercare](/treatment/aftercare).",
+          "The American Psychological Association reports that half of patients show measurable improvement after 15 to 20 sessions. Therapy works, but it takes time — which is why we keep it going.",
         ],
         bullets: [
           "Improved emotional regulation and stress management",
@@ -69,6 +71,7 @@ export const treatmentTherapies: ContentPageData[] = [
   },
   {
     slug: "group-therapy",
+    cta: { title: "Find connection and accountability in group therapy" },
     metaTitle: "Group Therapy for Addiction in Los Angeles",
     metaDescription:
       "Clinician-led group therapy for addiction in Los Angeles that builds peer support, accountability, and lasting recovery skills in a safe, structured setting.",
@@ -80,8 +83,9 @@ export const treatmentTherapies: ContentPageData[] = [
       {
         heading: "What Is Group Therapy?",
         body: [
-          "Group therapy is an evidence-based therapeutic approach used in addiction treatment to help clients develop recovery skills and build meaningful peer support. Sessions are led by licensed clinicians and focus on communication, emotional expression, relapse-prevention strategies, and group discussion around the challenges of drug and alcohol addiction.",
-          "According to SAMHSA, group therapy is one of the most effective interventions in substance abuse treatment, improving engagement, accountability, and long-term success. Group sessions allow clients to hear different perspectives, learn from shared experiences, and reduce the isolation that often accompanies addiction.",
+          "Group therapy is a proven part of addiction treatment. It builds recovery skills and real peer support. A licensed clinician leads each session, covering communication, handling emotions, and relapse prevention.",
+          "Groups run daily throughout [residential treatment](/treatment/residential) and continue after discharge as part of [aftercare](/treatment/aftercare).",
+          "SAMHSA names group therapy one of the most effective treatments for substance use. It improves engagement, accountability, and long-term results. You hear how others see things, learn from what they have been through, and feel less alone.",
         ],
       },
       {
@@ -120,6 +124,7 @@ export const treatmentTherapies: ContentPageData[] = [
   },
   {
     slug: "family-therapy",
+    cta: { title: "Begin healing as a family" },
     metaTitle: "Family Therapy for Addiction in Los Angeles",
     metaDescription:
       "Family therapy for addiction in Los Angeles that rebuilds trust, improves communication, and strengthens the support system around lasting recovery.",
@@ -131,8 +136,9 @@ export const treatmentTherapies: ContentPageData[] = [
       {
         heading: "What Is Family Therapy?",
         body: [
-          "Family therapy is a collaborative therapeutic process that helps families understand drug & alcohol addiction, address communication issues, and support their loved one's recovery. Sessions bring family members together with a licensed therapist to discuss challenges and learn healthier ways of interacting.",
-          "According to the National Institute on Drug Abuse (NIDA), family involvement significantly improves treatment outcomes in both drug and alcohol addiction. By engaging families early, clients gain a stronger support system and a healthier home environment as they move forward.",
+          "Family therapy helps families understand addiction, fix how they communicate, and support someone they love. A licensed therapist sits with the family to work through what is hard and practice healthier ways of talking to each other.",
+          "Families can be involved from [medical detox](/treatment/detox) onward, and stay involved through [residential treatment](/treatment/residential) and beyond.",
+          "The National Institute on Drug Abuse (NIDA) finds that involving family clearly improves results in both drug and alcohol treatment. Bring family in early and the person leaves with a stronger support system and a healthier home to return to.",
         ],
       },
       {

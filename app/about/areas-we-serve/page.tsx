@@ -17,15 +17,15 @@ import { additionalCommunities, areaList } from "@/lib/data/areas";
 export const metadata: Metadata = {
   title: "Areas We Serve",
   description:
-    "Wellness Detox of LA provides drug & alcohol detox and residential treatment across Los Angeles, Pomona, North Hollywood, Burbank, Orange County, and Southern California.",
-  ...pageMeta({ path: "/about/areas-we-serve", title: "Areas We Serve", description: "Wellness Detox of LA provides drug & alcohol detox and residential treatment across Los Angeles, Pomona, North Hollywood, Burbank, Orange County, and Southern California." }),
+    "Drug and alcohol detox and residential treatment across Los Angeles, Pomona, North Hollywood, Burbank, and Southern California.",
+  ...pageMeta({ path: "/about/areas-we-serve", title: "Areas We Serve", description: "Drug and alcohol detox and residential treatment across Los Angeles, Pomona, North Hollywood, Burbank, and Southern California." }),
 };
 
 export default function AreasWeServePage() {
   return (
     <>
       <PageHero
-        crumb="Areas We Serve"
+        crumb="About / Areas We Serve"
         eyebrow="Your local partner in recovery"
         title="Areas We Serve"
         intro="Wellness Detox LA provides addiction treatment, medical detox, and dual diagnosis care to clients throughout Los Angeles County and Southern California — with convenient access and coordinated travel support."
@@ -91,7 +91,7 @@ export default function AreasWeServePage() {
                 <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
                   <Icon width={20} height={20} />
                 </span>
-                <h3 className="font-display text-base font-semibold text-ink">{title}</h3>
+                <h3 className="t-h4 text-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{blurb}</p>
               </div>
             ))}

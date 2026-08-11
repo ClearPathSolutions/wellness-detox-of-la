@@ -5,6 +5,15 @@ export type BlogPost = {
   date: string; // ISO
   displayDate: string;
   excerpt: string;
+  /**
+   * SEO overrides. `excerpt` doubles as the card blurb on /blog, where a richer
+   * 200-character sentence is wanted — but as a meta description it truncated in
+   * results, and article titles plus the " | Wellness Detox of LA" template
+   * suffix ran to 115 characters. These let the snippet be tight without
+   * thinning the on-page copy.
+   */
+  metaTitle?: string;
+  metaDescription?: string;
   hero: string;
   body: string; // markdown
 };
@@ -15,7 +24,10 @@ export const blogPosts: BlogPost[] = [
     // where it was the only page missing from this repo. Kept at its original
     // root-level slug so the indexed URL resolves at 200 with no redirect.
     slug: "luxury-rehab-in-los-angeles",
-    title: "Luxury Rehab in Los Angeles | Private Detox & Recovery Care",
+    metaTitle: "Luxury Rehab in Los Angeles",
+    metaDescription:
+      "Evidence-based luxury rehab in Los Angeles — private detox, residential treatment, and dual diagnosis care. What to expect and what it costs.",
+    title: "Luxury Rehab in Los Angeles: Private Detox & Recovery Care",
     date: "2026-07-17",
     displayDate: "July 17, 2026",
     excerpt:
@@ -23,7 +35,7 @@ export const blogPosts: BlogPost[] = [
     hero: "/images/DSC_6116-HDR.webp",
     body: `## TL;DR
 
-Luxury rehab in Los Angeles pairs private, comfortable surroundings with serious clinical care. At Wellness Detox of LA, that means medical detox, residential treatment, and dual diagnosis support in a discreet setting. Comfort matters, yet evidence-based therapy is what actually drives recovery [1]. Below, we walk through what to expect, what it costs, and how to choose well.
+Luxury rehab in Los Angeles pairs private, comfortable surroundings with serious clinical care. At Wellness Detox of LA, that means [medical detox](/treatment/detox), [residential treatment](/treatment/residential), and [dual diagnosis support](/treatment/dual-diagnosis) in a discreet setting. Comfort matters, yet evidence-based therapy is what actually drives recovery [1]. Below, we walk through what to expect, what it costs, and how to choose well.
 
 ## A Fresh Start, Not a Punishment
 
@@ -63,7 +75,7 @@ Recovery unfolds in stages, and a strong luxury rehab in Los Angeles supports ea
 - **Residential treatment:** Structured, around-the-clock care in a private setting.
 - **Dual diagnosis treatment:** Integrated care when a substance use disorder and a mental health condition occur together [4].
 
-We treat alcohol, opioids, and other substances. Afterward, aftercare planning helps you sustain progress once treatment ends.
+We treat alcohol, opioids, and other substances. Afterward, [aftercare planning](/treatment/aftercare) helps you sustain progress once treatment ends.
 
 ## What Luxury Rehab in Los Angeles Costs
 
@@ -122,6 +134,9 @@ Prioritize accreditation, licensed staff, and individualized care. Then weigh th
   },
   {
     slug: "why-fentanyl-addiction-is-so-dangerous",
+    metaTitle: "Why Fentanyl Addiction Is So Dangerous",
+    metaDescription:
+      "Fentanyl is up to 50x stronger than heroin and is often pressed into counterfeit pills. Learn the warning signs and why detox needs supervision.",
     title: "Why Fentanyl Addiction Has Become So Dangerous",
     date: "2026-05-20",
     displayDate: "May 20, 2026",
@@ -193,7 +208,7 @@ Because fentanyl withdrawal and overdose risks can be severe, professional detox
 - Emotional stabilization
 - A structured environment focused on safety
 
-Programs at Wellness Detox LA provide medically supervised detox and residential treatment designed specifically to help individuals stabilize safely during fentanyl withdrawal.
+Programs at Wellness Detox LA provide [medically supervised detox](/treatment/detox) and [residential treatment](/treatment/residential) designed specifically to help individuals stabilize safely during fentanyl withdrawal.
 
 ## Addressing Mental Health During Recovery
 
@@ -204,7 +219,7 @@ Many individuals struggling with fentanyl addiction also experience:
 - Trauma-related disorders
 - Chronic stress
 
-Wellness Detox LA emphasizes dual diagnosis treatment designed to address both opioid addiction and the mental health conditions that often contribute to substance use. Treating both addiction and emotional health together often improves long-term recovery outcomes.
+Wellness Detox LA emphasizes [dual diagnosis](/treatment/dual-diagnosis) treatment designed to address both opioid addiction and the mental health conditions that often contribute to substance use. Treating both addiction and emotional health together often improves long-term recovery outcomes.
 
 ## Detox Is Only the First Step
 
@@ -228,6 +243,8 @@ If you or a loved one is struggling with fentanyl addiction, professional detox 
   },
   {
     slug: "medical-detox-los-angeles",
+    metaDescription:
+      "How medically supervised detox works in Los Angeles, why it matters, and what to expect during withdrawal at Wellness Detox of LA.",
     title: "Medical Detox in Los Angeles",
     date: "2026-03-10",
     displayDate: "March 10, 2026",
@@ -242,7 +259,7 @@ At Wellness Detox LA, detox takes place in a medically supervised environment wh
 
 ## What Is Medical Detox?
 
-Medical detox is the first step in many addiction treatment programs. It focuses on safely removing drugs or alcohol from the body while helping individuals manage the physical and psychological symptoms that occur during withdrawal.
+[Medical detox](/treatment/detox) is the first step in many addiction treatment programs. It focuses on safely removing drugs or alcohol from the body while helping individuals manage the physical and psychological symptoms that occur during withdrawal.
 
 Long-term substance use can change how the brain and body function. When someone suddenly stops using drugs or alcohol, the body must adjust to operating without those substances. This process can lead to symptoms such as anxiety, nausea, insomnia, and intense cravings.
 
@@ -289,6 +306,9 @@ Deciding to seek help for addiction can feel overwhelming, but detox provides a 
   },
   {
     slug: "los-angeles-addiction-treatment-guide",
+    metaTitle: "Addiction Treatment in Los Angeles: A Guide",
+    metaDescription:
+      "A guide to evidence-based addiction care in Los Angeles — medical detox, residential programs, dual diagnosis, and aftercare planning.",
     title: "Comprehensive Addiction Treatment in Los Angeles at Wellness Detox LA",
     date: "2026-02-23",
     displayDate: "February 23, 2026",
@@ -309,11 +329,11 @@ Medical detox helps the body safely clear alcohol and drugs under 24/7 clinical 
 
 ### Residential Inpatient Care
 
-Residential treatment provides structured, round-the-clock care that allows clients to focus fully on recovery. In this setting, individuals participate in therapy, group support, and coping skill development in a calm, private environment.
+[Residential treatment](/treatment/residential) provides structured, round-the-clock care that allows clients to focus fully on recovery. In this setting, individuals participate in therapy, group support, and coping skill development in a calm, private environment.
 
 ### Dual Diagnosis Support
 
-Many people with substance use disorders also experience mental health challenges such as depression, anxiety, or trauma. Dual diagnosis care addresses both addiction and co-occurring conditions together, improving long-term outcomes.
+Many people with substance use disorders also experience mental health challenges such as depression, anxiety, or trauma. [Dual diagnosis care](/treatment/dual-diagnosis) addresses both addiction and co-occurring conditions together, improving long-term outcomes.
 
 ### Aftercare Planning
 
@@ -341,17 +361,20 @@ Throughout treatment, licensed professionals provide guidance, monitoring, and e
 
 ## Take the Next Step Toward Recovery
 
-Healing from addiction begins with the right support, strong clinical care, and a plan for lasting wellness. From medically supervised detox to residential programs and dual diagnosis care, every step is designed to strengthen your foundation for a healthier future. Call ${site.phone} to get started.`,
+Healing from addiction begins with the right support, strong clinical care, and a plan for lasting wellness. From [medically supervised detox](/treatment/detox) to residential programs and dual diagnosis care, every step is designed to strengthen your foundation for a healthier future. Call ${site.phone} to get started.`,
   },
   {
     slug: "why-residential-treatment-matters",
+    metaTitle: "Why Residential Treatment Matters",
+    metaDescription:
+      "Recovery is about building a new life, not just stopping substance use. Why residential care is often the most transformative level of treatment.",
     title: "Why Residential Treatment Matters: The Benefits of Inpatient Care",
     date: "2026-02-12",
     displayDate: "February 12, 2026",
     excerpt:
       "Recovery isn't just about stopping substance use — it's about building a new life. Here's why residential treatment can be one of the most transformative levels of care.",
     hero: "/images/facility-3.webp",
-    body: `Recovery from addiction isn't just about stopping substance use. Recovery is about building a new life that supports lasting wellness. While outpatient therapy and detox can be essential parts of the journey, residential treatment offers a comprehensive environment where individuals can rebuild their lives without the distractions, triggers, and stressors of everyday life.
+    body: `Recovery from addiction isn't just about stopping substance use. Recovery is about building a new life that supports lasting wellness. While outpatient therapy and detox can be essential parts of the journey, [residential treatment](/treatment/residential) offers a comprehensive environment where individuals can rebuild their lives without the distractions, triggers, and stressors of everyday life.
 
 At Wellness Detox of LA, our residential inpatient program provides structured, evidence-based care with compassionate support — creating a safe place to heal that lays the foundation for long-term recovery.
 
@@ -389,7 +412,7 @@ Returning home after detox or outpatient therapy can expose individuals to envir
 
 Recovery doesn't happen overnight. Research shows that extended engagement with structured treatment is associated with better outcomes and lower relapse rates — typically stays of 90 days or more.
 
-At Wellness Detox of LA, we don't see residential treatment as an endpoint. It's a pivotal chapter in a larger recovery story. Through careful discharge planning and connection to ongoing outpatient care, support groups, and aftercare resources, we aim to maximize the chances of lifelong sobriety.
+At Wellness Detox of LA, we don't see residential treatment as an endpoint. It's a pivotal chapter in a larger recovery story. Through careful discharge planning and connection to ongoing outpatient care, support groups, and [aftercare](/treatment/aftercare) resources, we aim to maximize the chances of lifelong sobriety.
 
 ## Is Residential Treatment Right for You?
 
@@ -399,6 +422,9 @@ If you or a loved one is considering residential treatment, our admissions team 
   },
   {
     slug: "dry-january-in-los-angeles-when-a-reset-requires-medical-oversight",
+    metaTitle: "Dry January in LA: When to Get Medical Help",
+    metaDescription:
+      "For many, a month of abstinence reveals a physical dependency willpower alone cannot manage safely. When Dry January needs clinical oversight.",
     title: "Dry January in Los Angeles: When a 'Reset' Requires Medical Oversight",
     date: "2026-01-27",
     displayDate: "January 27, 2026",
@@ -417,7 +443,7 @@ Alcohol withdrawal is one of the few metabolic processes that can be life-threat
 
 ## Why LA Residents Choose Clinical Detox
 
-White-knuckling through January in a high-trigger environment like LA often leads to a rebound effect, where the person drinks even more heavily once the month ends. Wellness Detox of LA offers a more sustainable path through our medical detox and inpatient programs.
+White-knuckling through January in a high-trigger environment like LA often leads to a rebound effect, where the person drinks even more heavily once the month ends. Wellness Detox of LA offers a more sustainable path through our [medical detox](/treatment/detox) and inpatient programs.
 
 ### 24/7 Medical Supervision in a Residential Setting
 
@@ -425,7 +451,7 @@ Located in a peaceful residential neighborhood, our facility offers a home-like 
 
 ### Integrated Dual Diagnosis Support
 
-For many in Los Angeles County, alcohol use is a symptom of untreated anxiety, depression, or PTSD. Simply stopping the drink leaves the mental health struggle exposed. Our dual diagnosis program treats both simultaneously, using evidence-based therapies like CBT and DBT.
+For many in Los Angeles County, alcohol use is a symptom of untreated anxiety, depression, or PTSD. Simply stopping the drink leaves the mental health struggle exposed. Our [dual diagnosis](/treatment/dual-diagnosis) program treats both simultaneously, using evidence-based therapies like CBT and DBT.
 
 ### Holistic LA Recovery
 
@@ -451,6 +477,9 @@ Recovery is more than just a 31-day challenge; it's about rebuilding a life of p
   },
   {
     slug: "what-happens-to-your-brain-during-the-first-30-days-of-recovery",
+    metaTitle: "Your Brain in the First 30 Days of Recovery",
+    metaDescription:
+      "If addiction is a choice, why is it so hard to just stop? The answer isn't willpower — it's neuroscience. What happens inside the brain.",
     title: "What Happens to Your Brain During the First 30 Days of Recovery?",
     date: "2026-01-16",
     displayDate: "January 16, 2026",
@@ -502,13 +531,16 @@ If you or someone you love is struggling with drug or alcohol addiction and want
   },
   {
     slug: "how-to-talk-to-loved-ones-about-going-to-rehab-a-guide-for-la-families-during-the-holidays",
+    metaTitle: "How to Talk to a Loved One About Rehab",
+    metaDescription:
+      "The holidays bring stress and tension, and can be when you realize someone needs help. How to approach the conversation with calm and confidence.",
     title: "How to Talk to Loved Ones About Going to Rehab (A Guide for LA Families During the Holidays)",
     date: "2025-12-19",
     displayDate: "December 19, 2025",
     excerpt:
       "The holidays can bring stress, tension, and emotional pressure — and can be the moment you realize a loved one needs support. Here's how to approach the conversation with calm and confidence.",
     hero: "/images/people-community.webp",
-    body: `The holidays can feel bright and joyful on the surface, but they can also bring stress, tension, and emotional pressure. Families come together. Old patterns show up. Conversations that felt easy all year suddenly feel heavier. If you're worried about a loved one's alcohol or drug use, this season may be the moment when you realize they need more support — possibly detox, residential treatment, and/or dual diagnosis care.
+    body: `The holidays can feel bright and joyful on the surface, but they can also bring stress, tension, and emotional pressure. Families come together. Old patterns show up. Conversations that felt easy all year suddenly feel heavier. If you're worried about a loved one's alcohol or drug use, this season may be the moment when you realize they need more support — possibly detox, [residential treatment](/treatment/residential), and/or [dual diagnosis care](/treatment/dual-diagnosis).
 
 Talking to someone about going to rehab is never simple. It takes patience, caution, and the right timing. But the holidays can also create a natural moment to speak honestly. This guide is here to help LA families approach the conversation with calm and confidence.
 
@@ -535,7 +567,7 @@ Before talking to your loved one, take a moment to prepare. This helps the discu
 1. **Be clear about your goal.** You're not trying to criticize them. You want to support their safety and well-being.
 2. **Stay centered and calm.** If you feel anxious or upset, pause and take a breath. Your tone matters more than your exact words.
 3. **Choose the right moment.** Avoid speaking during a crisis, a fight, or while they are intoxicated.
-4. **Know your options.** Treatment choices include medical detox, residential treatment, dual diagnosis programs, and intensive outpatient care. You can call anytime at ${site.phone} for a quick, free assessment.
+4. **Know your options.** Treatment choices include [medical detox](/treatment/detox), residential treatment, dual diagnosis programs, and intensive outpatient care. You can call anytime at ${site.phone} for a quick, free assessment.
 
 And keep in mind, you don't need to have all the answers. Your presence is what matters more.
 

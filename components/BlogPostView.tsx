@@ -4,11 +4,12 @@ import { Marked } from "marked";
 import type { BlogPost } from "@/lib/data/blog";
 import { site } from "@/lib/site";
 import { uniqueSlug } from "@/lib/slug";
+import { breadcrumbLd, crumbsFrom } from "@/lib/seo";
 import { CtaBanner } from "./blocks";
-import { JumpNav, type JumpNavItem } from "./JumpNav";
-import { ArrowRight, Container } from "./ui";
+import { JumpNav, JumpNavSidebar, type JumpNavItem } from "./JumpNav";
+import { ArrowRight, Breadcrumb, Container } from "./ui";
 
-const HEADING_SCROLL_MT = "scroll-mt-8 lg:scroll-mt-20"; // unify with ContentPage targets
+const HEADING_SCROLL_MT = "scroll-mt-24 lg:scroll-mt-36"; // unify with ContentPage targets
 
 /** Escape a string for safe use inside a RegExp (the phone number has dashes). */
 function escapeRe(s: string) {
@@ -67,42 +68,61 @@ export function BlogPostView({ post }: { post: BlogPost }) {
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/${post.slug}` },
   };
+  // Same trail treatment as every other page, including the JSON-LD the
+  // hand-rolled two-link nav here never emitted.
+  const crumbs = crumbsFrom(`Blog / ${post.title}`);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd).replace(/</g, "\\u003c") }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbLd(crumbs)).replace(/</g, "\\u003c"),
+        }}
+      />
       <article>
         <Container className="pt-10 lg:pt-14">
-          <nav className="mb-5 flex items-center gap-2 text-xs text-muted">
-            <Link href="/" className="hover:text-rose-dark">Home</Link>
-            <span aria-hidden>/</span>
-            <Link href="/blog" className="hover:text-rose-dark">Blog</Link>
-          </nav>
-          <div className="mx-auto max-w-3xl">
+          <Breadcrumb items={crumbs} />
+          <div className="measure-wide">
             <p className="eyebrow mb-3">{post.displayDate}</p>
-            <h1 className="text-3xl leading-tight text-ink sm:text-4xl">{post.title}</h1>
+            <h1 className="t-h1 text-ink">{post.title}</h1>
+            <p className="t-lead mt-5 text-muted">{post.excerpt}</p>
           </div>
-          <div className="relative mx-auto mt-8 aspect-[16/8] max-w-4xl overflow-hidden rounded-[1.75rem] shadow-soft">
-            <Image src={post.hero} alt={post.title} fill priority sizes="(max-width: 1024px) 100vw, 896px" className="object-cover" />
+          <div className="relative mt-9 aspect-[16/8] overflow-hidden rounded-[1.75rem] shadow-soft">
+            <Image src={post.hero} alt={post.title} fill priority sizes="(max-width: 1024px) 100vw, 1200px" className="object-cover" />
           </div>
         </Container>
 
         <JumpNav items={toc} />
 
-        <Container className="py-12 lg:py-16">
-          {/* SAFETY: `html` comes from `marked` over post bodies authored as
-              first-party template literals in lib/data/blog.ts. There is no user
-              or third-party input path, so the output is trusted and unsanitised.
-              If authoring ever moves to a CMS, form, or any external source, add
-              a sanitiser (rehype-sanitize / DOMPurify) BEFORE that change ships. */}
-          <div className="prose mx-auto max-w-3xl" dangerouslySetInnerHTML={{ __html: html }} />
-          <div className="mx-auto mt-12 max-w-3xl border-t border-line pt-8">
-            <Link href="/blog" className="inline-flex items-center gap-2 font-display font-semibold text-rose-dark">
-              <ArrowRight width={16} height={16} className="rotate-180" />
-              Back to all articles
-            </Link>
+        <Container className="py-12 lg:py-20">
+          {/* Matches ContentPage: sticky TOC beside the column on desktop, the
+              sticky pill bar above it on narrow screens. */}
+          {/* Grid only when the sidebar will render — see the note in ContentPage. */}
+          <div
+            className={`mx-auto max-w-[68rem] ${
+              toc.length >= 3 ? "lg:grid lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12 xl:gap-16" : ""
+            }`}
+          >
+            <JumpNavSidebar items={toc} />
+            <div className="min-w-0">
+              {/* SAFETY: `html` comes from `marked` over post bodies authored as
+                  first-party template literals in lib/data/blog.ts. There is no user
+                  or third-party input path, so the output is trusted and unsanitised.
+                  If authoring ever moves to a CMS, form, or any external source, add
+                  a sanitiser (rehype-sanitize / DOMPurify) BEFORE that change ships. */}
+              <div className="prose measure" dangerouslySetInnerHTML={{ __html: html }} />
+              <div className="measure mt-12 border-t border-line pt-8">
+                <Link href="/blog" className="inline-flex items-center gap-2 font-display font-semibold text-rose-dark">
+                  <ArrowRight width={16} height={16} className="rotate-180" />
+                  Back to all articles
+                </Link>
+              </div>
+            </div>
           </div>
         </Container>
       </article>

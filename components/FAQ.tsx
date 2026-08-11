@@ -5,12 +5,27 @@ import { ChevronDown } from "./ui";
 
 export type Faq = { q: string; a: string };
 
+/**
+ * Multiple items can be open at once.
+ *
+ * This previously tracked a single open index, so opening one answer closed
+ * whatever you were reading. On the three FAQ hub pages — twelve questions each,
+ * used as reference material rather than a linear read — that made comparing two
+ * answers impossible. The first item still starts open so the pattern is
+ * self-evident.
+ */
 export function FAQ({ faqs }: { faqs: Faq[] }) {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<Set<number>>(() => new Set([0]));
+  const toggle = (i: number) =>
+    setOpen((prev) => {
+      const next = new Set(prev);
+      if (!next.delete(i)) next.add(i);
+      return next;
+    });
   return (
     <div className="mx-auto max-w-3xl divide-y divide-line rounded-2xl border border-line bg-white px-5 shadow-card sm:px-7">
       {faqs.map((f, i) => {
-        const isOpen = open === i;
+        const isOpen = open.has(i);
         const panelId = `faq-panel-${i}`;
         const buttonId = `faq-button-${i}`;
         return (
@@ -19,7 +34,7 @@ export function FAQ({ faqs }: { faqs: Faq[] }) {
               <button
                 type="button"
                 id={buttonId}
-                onClick={() => setOpen(isOpen ? null : i)}
+                onClick={() => toggle(i)}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 className="flex w-full items-center justify-between gap-4 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2"

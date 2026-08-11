@@ -3,7 +3,7 @@ import type { ContentPageData, Stat } from "@/lib/content-types";
 const sharedTherapies = {
   heading: "Programs & Therapies Offered",
   body: [
-    "Effective recovery requires more than medical support alone. Our Los Angeles addiction treatment center integrates evidence-based therapies, holistic practices, and family involvement to support healing on every level. Each client receives a personalized treatment plan delivered by licensed clinicians.",
+    "Recovery takes more than medical care. We combine proven therapies, whole-person practices, and family involvement so healing reaches every level. Every treatment plan is personal, and licensed clinicians deliver it.",
   ],
   // Cards rather than a flat bullet list — one shared object, so this satisfies
   // the same review note on all six area pages at once.
@@ -24,6 +24,9 @@ type Area = {
   name: string;
   h1: string;
   metaTitle: string;
+  /** <=160 chars. Authored, never derived — `intro` is body prose and ran 178-246
+   *  chars here, so search results truncated mid-sentence on every area page. */
+  metaDescription: string;
   intro: string;
   aboutHeading: string;
   about: string[];
@@ -36,20 +39,22 @@ type Area = {
 const areas: Area[] = [
   {
     slug: "los-angeles",
+    metaDescription:
+      "Drug and alcohol detox and residential treatment serving Los Angeles. Licensed clinicians, 24/7 medical care, and personalized treatment plans.",
     name: "Los Angeles",
     h1: "Addiction Treatment & Detox in Los Angeles, CA",
-    metaTitle: "Addiction Treatment in Los Angeles, CA | Wellness Detox LA",
+    metaTitle: "Addiction Treatment in Los Angeles, CA",
     intro:
       "We're committed to providing exceptional drug and alcohol addiction treatment and medical detox services to individuals and families throughout the Los Angeles area, in a supportive, clinically driven environment with 24/7 professional care.",
     aboutHeading: "Leading Addiction Treatment Center in Los Angeles, California",
     about: [
-      "We specialize in drug and alcohol detox, residential addiction treatment, and dual diagnosis programs, ensuring every client receives a treatment plan tailored to their unique needs.",
-      "Our team of licensed clinicians, nurses, and behavioral health specialists uses proven therapeutic approaches and individualized care to help clients achieve long-term, sustainable recovery.",
+      "We provide drug and alcohol detox, [residential addiction treatment](/treatment/residential), and [dual diagnosis programs](/treatment/dual-diagnosis). Every client gets a treatment plan built around their own history and needs.",
+      "Our team includes licensed clinicians, nurses, and behavioral health specialists. They use proven therapies, adjusted to each person, to help recovery last.",
     ],
     whyHeading: "What Makes Wellness Detox LA a Trusted Rehab Center in Los Angeles",
     why: [
-      "Our treatment center, set in a quiet, easily accessible neighborhood within the greater Los Angeles area, offers the ideal balance of privacy, accessibility, and warmth. Clients can fully focus on their recovery in a home-like atmosphere supported by a dedicated team of licensed medical and behavioral health professionals.",
-      "With more than 15 years of combined clinical expertise through the Quadrant Health Group, our team delivers evidence-based care that addresses both addiction and co-occurring mental health needs.",
+      "Our center sits in a quiet neighborhood in the greater Los Angeles area. It is private, easy to reach, and feels like a home rather than a hospital. That lets you focus on one thing: getting well, with licensed medical and behavioral health staff beside you.",
+      "Our team brings more than 15 years of combined clinical experience through the Quadrant Health Group. We treat addiction and any mental health condition that comes with it, together rather than separately.",
     ],
     whyStats: [
       {
@@ -61,20 +66,22 @@ const areas: Area[] = [
   },
   {
     slug: "pomona",
+    metaDescription:
+      "Medical detox and residential addiction treatment in Pomona, CA. A warm, private setting with 24/7 clinical care and individualized treatment plans.",
     name: "Pomona",
     h1: "Detox and Addiction Treatment in Pomona, CA",
-    metaTitle: "Addiction Treatment in Pomona, CA | Wellness Detox LA",
+    metaTitle: "Addiction Treatment in Pomona, CA",
     intro:
       "We're proud to be part of the Pomona community, offering high-quality addiction treatment and medical detox services in a warm, compassionate setting created to provide hope and healing to individuals and families right here at home.",
     aboutHeading: "Comprehensive Drug & Alcohol Rehab Programs in Pomona",
     about: [
-      "Located in a quiet, accessible neighborhood, our Pomona rehab center combines expert medical care with the comfort and privacy clients deserve. Our dedicated team understands the challenges faced by our local community and is committed to guiding each person toward a healthier, substance-free life.",
-      "Whether you're beginning detox, continuing treatment through a residential program, or supporting a loved one, Wellness Detox LA offers the resources, experience, and heart to make lasting recovery possible.",
+      "Our Pomona center sits in a quiet, easy-to-reach neighborhood. You get expert medical care in a comfortable, private setting. Our team knows this community and what people here are up against.",
+      "Whether you are starting detox, moving into a residential program, or helping someone you love, we have the experience and the care to help recovery last.",
     ],
     whyHeading: "What Sets Our Pomona Treatment Center Apart",
     why: [
-      "Our rehab center, located in a peaceful Pomona neighborhood with convenient access to the greater Los Angeles area, offers both accessibility and privacy — making it the ideal place to focus entirely on recovery.",
-      "With more than 15 years of combined experience through the Quadrant Health Group, our clinicians deliver evidence-based addiction treatment programs that include medical detox, residential rehabilitation, and dual diagnosis care.",
+      "We are in a peaceful Pomona neighborhood, close to the greater Los Angeles area. It is private and easy to reach — a good place to focus fully on recovery.",
+      "Our clinicians bring more than 15 years of combined experience through the Quadrant Health Group. Programs include [medical detox](/treatment/detox), [residential rehabilitation](/treatment/residential), and [dual diagnosis care](/treatment/dual-diagnosis).",
     ],
     whyStats: [
       {
@@ -86,20 +93,22 @@ const areas: Area[] = [
   },
   {
     slug: "north-hollywood",
+    metaDescription:
+      "Detox and residential addiction treatment near North Hollywood, CA. A calm, private setting with licensed clinicians and 24/7 medical support.",
     name: "North Hollywood",
     h1: "Addiction Treatment Near North Hollywood, CA",
-    metaTitle: "Addiction Treatment in North Hollywood, CA | Wellness Detox LA",
+    metaTitle: "Addiction Treatment in North Hollywood, CA",
     intro:
       "North Hollywood residents looking for high-quality addiction care turn to Wellness Detox LA for our compassionate approach and proven clinical expertise, in a private, supportive setting for detox, residential treatment, and individualized care.",
     aboutHeading: "Trusted Addiction Rehab for North Hollywood Residents",
     about: [
-      "Our many clients from North Hollywood appreciate our calm, distraction-free environment, which allows them to step away from daily pressures and fully focus on healing.",
-      "Our licensed medical and behavioral health team offers personalized treatment plans, 24/7 support, and evidence-based therapies tailored to each person's needs.",
+      "Clients from North Hollywood tell us the calm, distraction-free setting is what helps most. It lets them step away from daily pressure and focus on healing.",
+      "Our licensed medical and behavioral health team offers 24/7 support, proven therapies, and a treatment plan shaped around each person.",
     ],
     whyHeading: "Why North Hollywood Residents Trust Wellness Detox LA",
     why: [
-      "Our treatment center, located within convenient reach of North Hollywood, offers the privacy and structure required for meaningful progress. Clients receive individualized attention from licensed medical and behavioral health professionals.",
-      "With more than 15 years of combined experience through the Quadrant Health Group, our team is dedicated to helping every person build a strong foundation for lasting sobriety and emotional well-being.",
+      "We are an easy drive from North Hollywood. The setting is private and structured, which is what real progress needs. You work with licensed medical and behavioral health staff who know your case.",
+      "Our team brings more than 15 years of combined experience through the Quadrant Health Group. We help each person build a strong base for lasting sobriety and steadier mental health.",
     ],
     whyStats: [
       {
@@ -111,39 +120,43 @@ const areas: Area[] = [
   },
   {
     slug: "burbank",
+    metaDescription:
+      "Detox and residential addiction treatment a short drive from Burbank, CA. Licensed clinical care, dual diagnosis support, and aftercare planning.",
     name: "Burbank",
     h1: "Addiction Treatment & Detox in Burbank, CA",
-    metaTitle: "Addiction Treatment in Burbank, CA | Wellness Detox LA",
+    metaTitle: "Addiction Treatment in Burbank, CA",
     intro:
       "Burbank residents seeking reliable, professional addiction treatment choose Wellness Detox LA for our commitment to safety and long-term recovery success — a calm, private environment a short drive from Burbank.",
     aboutHeading: "Compassionate Detox & Addiction Treatment Near Burbank, CA",
     about: [
-      "Our licensed clinical team delivers personalized care across every stage of recovery, including medical detox, residential treatment, and dual diagnosis support — making us a trusted resource for individuals and families throughout the Burbank community.",
-      "Clients appreciate our compassionate approach, evidence-based therapies, and a treatment setting designed to promote clarity, stability, and lasting sobriety.",
+      "Our licensed clinical team cares for people at every stage of recovery — [medical detox](/treatment/detox), [residential treatment](/treatment/residential), and [dual diagnosis support](/treatment/dual-diagnosis). Families across Burbank rely on us.",
+      "Clients point to three things: how they are treated, therapies that are proven to work, and a setting built for clarity and stability.",
     ],
     whyHeading: "Why Burbank Residents Choose Wellness Detox LA",
     why: [
-      "Clients from Burbank appreciate our calm, private setting and the focused attention provided by licensed medical and behavioral health professionals.",
-      "We meet you where you are in your journey, offering medical detox, residential treatment, dual diagnosis support, and aftercare planning to guide clients through every stage of recovery.",
+      "Clients from Burbank value the calm, private setting and the close attention they get from licensed medical and behavioral health staff.",
+      "We meet you wherever you are. That may mean medical detox, residential treatment, dual diagnosis support, or [aftercare planning](/treatment/aftercare) — or all of them in turn.",
     ],
     hero: "/images/DSC_6209-HDR.webp",
   },
   {
     slug: "los-angeles-county",
+    metaDescription:
+      "Addiction treatment for Los Angeles County: medical detox, residential care, and dual diagnosis support with 24/7 clinical oversight.",
     name: "Los Angeles County",
     h1: "Drug & Alcohol Addiction Treatment in Los Angeles County",
-    metaTitle: "Addiction Treatment in Los Angeles County | Wellness Detox LA",
+    metaTitle: "Addiction Treatment in Los Angeles County",
     intro:
       "Wellness Detox LA proudly serves individuals and families across Los Angeles County, offering compassionate, clinically grounded addiction treatment in a safe and supportive environment.",
     aboutHeading: "Trusted Drug & Alcohol Treatment for Los Angeles County Residents",
     about: [
-      "Our licensed medical and behavioral health teams create personalized treatment plans using evidence-based therapeutic approaches. Whether someone is beginning medical detox, transitioning into residential care, seeking dual diagnosis support, or preparing for long-term recovery planning, we offer the structure, guidance, and clinical expertise needed for meaningful progress.",
-      "Our facility provides the peace, comfort, and privacy required to fully focus on healing — with attentive staff, 24/7 medical oversight, and a setting that promotes safety and stability.",
+      "Our licensed medical and behavioral health teams build each treatment plan around the person, using therapies proven to work. You may be starting [medical detox](/treatment/detox), moving into residential care, seeking [dual diagnosis support](/treatment/dual-diagnosis), or planning for the long term. Each stage has the structure and clinical expertise real progress needs.",
+      "The facility is quiet, comfortable, and private, so you can focus on healing. Staff are attentive, medical oversight runs 24/7, and the setting is built for safety.",
     ],
     whyHeading: "Why Los Angeles County Residents Choose Wellness Detox LA",
     why: [
-      "We offer a calm, private environment that allows clients to step away from distractions and focus entirely on recovery, with 24/7 medical oversight, individualized treatment planning, and a staff of licensed professionals.",
-      "With more than 15 years of combined experience within the Quadrant Health Group, Wellness Detox LA is a trusted resource for Los Angeles County residents seeking detox, residential stabilization, dual diagnosis support, and long-term recovery planning.",
+      "The environment is calm and private, so you can step away from distractions and focus on recovery. Medical oversight runs 24/7, plans are individual, and every staff member is licensed.",
+      "We bring more than 15 years of combined experience through the Quadrant Health Group. Los Angeles County residents come to us for detox, [residential stabilization](/treatment/residential), dual diagnosis support, and long-term recovery planning.",
     ],
     whyStats: [
       {
@@ -155,20 +168,22 @@ const areas: Area[] = [
   },
   {
     slug: "southern-california",
+    metaDescription:
+      "Addiction treatment across Southern California: medical detox, residential rehab, and dual diagnosis care in a calm, private setting.",
     name: "Southern California",
     h1: "Drug & Alcohol Addiction Treatment in Southern California",
-    metaTitle: "Addiction Rehab in Southern California | Wellness Detox LA",
+    metaTitle: "Addiction Rehab in Southern California",
     intro:
       "Wellness Detox LA proudly supports individuals and families across Southern California with high-quality, compassionate addiction treatment in a safe and restorative environment.",
     aboutHeading: "A Full Continuum of Evidence-Based Treatment",
     about: [
-      "Our licensed medical and behavioral health professionals create personalized treatment plans using evidence-based therapeutic methods. Whether a client is beginning medical detox, entering a residential program, or receiving dual diagnosis support, we provide the structure and professional guidance required to make meaningful progress.",
-      "Clients from all parts of Southern California appreciate our calm therapeutic setting, 24/7 medical oversight, and commitment to long-term sobriety.",
+      "Our licensed medical and behavioral health staff build each plan around the person, using methods proven to work. Whether you are starting [medical detox](/treatment/detox), entering a residential program, or getting [dual diagnosis support](/treatment/dual-diagnosis), you get the structure and guidance that progress requires.",
+      "Clients come from across Southern California for the calm setting, the 24/7 medical oversight, and a focus on sobriety that lasts.",
     ],
     whyHeading: "Why Southern California Residents Choose Wellness Detox LA",
     why: [
-      "We offer a calm, private environment where clients can focus entirely on their healing, with individualized treatment plans, 24/7 clinical oversight, and evidence-based therapeutic care.",
-      "Backed by more than 15 years of combined experience within the Quadrant Health Group, Wellness Detox LA is a trusted resource for Southern California residents seeking detox, residential stabilization, dual diagnosis support, and ongoing relapse-prevention planning.",
+      "The setting is calm and private, so healing can be the only job. Plans are individual, clinical oversight runs 24/7, and the therapies are proven ones.",
+      "We bring more than 15 years of combined experience through the Quadrant Health Group. Southern California residents come to us for detox, [residential stabilization](/treatment/residential), dual diagnosis support, and [relapse-prevention planning](/treatment/aftercare).",
     ],
     whyStats: [
       {
@@ -185,6 +200,7 @@ const areas: Area[] = [
 export const areaPages: ContentPageData[] = areas.map((a) => ({
   slug: a.slug,
   metaTitle: a.metaTitle,
+  metaDescription: a.metaDescription,
   eyebrow: "Areas We Serve",
   h1: a.h1,
   intro: a.intro,
