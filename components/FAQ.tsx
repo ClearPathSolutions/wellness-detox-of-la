@@ -23,7 +23,7 @@ export function FAQ({ faqs }: { faqs: Faq[] }) {
       return next;
     });
   return (
-    <div className="mx-auto max-w-3xl divide-y divide-line rounded-2xl border border-line bg-white px-5 shadow-card sm:px-7">
+    <div className="divide-y divide-line rounded-2xl border border-line bg-white px-5 shadow-card sm:px-7">
       {faqs.map((f, i) => {
         const isOpen = open.has(i);
         const panelId = `faq-panel-${i}`;

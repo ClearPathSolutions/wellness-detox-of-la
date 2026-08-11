@@ -93,10 +93,10 @@
    past the 60–75 that sustained reading wants. `ch` tracks the actual font, so
    this stays correct if the type scale moves. */
 .measure {
-  max-width: 68ch;
+  max-width: 74ch;
 }
 .measure-wide {
-  max-width: 78ch;
+  max-width: 84ch;
 }
 
 :root {
