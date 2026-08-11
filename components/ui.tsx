@@ -169,6 +169,14 @@ export function RichText({ children }: { children: string }) {
   return <>{parts}</>;
 }
 
+/**
+ * Width of the single reading column used by ContentPage and BlogPostView, and
+ * by PageHero's `width="reading"` so the H1 lines up with the body beneath it.
+ * Sized close to the prose measure — when the on-page nav was removed the old
+ * 68rem column left paragraphs trailing off into a dead right-hand gutter.
+ */
+export const READING_WIDTH = "max-w-[48rem]";
+
 /* --------------------------------- Prose --------------------------------- */
 
 /**

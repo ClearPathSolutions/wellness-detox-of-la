@@ -6,18 +6,29 @@ import { site } from "@/lib/site";
 import { uniqueSlug } from "@/lib/slug";
 import { breadcrumbLd, crumbsFrom } from "@/lib/seo";
 import { CtaBanner } from "./blocks";
-import { JumpNav, JumpNavSidebar, type JumpNavItem } from "./JumpNav";
-import { ArrowRight, Breadcrumb, Container } from "./ui";
+import { ArrowRight, Breadcrumb, Container, READING_WIDTH } from "./ui";
 
 const HEADING_SCROLL_MT = "scroll-mt-24 lg:scroll-mt-36"; // unify with ContentPage targets
+
+/** Decode the handful of HTML entities `marked` emits in inline content. */
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) =>
+      String.fromCharCode(parseInt(h, 16)),
+    )
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
 
 /** Escape a string for safe use inside a RegExp (the phone number has dashes). */
 function escapeRe(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function renderPost(body: string): { html: string; toc: JumpNavItem[] } {
-  const toc: JumpNavItem[] = [];
+function renderPost(body: string): { html: string } {
   const seen = new Set<string>();
   const md = new Marked({ gfm: true, breaks: false });
 
@@ -26,9 +37,12 @@ function renderPost(body: string): { html: string; toc: JumpNavItem[] } {
       // v14.1.4: heading receives a token object; this.parser renders inline children.
       heading({ tokens, depth }) {
         const inner = this.parser.parseInline(tokens);
-        const text = inner.replace(/<[^>]+>/g, "").trim();
+        // `parseInline` returns HTML, so entities are still encoded. Stripping
+        // tags alone left `&#39;` / `&quot;` in the nav label, which React then
+        // escaped again — the TOC was literally showing "Brain&#39;s".
+        // Ids are still emitted so headings remain deep-linkable.
+        const text = decodeEntities(inner.replace(/<[^>]+>/g, "")).trim();
         const id = uniqueSlug(text, seen);
-        if (depth === 2) toc.push({ id, label: text }); // H2-only nav (keeps the bar short)
         return `<h${depth} id="${id}" class="${HEADING_SCROLL_MT}">${inner}</h${depth}>`;
       },
       // Auto-promote the phone CTA line to a callout (unique token → no false positives).
@@ -37,7 +51,7 @@ function renderPost(body: string): { html: string; toc: JumpNavItem[] } {
         if (inner.includes(site.phone)) {
           const linked = inner.replace(
             new RegExp(escapeRe(site.phone), "g"),
-            `<a href="${site.phoneHref}">${site.phone}</a>`
+            `<a href="${site.phoneHref}">${site.phone}</a>`,
           );
           return `<p class="prose-callout--phone">${linked}</p>`;
         }
@@ -47,11 +61,11 @@ function renderPost(body: string): { html: string; toc: JumpNavItem[] } {
   });
 
   const html = md.parse(body) as string;
-  return { html, toc };
+  return { html };
 }
 
 export function BlogPostView({ post }: { post: BlogPost }) {
-  const { html, toc } = renderPost(post.body);
+  const { html } = renderPost(post.body);
   const blogLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -76,7 +90,9 @@ export function BlogPostView({ post }: { post: BlogPost }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogLd).replace(/</g, "\\u003c"),
+        }}
       />
       <script
         type="application/ld+json"
@@ -86,38 +102,43 @@ export function BlogPostView({ post }: { post: BlogPost }) {
       />
       <article>
         <Container className="pt-10 lg:pt-14">
-          <Breadcrumb items={crumbs} />
-          <div className="measure-wide">
-            <p className="eyebrow mb-3">{post.displayDate}</p>
-            <h1 className="t-h1 text-ink">{post.title}</h1>
-            <p className="t-lead mt-5 text-muted">{post.excerpt}</p>
-          </div>
-          <div className="relative mt-9 aspect-[16/8] overflow-hidden rounded-[1.75rem] shadow-soft">
-            <Image src={post.hero} alt={post.title} fill priority sizes="(max-width: 1024px) 100vw, 1200px" className="object-cover" />
+          <div className={`mx-auto ${READING_WIDTH}`}>
+            <Breadcrumb items={crumbs} />
+            <div>
+              <p className="eyebrow mb-3">{post.displayDate}</p>
+              <h1 className="t-h1 text-ink">{post.title}</h1>
+              <p className="t-lead mt-5 text-muted">{post.excerpt}</p>
+            </div>
+            <div className="relative mt-9 aspect-[16/8] overflow-hidden rounded-[1.75rem] shadow-soft">
+              <Image
+                src={post.hero}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 768px"
+                className="object-cover"
+              />
+            </div>
           </div>
         </Container>
 
-        <JumpNav items={toc} />
-
         <Container className="py-12 lg:py-20">
-          {/* Matches ContentPage: sticky TOC beside the column on desktop, the
-              sticky pill bar above it on narrow screens. */}
-          {/* Grid only when the sidebar will render — see the note in ContentPage. */}
-          <div
-            className={`mx-auto max-w-[68rem] ${
-              toc.length >= 3 ? "lg:grid lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12 xl:gap-16" : ""
-            }`}
-          >
-            <JumpNavSidebar items={toc} />
+          <div className={`mx-auto ${READING_WIDTH}`}>
             <div className="min-w-0">
               {/* SAFETY: `html` comes from `marked` over post bodies authored as
                   first-party template literals in lib/data/blog.ts. There is no user
                   or third-party input path, so the output is trusted and unsanitised.
                   If authoring ever moves to a CMS, form, or any external source, add
                   a sanitiser (rehype-sanitize / DOMPurify) BEFORE that change ships. */}
-              <div className="prose measure" dangerouslySetInnerHTML={{ __html: html }} />
+              <div
+                className="prose measure"
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
               <div className="measure mt-12 border-t border-line pt-8">
-                <Link href="/blog" className="inline-flex items-center gap-2 font-display font-semibold text-rose-dark">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 font-display font-semibold text-rose-dark"
+                >
                   <ArrowRight width={16} height={16} className="rotate-180" />
                   Back to all articles
                 </Link>
@@ -127,7 +148,10 @@ export function BlogPostView({ post }: { post: BlogPost }) {
         </Container>
       </article>
 
-      <CtaBanner title="Ready to take the first step?" intro="Our admissions team is available 24/7 to answer your questions, verify insurance, and help you begin recovery." />
+      <CtaBanner
+        title="Ready to take the first step?"
+        intro="Our admissions team is available 24/7 to answer your questions, verify insurance, and help you begin recovery."
+      />
     </>
   );
 }

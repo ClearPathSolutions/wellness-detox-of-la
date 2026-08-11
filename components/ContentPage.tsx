@@ -6,7 +6,6 @@ import { uniqueSlug } from "@/lib/slug";
 import { PageHero } from "./PageHero";
 import { ContactForm } from "./ContactForm";
 import { FAQ } from "./FAQ";
-import { JumpNav, JumpNavSidebar, type JumpNavItem } from "./JumpNav";
 import {
   CategoryGroups,
   CtaBanner,
@@ -15,7 +14,14 @@ import {
   SubstanceGrid,
   WithdrawalTimeline,
 } from "./blocks";
-import { ArrowRight, CheckIcon, Container, Prose, RichText } from "./ui";
+import {
+  ArrowRight,
+  CheckIcon,
+  Container,
+  Prose,
+  READING_WIDTH,
+  RichText,
+} from "./ui";
 
 const levels = [
   { label: "Medical Detox", href: "/treatment/detox" },
@@ -38,7 +44,9 @@ function LevelsOfCare({ currentSlug }: { currentSlug: string }) {
               className="flex items-center justify-between gap-2 rounded-xl border border-rose bg-rose-soft/50 px-4 py-3.5 text-sm font-semibold text-ink"
             >
               {l.label}
-              <span className="text-xs font-medium text-rose-dark">You are here</span>
+              <span className="text-xs font-medium text-rose-dark">
+                You are here
+              </span>
             </span>
           );
         }
@@ -103,8 +111,9 @@ export function ContentPage({ page }: { page: ContentPageData }) {
         }
       : null;
 
-  // --- server: assign collision-safe ids + build the jump-nav list ---
-  // Seed reserved ids first so a section heading like "Levels of Care" can't collide.
+  // Collision-safe section ids. Retained after the on-page nav was removed:
+  // they are still deep-link targets, and dropping them would break any
+  // existing links to #faqs / #levels-of-care.
   const seen = new Set<string>();
   if (page.levelsOfCare) seen.add("levels-of-care");
   if (page.substances) seen.add("substances");
@@ -112,24 +121,17 @@ export function ContentPage({ page }: { page: ContentPageData }) {
   if (page.form === "contact") seen.add("get-in-touch");
 
   const sectionIds = page.sections.map((s) =>
-    s.heading ? uniqueSlug(s.heading, seen) : undefined
+    s.heading ? uniqueSlug(s.heading, seen) : undefined,
   );
-
-  const navItems: JumpNavItem[] = [];
-  page.sections.forEach((s, i) => {
-    if (s.heading && sectionIds[i]) navItems.push({ id: sectionIds[i]!, label: s.heading });
-  });
-  if (page.levelsOfCare) navItems.push({ id: "levels-of-care", label: "Levels of Care" });
-  if (page.substances) navItems.push({ id: "substances", label: "Substances We Treat" });
-  if (page.faqs?.length) navItems.push({ id: "faqs", label: "FAQs" });
-  if (page.form === "contact") navItems.push({ id: "get-in-touch", label: "Get in Touch" });
 
   return (
     <>
       {faqLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqLd).replace(/</g, "\\u003c"),
+          }}
         />
       )}
 
@@ -140,13 +142,15 @@ export function ContentPage({ page }: { page: ContentPageData }) {
         title={page.h1}
         intro={page.intro}
         width="reading"
+        actions
       />
 
       {page.hero && (
         <Container className="pt-10 lg:pt-14">
-          {/* Same 68rem column as the hero text and the body below it — full-bleed
-              here left the image visibly wider than everything it belongs to. */}
-          <div className="relative mx-auto aspect-[16/8] max-w-[68rem] overflow-hidden rounded-[1.75rem] shadow-soft">
+          {/* Same reading column as the hero text and body below it. */}
+          <div
+            className={`relative mx-auto aspect-[16/8] ${READING_WIDTH} overflow-hidden rounded-[1.75rem] shadow-soft`}
+          >
             <Image
               src={page.hero}
               alt={page.h1}
@@ -159,30 +163,17 @@ export function ContentPage({ page }: { page: ContentPageData }) {
         </Container>
       )}
 
-      <JumpNav items={navItems} />
-
       <Container className="py-12 lg:py-20">
-        {/* Sidebar TOC + content. The sidebar column collapses below lg, where
-            the sticky pill bar above takes over.
-
-            Capped and centred rather than filling the 1600px shell: prose is
-            held to `.measure`, so in a full-width column it stopped two-thirds
-            across and left a dead gutter the eye reads as a broken layout. */}
-        {/* The sidebar hides itself under 3 entries, so the two-column grid is
-            only applied when it will actually be populated — otherwise a short
-            page reserved a 14rem column for nothing and sat visibly off-centre. */}
-        <div
-          className={`mx-auto max-w-[68rem] ${
-            navItems.length >= 3 ? "lg:grid lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12 xl:gap-16" : ""
-          }`}
-        >
-          <JumpNavSidebar items={navItems} />
-
+        {/* Single reading column. Capped near the prose measure so paragraphs
+            fill the width rather than trailing off into a dead right-hand gutter. */}
+        <div className={`mx-auto ${READING_WIDTH}`}>
           <div className="min-w-0">
             {page.sections.map((s, i) => (
               <PageSection key={i} id={sectionIds[i]} first={i === 0}>
                 {s.eyebrow && <p className="eyebrow mb-2">{s.eyebrow}</p>}
-                {s.heading && <h2 className="t-h2 measure-wide text-ink">{s.heading}</h2>}
+                {s.heading && (
+                  <h2 className="t-h2 measure-wide text-ink">{s.heading}</h2>
+                )}
 
                 {s.body && (
                   <Prose className="mt-4">
@@ -200,7 +191,10 @@ export function ContentPage({ page }: { page: ContentPageData }) {
                 {s.bullets && (
                   <ul className="measure-wide mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
                     {s.bullets.map((b, j) => (
-                      <li key={j} className="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-ink-700">
+                      <li
+                        key={j}
+                        className="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-ink-700"
+                      >
                         <CheckIcon
                           width={17}
                           height={17}
@@ -227,8 +221,8 @@ export function ContentPage({ page }: { page: ContentPageData }) {
               <PageSection id="levels-of-care">
                 <h2 className="t-h2 text-ink">Our Levels of Care</h2>
                 <p className="t-body measure mt-3 text-muted">
-                  Treatment moves through stages. These are the four we provide, in the order most
-                  clients experience them.
+                  Treatment moves through stages. These are the four we provide,
+                  in the order most clients experience them.
                 </p>
                 <div className="mt-6">
                   <LevelsOfCare currentSlug={page.slug} />
@@ -258,9 +252,12 @@ export function ContentPage({ page }: { page: ContentPageData }) {
               <PageSection id="get-in-touch">
                 <h2 className="t-h2 text-ink">Reach out confidentially</h2>
                 <p className="t-body measure mt-3 text-muted">
-                  Send us a message and an admissions specialist will get back to you. Prefer to talk
-                  now? Call{" "}
-                  <a href={site.phoneHref} className="font-semibold text-rose-dark underline underline-offset-2">
+                  Send us a message and an admissions specialist will get back
+                  to you. Prefer to talk now? Call{" "}
+                  <a
+                    href={site.phoneHref}
+                    className="font-semibold text-rose-dark underline underline-offset-2"
+                  >
                     {site.phone}
                   </a>
                   .

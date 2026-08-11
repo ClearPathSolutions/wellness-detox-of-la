@@ -1,21 +1,37 @@
 import Image from "next/image";
 import { breadcrumbLd, crumbsFrom } from "@/lib/seo";
-import { Breadcrumb, Container } from "./ui";
+import { site } from "@/lib/site";
+import {
+  Breadcrumb,
+  Button,
+  ClockIcon,
+  Container,
+  PhoneIcon,
+  READING_WIDTH,
+  ShieldIcon,
+} from "./ui";
 
 /**
- * Standard page header: breadcrumb → eyebrow → H1 → standfirst.
+ * Standard page header: breadcrumb → eyebrow → H1 → standfirst → actions.
  *
- * Two things changed here beyond styling:
+ * Notes on the composition, because two earlier attempts got it wrong:
  *
- * 1. The eyebrow used to render *after* the H1, putting the framing label below
- *    the thing it frames. See the note on `SectionHeading` — same fix, page level.
+ * 1. The eyebrow renders *before* the H1. It used to come after, which put the
+ *    framing label below the thing it frames. Same fix as `SectionHeading`.
  *
- * 2. `crumb` is still the flat `"Parent / Leaf"` string the content files
- *    already store, but it is now expanded into a real trail: intermediate
- *    levels become links, and the matching BreadcrumbList JSON-LD is emitted
- *    from the same array. Previously the whole string rendered as one unlinked
- *    span, so a page three levels deep exposed exactly one working link and no
- *    structured data at all.
+ * 2. `crumb` is the flat `"Parent / Leaf"` string the content files already
+ *    store, expanded here into a linked trail plus BreadcrumbList JSON-LD.
+ *
+ * 3. `actions` exists because only the six area pages carry a hero image — the
+ *    other 27 content pages were a tinted band holding nothing but three short
+ *    text elements, centred in a column half the viewport wide. It read as an
+ *    unfinished placeholder. The action row gives the band a base, fills it with
+ *    something useful rather than decorative, and puts the phone number above
+ *    the fold on every treatment and admissions page.
+ *
+ * A blurred rose circle used to sit at `-top-20 right-1/4`. At this band height
+ * it rendered as a faint smudge in the empty right-hand third — read as a
+ * printing artefact rather than a deliberate mark. Removed.
  */
 export function PageHero({
   eyebrow,
@@ -24,6 +40,7 @@ export function PageHero({
   crumb,
   bg,
   width = "wide",
+  actions = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -33,14 +50,22 @@ export function PageHero({
   /** Full-bleed dark hero variant. Re-check text contrast against any new image. */
   bg?: string;
   /**
-   * `"reading"` matches the 68rem centred column used by ContentPage and
+   * `"reading"` matches the centred column used by ContentPage and
    * BlogPostView, so the H1 lines up with the body text beneath it. `"wide"`
    * keeps the full shell for pages whose next section is full-bleed.
    */
   width?: "wide" | "reading";
+  /** Show the call / verify-insurance row and the reassurance line under it. */
+  actions?: boolean;
 }) {
   const crumbs = crumbsFrom(crumb);
-  const inner = width === "reading" ? "mx-auto max-w-[68rem]" : "";
+  const reading = width === "reading";
+  const inner = reading ? `mx-auto ${READING_WIDTH}` : "";
+  // In the `wide` variant nothing else constrains the line length, so the H1 and
+  // standfirst carry their own caps. In `reading` the wrapper already does it,
+  // and doubling up would narrow them further.
+  const titleWidth = reading ? "" : "max-w-4xl";
+  const introWidth = reading ? "" : "measure-wide";
 
   const schema = (
     <script
@@ -50,6 +75,30 @@ export function PageHero({
       }}
     />
   );
+
+  const actionRow = actions ? (
+    <>
+      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+        <Button href={site.phoneHref} size="lg" trackAs="page-hero">
+          <PhoneIcon width={18} height={18} />
+          Call {site.phone}
+        </Button>
+        <Button href="/admissions/verify-your-insurance" variant="outline" size="lg">
+          Verify Your Insurance
+        </Button>
+      </div>
+      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
+        <span className="flex items-center gap-2">
+          <ShieldIcon width={16} height={16} className="text-rose-dark" />
+          100% confidential
+        </span>
+        <span className="flex items-center gap-2">
+          <ClockIcon width={16} height={16} className="text-rose-dark" />
+          Admissions open 24/7
+        </span>
+      </div>
+    </>
+  ) : null;
 
   if (bg) {
     return (
@@ -69,14 +118,12 @@ export function PageHero({
         <Container className="relative py-16 lg:py-24">
           <div className={inner}>
             <Breadcrumb items={crumbs} tone="light" />
-            {eyebrow && (
-              <p className="eyebrow mb-3 text-rose-soft">{eyebrow}</p>
-            )}
-            <h1 className="t-h1 max-w-4xl text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.65)]">
+            {eyebrow && <p className="eyebrow mb-3 text-rose-soft">{eyebrow}</p>}
+            <h1 className={`t-h1 ${titleWidth} text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.95),0_2px_14px_rgba(0,0,0,0.65)]`}>
               {title}
             </h1>
             {intro && (
-              <p className="t-lead measure-wide mt-5 text-white/90 [text-shadow:0_1px_6px_rgba(0,0,0,0.7)]">
+              <p className={`t-lead ${introWidth} mt-5 text-white/90 [text-shadow:0_1px_6px_rgba(0,0,0,0.7)]`}>
                 {intro}
               </p>
             )}
@@ -87,20 +134,15 @@ export function PageHero({
   }
 
   return (
-    <section className="relative overflow-hidden border-b border-line bg-sand/40">
+    <section className="relative border-b border-line bg-sand/40">
       {schema}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-20 right-1/4 h-80 w-80 rounded-full bg-rose/10 blur-3xl"
-      />
-      <Container className="relative py-14 lg:py-20">
+      <Container className="py-12 lg:py-16">
         <div className={inner}>
           <Breadcrumb items={crumbs} />
           {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-          <h1 className="t-h1 max-w-4xl text-ink">{title}</h1>
-          {intro && (
-            <p className="t-lead measure-wide mt-5 text-muted">{intro}</p>
-          )}
+          <h1 className={`t-h1 ${titleWidth} text-ink`}>{title}</h1>
+          {intro && <p className={`t-lead ${introWidth} mt-5 text-muted`}>{intro}</p>}
+          {actionRow}
         </div>
       </Container>
     </section>
