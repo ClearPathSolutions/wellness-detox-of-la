@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { MapEmbed } from "@/components/MapEmbed";
 import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -102,8 +103,6 @@ export default function Home() {
       <SplitFeature
         eyebrow="Heal With Confidence & Compassion"
         title="A Los Angeles leader in addiction treatment"
-        image="/images/DSC_6257-HDR.webp"
-        imageAlt="Bright, welcoming shared common area inside the Wellness Detox of LA facility"
         cta={{ label: "Who We Are", href: "/about" }}
       >
         <p>
@@ -209,9 +208,8 @@ export default function Home() {
         reverse
         eyebrow="Compassionate, Accredited Care"
         title="What makes Wellness Detox LA a leading rehab"
-        image="/images/DJI_20250325105814_0096_D.webp"
-        imageAlt="Aerial view of the Wellness Detox of LA property with the San Gabriel Mountains beyond"
         cta={{ label: "Learn More About Us", href: "/about" }}
+        media={<MapEmbed />}
       >
         <p>
           Choosing the right treatment center is one of the most important decisions in recovery.

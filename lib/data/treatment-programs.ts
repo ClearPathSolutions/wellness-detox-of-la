@@ -193,10 +193,20 @@ export const treatmentPrograms: ContentPageData[] = [
       },
       {
         heading: "Conditions We Treat",
-        body: ["Our clinical team specializes in treating the mental health disorders and substance use issues that frequently occur together, including anxiety disorders, depression and mood disorders, bipolar disorder, PTSD and trauma-related conditions, personality disorders, and psychotic disorders — alongside alcohol, benzodiazepine, cocaine, fentanyl, heroin, meth, and opioid addiction."],
+        body: ["Our clinical team specializes in treating the mental health disorders and substance use issues that frequently occur together. The substances we treat are listed below, each with its own dedicated programme page."],
+        subsections: [
+          { heading: "Anxiety Disorders", body: "Generalised anxiety, panic, and social anxiety that often drive self-medication.", icon: "heart" as const },
+          { heading: "Depression & Mood Disorders", body: "Persistent low mood and mood instability treated alongside substance use.", icon: "leaf" as const },
+          { heading: "Bipolar Disorder", body: "Mood stabilisation with psychiatric oversight throughout treatment.", icon: "spark" as const },
+          { heading: "PTSD & Trauma", body: "Trauma-focused care addressing the experiences underlying addiction.", icon: "shield" as const },
+          { heading: "Personality Disorders", body: "Structured, consistent care for complex interpersonal patterns.", icon: "users" as const },
+          { heading: "Psychotic Disorders", body: "Stabilisation and monitoring by psychiatric providers.", icon: "clock" as const },
+        ],
       },
     ],
     levelsOfCare: true,
+    // Renders the linked substance grid so each condition reaches its own page.
+    substances: true,
     faqs: [
       { q: "What is dual diagnosis treatment?", a: "Dual diagnosis treatment is an integrated approach that addresses both mental health disorders and substance use disorders at the same time. Instead of treating addiction first and mental health later, our program combines psychiatric care and addiction treatment together, which significantly improves long-term recovery outcomes." },
       { q: "Why is it important to treat mental health and addiction together?", a: "Mental health symptoms like anxiety, depression, trauma, or mood instability often fuel substance use, and substance use can make those symptoms worse. Treating only one condition leaves the other untreated, creating a cycle of relapse. Integrated dual diagnosis care stabilizes the mind and body simultaneously, leading to better emotional control and stronger long-term success." },

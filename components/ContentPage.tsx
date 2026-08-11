@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ContentPageData } from "@/lib/content-types";
+import { site } from "@/lib/site";
 import { uniqueSlug } from "@/lib/slug";
 import { PageHero } from "./PageHero";
+import { ContactForm } from "./ContactForm";
 import { FAQ } from "./FAQ";
 import { JumpNav, type JumpNavItem } from "./JumpNav";
 import {
@@ -162,6 +164,21 @@ export function ContentPage({ page }: { page: ContentPageData }) {
           <div id="faqs" className="mt-16 scroll-mt-8 lg:scroll-mt-20">
             <h2 className="mb-8 text-center text-2xl text-ink sm:text-3xl">Frequently Asked Questions</h2>
             <FAQ faqs={page.faqs} />
+          </div>
+        )}
+
+        {page.form === "contact" && (
+          <div id="get-in-touch" className="mx-auto mt-16 max-w-3xl scroll-mt-8 lg:scroll-mt-20">
+            <h2 className="mb-2 text-center text-2xl text-ink sm:text-3xl">Reach out confidentially</h2>
+            <p className="mx-auto mb-8 max-w-xl text-center text-muted">
+              Send us a message and an admissions specialist will get back to you. Prefer to talk now?
+              Call{" "}
+              <a href={site.phoneHref} className="font-semibold text-rose-dark">
+                {site.phone}
+              </a>
+              .
+            </p>
+            <ContactForm />
           </div>
         )}
       </Container>

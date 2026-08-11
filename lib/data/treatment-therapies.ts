@@ -21,14 +21,14 @@ export const treatmentTherapies: ContentPageData[] = [
       },
       {
         heading: "Therapeutic Modalities Offered",
-        bullets: [
-          "Cognitive Behavioral Therapy (CBT) — reframes harmful thoughts and supports healthier behaviors",
-          "Dialectical Behavior Therapy (DBT) — strengthens emotional regulation and distress tolerance",
-          "Motivational Interviewing (MI) — enhances motivation and commitment to recovery",
-          "Trauma-Informed Therapy — addresses unresolved trauma and emotional pain",
-          "Relapse-Prevention Therapy — provides tools to manage cravings and avoid high-risk situations",
-          "Mindfulness-Based Interventions — promotes grounding, emotional awareness, and stress reduction",
-          "Medication-Support Counseling — coordinates therapy with medication management when clinically appropriate",
+        subsections: [
+          { heading: "Cognitive Behavioral Therapy (CBT)", body: "Reframes harmful thoughts and supports healthier behaviors.", icon: "spark" as const },
+          { heading: "Dialectical Behavior Therapy (DBT)", body: "Strengthens emotional regulation and distress tolerance.", icon: "heart" as const },
+          { heading: "Motivational Interviewing (MI)", body: "Enhances motivation and commitment to recovery.", icon: "users" as const },
+          { heading: "Trauma-Informed Therapy", body: "Addresses unresolved trauma and emotional pain.", icon: "shield" as const },
+          { heading: "Relapse-Prevention Therapy", body: "Tools to manage cravings and avoid high-risk situations.", icon: "check" as const },
+          { heading: "Mindfulness-Based Interventions", body: "Grounding, emotional awareness, and stress reduction.", icon: "leaf" as const },
+          { heading: "Medication-Support Counseling", body: "Coordinates therapy with medication management when clinically appropriate.", icon: "clock" as const },
         ],
       },
       {
@@ -86,14 +86,14 @@ export const treatmentTherapies: ContentPageData[] = [
       },
       {
         heading: "What Group Therapy Includes",
-        bullets: [
-          "Shared stories and connection",
-          "Pattern recognition and self-awareness",
-          "Communication and interpersonal skills",
-          "Emotional processing in a safe space",
-          "Recovery skill-building",
-          "Accountability and constructive feedback",
-          "Psychoeducation in community",
+        subsections: [
+          { heading: "Shared Stories & Connection", body: "Hearing others' experiences reduces isolation and builds trust.", icon: "users" as const },
+          { heading: "Pattern Recognition", body: "Seeing your own patterns reflected in the group builds self-awareness.", icon: "spark" as const },
+          { heading: "Communication Skills", body: "Practise expressing needs and listening in a supported setting.", icon: "heart" as const },
+          { heading: "Emotional Processing", body: "Work through difficult feelings in a safe, facilitated space.", icon: "leaf" as const },
+          { heading: "Recovery Skill-Building", body: "Learn and rehearse the practical skills sobriety depends on.", icon: "check" as const },
+          { heading: "Accountability & Feedback", body: "Constructive challenge from peers who understand the work.", icon: "shield" as const },
+          { heading: "Psychoeducation in Community", body: "Understand addiction and recovery alongside others.", icon: "clock" as const },
         ],
       },
       {
@@ -137,14 +137,14 @@ export const treatmentTherapies: ContentPageData[] = [
       },
       {
         heading: "What Family Therapy Focuses On",
-        bullets: [
-          "Understanding addiction together",
-          "Supporting a loved one without losing yourself",
-          "Setting healthy boundaries",
-          "Healing unresolved conflict",
-          "Managing emotional triggers",
-          "Strengthening family roles",
-          "Creating a supportive home environment",
+        subsections: [
+          { heading: "Understanding Addiction Together", body: "Build a shared, accurate picture of what the family is facing.", icon: "users" as const },
+          { heading: "Supporting Without Losing Yourself", body: "Help a loved one while protecting your own wellbeing.", icon: "heart" as const },
+          { heading: "Setting Healthy Boundaries", body: "Define limits that protect both the family and the client.", icon: "shield" as const },
+          { heading: "Healing Unresolved Conflict", body: "Work through the history that addiction often leaves behind.", icon: "leaf" as const },
+          { heading: "Managing Emotional Triggers", body: "Recognise and defuse the moments that escalate.", icon: "spark" as const },
+          { heading: "Strengthening Family Roles", body: "Re-establish roles that stress has distorted.", icon: "check" as const },
+          { heading: "A Supportive Home Environment", body: "Prepare the home a person returns to after treatment.", icon: "clock" as const },
         ],
       },
       {

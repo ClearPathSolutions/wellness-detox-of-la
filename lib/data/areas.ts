@@ -5,15 +5,17 @@ const sharedTherapies = {
   body: [
     "Effective recovery requires more than medical support alone. Our Los Angeles addiction treatment center integrates evidence-based therapies, holistic practices, and family involvement to support healing on every level. Each client receives a personalized treatment plan delivered by licensed clinicians.",
   ],
-  bullets: [
-    "Cognitive Behavioral Therapy (CBT) — identify harmful thought patterns and build healthier coping strategies",
-    "Dialectical Behavior Therapy (DBT) — emotional regulation, mindfulness, and resilience",
-    "Individual Therapy — one-on-one sessions focused on personal healing",
-    "Group Therapy — peer-supported connection and accountability",
-    "Family Support Programs — rebuild trust and strengthen support at home",
-    "Trauma-Informed Care — address unresolved trauma and reduce relapse risk",
-    "Holistic Healing Services — mindfulness, movement, and whole-person wellness",
-    "Relapse Prevention Planning — tools and strategies to maintain sobriety",
+  // Cards rather than a flat bullet list — one shared object, so this satisfies
+  // the same review note on all six area pages at once.
+  subsections: [
+    { heading: "Cognitive Behavioral Therapy (CBT)", body: "Identify harmful thought patterns and build healthier coping strategies.", icon: "spark" as const },
+    { heading: "Dialectical Behavior Therapy (DBT)", body: "Emotional regulation, mindfulness, and resilience under stress.", icon: "heart" as const },
+    { heading: "Individual Therapy", body: "One-on-one sessions focused on your personal history and healing.", icon: "users" as const },
+    { heading: "Group Therapy", body: "Peer-supported connection and accountability in a safe space.", icon: "users" as const },
+    { heading: "Family Support Programs", body: "Rebuild trust and strengthen support at home.", icon: "heart" as const },
+    { heading: "Trauma-Informed Care", body: "Address unresolved trauma and reduce relapse risk.", icon: "shield" as const },
+    { heading: "Holistic Healing Services", body: "Mindfulness, movement, and whole-person wellness.", icon: "leaf" as const },
+    { heading: "Relapse Prevention Planning", body: "Practical tools and strategies to maintain sobriety.", icon: "check" as const },
   ],
 };
 
