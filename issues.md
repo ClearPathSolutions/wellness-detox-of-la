@@ -883,7 +883,21 @@ For a DHCS-licensed facility (`site.license` = DHCS #191425AP) this is the highe
 ---
 
 #### WDL-033 · Trailing-slash convention conflicts with production on every URL
-**Status:** ✅ `OPEN` — **ruled, ready to implement** · **AMENDED (owner input) 2026-08-10** · **Severity:** P0 · **Area:** SEO / cutover · `[SHEET V0102 — CRITICAL]`
+**Status:** `OPEN` — **decision, now with hard numbers**  · **AMENDED (owner input) 2026-08-10** · **Severity:** P0 · **Area:** SEO / cutover · `[SHEET V0102 — CRITICAL]`
+
+> **Analysed 2026-08-11 with the real index; no longer speculative.**
+>
+> **The evidence:** of the 52 URLs indexed on `wellnessdetoxla.com`, **49 end in a trailing slash**. The build serves the slashless form at 200 and 308-redirects the slash form.
+>
+> **What that actually costs at cutover:** every one of those 49 indexed URLs takes **one 308 hop**. That is a real but modest cost — Next handles it automatically, no link breaks, and no equity is lost, it is just not free.
+>
+> **Setting `trailingSlash: true` would make all 49 resolve directly at 200.** Because S-001 V0102 found all 12 production sites are slash-canonical, slash is very likely the correct answer portfolio-wide, not just here.
+>
+> **Why I have not flipped it unilaterally:** doing it correctly means changing three things together — the config, the canonical/`og:url` paths, and the sitemap URLs. Flipping only the config would leave canonicals pointing at URLs that 308, which is precisely the defect just fixed in WDL-032. It is also a portfolio-wide convention affecting 11 sibling sites, so a unilateral change here risks churn across all of them.
+>
+> **The good news:** it is now a ~3-line change, because `lib/seo.ts` centralises canonical + `og:url` and the sitemap builds from one map. Say the word and it is a small, safe edit.
+>
+> **Recommendation: adopt `trailingSlash: true`** across the portfolio, on the strength of 49/52.
 
 > ## ✅ OWNER RULING — **match production: trailing slashes win.**
 >
@@ -927,7 +941,27 @@ S-001's own verification note: *"Fixing the slash convention fixes those as a si
 ---
 
 #### WDL-034 · Build is missing production content published after the snapshot
-**Status:** `BLOCKED` (needs re-sync) · **Severity:** P0 · **Area:** Content / cutover · `[SHEET V0124 — CRITICAL]`
+**Status:** ✅ `FIXED` 2026-08-11 · **Severity:** P0 · **Area:** Content / cutover · `[SHEET V0124 — CRITICAL]`
+
+> **Closed by fetching the production sitemap — the input this was blocked on was public all along.**
+>
+> Pulled `wellnessdetoxla.com/sitemap_index.xml` and all six sub-sitemaps: **52 indexed URLs, 50 after de-duping query-string cruft.** Diffed against the build's routes.
+>
+> **Result: exactly one real content gap**, and it is now closed.
+>
+> | Production URL | Disposition |
+> | --- | --- |
+> | `/luxury-rehab-in-los-angeles/` | **Ported** — 1,212-word page, TL;DR + cost + FAQs + 6 cited sources, kept at its original root-level slug so the indexed URL resolves 200 with no redirect |
+> | `/about/blog/` | already redirected → `/blog` |
+> | `/author/cpts/` | covered by `/author/:slug` → `/about/meet-the-team` |
+> | `/category/blog/` | covered by `/category/:slug` → `/blog` |
+> | `/?kadence_element=…` ×2 | WordPress query-string cruft, ignorable |
+>
+> **And nothing else is missing:** 0 build routes are absent from production, and 46 of 46 production content URLs now exist in the build. The migration is materially more complete than S-001's V0124 implied — that row found one symptom of a gap that turns out to be a single page.
+>
+> Route count 53 → 54. The ported page was flagged by `npm run check` for a hardcoded phone number, which is WDL-066's guard doing its job; switched to `${site.phone}`.
+>
+> **Re-run the diff immediately before cutover** — this is accurate as of 2026-08-11 and production is still publishing.
 
 **Problem**
 S-001 finds every Vercel build was generated from a content snapshot around **15–16 July 2026**, while production kept publishing. 15 pages across 10 of 12 sites exist on production but are absent from their build, and **the gap widens every day the builds stay frozen.**
@@ -1136,7 +1170,13 @@ Corroborated a third time: V0068's verification log pre-clears us before our row
 ---
 
 #### WDL-008 · Cutover redirect map is incomplete
-**Status:** ⚠️ `AWAITING INPUT` — **1 → 14 redirects, but all 13 new ones are guesses (re-sync 2026-08-10)** · **Severity:** P1 · **Area:** SEO / migration · `[CODE]` + `[SHEET V0116, V0133, V0124]`
+**Status:** ✅ `FIXED` (verified against the live sitemap) 2026-08-11 · **Severity:** P1 · **Area:** SEO / migration · `[CODE]` + `[SHEET V0116, V0133, V0124]`
+
+> **Closed 2026-08-11.** The blocker was "need the old URL inventory" — it was publicly fetchable. All 52 indexed production URLs enumerated and diffed (see WDL-034).
+>
+> **Every indexed production URL is now accounted for:** 46 resolve to a real route in the build, 1 was ported, and 3 are covered by existing redirect rules (`/about/blog`, `/author/:slug`, `/category/:slug`). The redirect map is no longer a guess — it is verified against the actual index.
+>
+> Remaining nuance, not a gap: 49 of the 52 indexed URLs carry a **trailing slash**, so at cutover each takes one 308 normalisation hop unless the convention changes. That is **WDL-033**, and it is now a quantified trade rather than an open question.
 
 > ### Re-sync verdict: more redirects, no more information. Status unchanged, deliberately.
 >
