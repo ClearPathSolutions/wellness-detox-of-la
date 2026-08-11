@@ -107,8 +107,11 @@ export function SectionHeading({
   const introColor = tone === "light" ? "text-white/75" : "text-muted";
   return (
     <div className={`max-w-2xl ${alignCls} ${className}`}>
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+      {/* Heading leads, eyebrow sits beneath it as a kicker. Swapped per the
+          visual review, which asked for the small rose label and the heading to
+          trade places across every section. */}
       <h2 className={`text-3xl sm:text-4xl leading-[1.12] ${titleColor}`}>{title}</h2>
+      {eyebrow && <p className="eyebrow mt-3">{eyebrow}</p>}
       {intro && <p className={`mt-4 text-base sm:text-lg leading-relaxed ${introColor}`}>{intro}</p>}
     </div>
   );

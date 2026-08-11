@@ -18,11 +18,20 @@ export type BulletGroup = {
   meta?: string;        // NEW — timeline phase duration, e.g. "6–24 hours" (used only when groupsDisplay==="timeline")
 };
 
-// NEW — a cited statistic. Plain strings only (serializable).
+// A cited statistic. Plain strings only (serializable).
 export type Stat = {
   value: string;   // display string, formatting preserved: "74,000", "50x", "40%+", "29.5M"
   label: string;
+  /** Attribution text, e.g. "NIDA, 2023". */
   source?: string;
+  /**
+   * Link for `source`. When present the attribution renders as an anchor.
+   *
+   * Deliberately left unset until a real citation is supplied for each figure:
+   * on a YMYL medical page a link that does not actually support the number is
+   * worse than plain attribution text. Populate alongside `source`.
+   */
+  sourceUrl?: string;
 };
 
 export type PageSection = {
@@ -49,6 +58,9 @@ export type ContentPageData = {
   levelsOfCare?: boolean; // show the 4 program links
   substances?: boolean; // show the substance grid
   faqs?: Faq[];
+  /** Renders a lead-capture form before the closing CTA. Used on the two
+   *  "Get Help" pages, where the review asked for a submission box. */
+  form?: "contact";
   cta?: { title?: string; intro?: string };
 };
 

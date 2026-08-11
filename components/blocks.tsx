@@ -316,20 +316,28 @@ export function SplitFeature({
   imageAlt,
   reverse = false,
   cta,
+  media,
 }: {
   eyebrow?: string;
   title: string;
   children: React.ReactNode;
-  image: string;
-  imageAlt: string;
+  /** Omit to render prose full-width, or pass `media` to show something else. */
+  image?: string;
+  imageAlt?: string;
   reverse?: boolean;
   cta?: { label: string; href: string };
+  /** Replaces the photograph — used to show the facility map instead. */
+  media?: React.ReactNode;
 }) {
   return (
-    <Container className="grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
+    <Container
+      className={`grid items-center gap-10 py-16 lg:gap-16 lg:py-24 ${
+        image || media ? "lg:grid-cols-2" : ""
+      }`}
+    >
       <div className={reverse ? "lg:order-2" : ""}>
-        {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
         <h2 className="text-3xl leading-tight text-ink sm:text-4xl">{title}</h2>
+        {eyebrow && <p className="eyebrow mt-3">{eyebrow}</p>}
         <div className="mt-5 space-y-4 text-base leading-relaxed text-muted">{children}</div>
         {cta && (
           <div className="mt-7">
@@ -340,18 +348,22 @@ export function SplitFeature({
           </div>
         )}
       </div>
-      <div className={`relative ${reverse ? "lg:order-1" : ""}`}>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-soft">
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
+      {media ? (
+        <div className={`relative ${reverse ? "lg:order-1" : ""}`}>{media}</div>
+      ) : image ? (
+        <div className={`relative ${reverse ? "lg:order-1" : ""}`}>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-soft">
+            <Image
+              src={image}
+              alt={imageAlt ?? ""}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <span className="absolute -bottom-4 -right-2 hidden h-24 w-24 rounded-2xl bg-rose/15 sm:block lg:-right-4" />
         </div>
-        <span className="absolute -bottom-4 -right-2 hidden h-24 w-24 rounded-2xl bg-rose/15 sm:block lg:-right-4" />
-      </div>
+      ) : null}
     </Container>
   );
 }
@@ -364,8 +376,8 @@ export function InsuranceStrip() {
       <div className="mx-auto max-w-[1600px]">
         <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <p className="eyebrow mb-3">Insurance &amp; Coverage</p>
             <h2 className="text-3xl text-ink sm:text-4xl">We work with most insurance providers</h2>
+            <p className="eyebrow mt-3">Insurance &amp; Coverage</p>
             <p className="mt-4 max-w-xl text-muted">
               Getting help should never feel out of reach. We work with most major insurance providers
               to make treatment as accessible and affordable as possible — and we&apos;ll verify your
@@ -432,7 +444,21 @@ export function StatTiles({ stats }: { stats: Stat[] }) {
           <div className="font-display text-4xl font-bold leading-none text-rose-dark">{s.value}</div>
           <div className="mt-2 text-sm font-medium text-ink-700">{s.label}</div>
           {s.source && (
-            <div className="mt-3 border-t border-line pt-2 text-xs text-muted">Source: {s.source}</div>
+            <div className="mt-3 border-t border-line pt-2 text-xs text-muted">
+              Source:{" "}
+              {s.sourceUrl ? (
+                <a
+                  href={s.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-line underline-offset-2 transition-colors hover:text-rose-dark"
+                >
+                  {s.source}
+                </a>
+              ) : (
+                s.source
+              )}
+            </div>
           )}
         </div>
       ))}

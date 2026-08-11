@@ -49,6 +49,7 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "help-for-yourself",
+    form: "contact",
     metaTitle: "Get Help For Yourself",
     eyebrow: "You don't have to face addiction alone",
     h1: "Get Help to Break Free From Drug & Alcohol Use",
@@ -81,6 +82,7 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "help-for-loved-one",
+    form: "contact",
     metaTitle: "Get Help For A Loved One",
     eyebrow: "Your support can change everything",
     h1: "Get Help for a Loved One Struggling With Drug or Alcohol Use",

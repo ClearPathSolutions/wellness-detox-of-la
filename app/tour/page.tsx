@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { MapEmbed } from "@/components/MapEmbed";
 import { pageMeta } from "@/lib/seo";
-import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner, TourGallery } from "@/components/blocks";
 import {
@@ -145,15 +145,7 @@ export default function TourPage() {
                 arrival so the transition into treatment is smooth and stress-free.
               </p>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-soft">
-              <Image
-                src="/images/DJI_20250325105848_0098_D.webp"
-                alt="Aerial view of the Wellness Detox of LA neighborhood with the San Gabriel Mountains in the distance"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+            <MapEmbed />
           </div>
         </Container>
       </section>
