@@ -285,7 +285,6 @@ export const galleryCategories: GalleryCategory[] = [
     images: [
       { src: "/images/DSC_6116-HDR.webp", alt: "Bright, comfortable shared living room with a fireplace and wall-mounted television" },
       { src: "/images/DSC_6086-HDR.webp", alt: "Shared living room with sunlight across the hardwood floor" },
-      { src: "/images/DSC_6095-HDR.webp", alt: "Living room seating arranged around the fireplace" },
       { src: "/images/DSC_6134-HDR.webp", alt: "Second view of the living room with its fireplace and corner windows" },
       { src: "/images/DSC_6257-HDR.webp", alt: "Warm, home-like common room with sectional seating" },
       { src: "/images/DSC_6248-HDR.webp", alt: "Group room with armchairs arranged in a circle for therapy sessions" },
@@ -303,7 +302,6 @@ export const galleryCategories: GalleryCategory[] = [
     images: [
       { src: "/images/DSC_6122-HDR.webp", alt: "A bright, home-like bedroom with fresh linens and welcome amenities" },
       { src: "/images/DSC_6209-HDR.webp", alt: "Bedroom with two beds and warm natural light" },
-      { src: "/images/DSC_6254-HDR-1.webp", alt: "Comfortable client bedroom in the residential facility" },
       { src: "/images/DSC_6143-HDR-1.webp", alt: "Clean, calming bedroom prepared for a new client" },
       { src: "/images/DSC_6140-HDR.webp", alt: "Bedroom with two beds between twin windows and a wooden dresser" },
       { src: "/images/DSC_6153-HDR.webp", alt: "Bedroom with two beds, a dresser, and a wall-mounted television" },
