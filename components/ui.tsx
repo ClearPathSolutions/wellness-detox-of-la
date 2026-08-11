@@ -170,12 +170,19 @@ export function RichText({ children }: { children: string }) {
 }
 
 /**
- * Width of the single reading column used by ContentPage and BlogPostView, and
- * by PageHero's `width="reading"` so the H1 lines up with the body beneath it.
- * Sized close to the prose measure — when the on-page nav was removed the old
- * 68rem column left paragraphs trailing off into a dead right-hand gutter.
+ * The single reading column used by ContentPage, BlogPostView and PageHero's
+ * `width="reading"`, so hero and body always line up.
+ *
+ * Responsive rather than fixed. At a flat 48rem it left 50% of a 1512px screen
+ * empty and 71% of a 2560px one — the page read as a narrow ribbon on anything
+ * larger than a laptop. It now grows in steps.
+ *
+ * Prose inside still wraps at `.measure`, because line length is a readability
+ * constraint, not a layout one — paragraphs running the full width of a 27"
+ * monitor would be worse, not better. The extra width goes to the card grids,
+ * stat tiles and FAQ, which genuinely benefit from it.
  */
-export const READING_WIDTH = "max-w-[48rem]";
+export const READING_WIDTH = "max-w-[48rem] lg:max-w-[56rem] xl:max-w-[64rem] 2xl:max-w-[72rem]";
 
 /* --------------------------------- Prose --------------------------------- */
 

@@ -562,8 +562,12 @@ const SUBSECTION_ICON_MAP: Record<SubsectionIcon, IconCmp> = {
 const SUBSECTION_ICON_CYCLE: SubsectionIcon[] = ["shield", "clock", "heart", "check"];
 
 export function SubsectionCards({ items }: { items: Subsection[] }) {
+  // Three columns only when the count divides evenly, otherwise two. A flat
+  // 3-up left the nine 4-card sections as 3 + 1 orphan on the second row; 2 + 2
+  // is balanced. Counts in the content files are 4, 5, 6, 7 and 8.
+  const cols = items.length % 3 === 0 ? "sm:grid-cols-2 xl:grid-cols-3" : "sm:grid-cols-2";
   return (
-    <div className="mt-5 grid gap-4 sm:grid-cols-2">
+    <div className={`mt-5 grid gap-4 ${cols}`}>
       {items.map((ss, j) => {
         const Icon = SUBSECTION_ICON_MAP[ss.icon ?? SUBSECTION_ICON_CYCLE[j % SUBSECTION_ICON_CYCLE.length]];
         return (
