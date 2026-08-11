@@ -11,6 +11,116 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    // Ported from production, which published this after the build snapshot and
+    // where it was the only page missing from this repo. Kept at its original
+    // root-level slug so the indexed URL resolves at 200 with no redirect.
+    slug: "luxury-rehab-in-los-angeles",
+    title: "Luxury Rehab in Los Angeles | Private Detox & Recovery Care",
+    date: "2026-07-17",
+    displayDate: "July 17, 2026",
+    excerpt:
+      "Explore luxury rehab in Los Angeles at Wellness Detox of LA. Evidence-based drug and alcohol rehab with detox and dual diagnosis care — what to expect, what it costs, and how to choose well.",
+    hero: "/images/DSC_6116-HDR.webp",
+    body: `## TL;DR
+
+Luxury rehab in Los Angeles pairs private, comfortable surroundings with serious clinical care. At Wellness Detox of LA, that means medical detox, residential treatment, and dual diagnosis support in a discreet setting. Comfort matters, yet evidence-based therapy is what actually drives recovery [1]. Below, we walk through what to expect, what it costs, and how to choose well.
+
+## A Fresh Start, Not a Punishment
+
+Recovery should feel like a beginning, not a sentence. That belief shapes everything we do. For many people, luxury rehab in Los Angeles offers exactly that kind of start. You get privacy, comfort, and real clinical depth in one place. Moreover, you get a team that sees you as a person first. So if treatment has ever felt intimidating, keep reading.
+
+## What Luxury Rehab in Los Angeles Actually Means
+
+The phrase gets used loosely, so let's be precise. A luxury rehab in Los Angeles is a licensed treatment center that combines upscale, private accommodations with evidence-based addiction care [1]. In other words, the setting is elevated, yet the clinical work is rigorous.
+
+Typically, these programs offer private or semi-private rooms, chef-prepared meals, and a small client census. As a result, you receive more individual attention than a large facility can provide. Above all, luxury addiction treatment should still rest on proven therapy, not just amenities.
+
+## Luxury Rehab vs. Standard Treatment
+
+Both share the same clinical foundation. The difference lies in environment, privacy, and personalization. Still, comfort alone does not create outcomes, so the clinical core matters most.
+
+Research shows individualized, adequately long, evidence-based care predicts recovery far more than any spa feature [1][6].
+
+## What to Expect Inside a Los Angeles Luxury Rehab
+
+First, expect calm. Our environment is designed to lower stress so you can focus on the work ahead. Meanwhile, nutritious, chef-prepared meals support your body during early recovery.
+
+Beyond comfort, expect structure. Days follow a rhythm of therapy, wellness activities, and rest. Additionally, holistic services such as mindfulness, fitness, and acupuncture complement your clinical sessions rather than replace them. In short, a luxury rehab in Los Angeles should feel restorative and purposeful at once.
+
+## The Clinical Care Behind the Comfort
+
+Comfort opens the door, but clinical care is what heals. Therefore, our treatment follows established standards.
+
+We use the ASAM Criteria to match you to the right level of care and to adjust as your needs change [2][3]. We also build on NIDA's principles of effective treatment: care should be individualized, address co-occurring conditions, and last long enough to work [1][5]. Consequently, your plan is never one-size-fits-all.
+
+Our therapies include cognitive behavioral therapy, dialectical behavior therapy, trauma-informed care, and group work. Because addiction rarely travels alone, we integrate mental health care throughout [4].
+
+## The Levels of Care We Offer
+
+Recovery unfolds in stages, and a strong luxury rehab in Los Angeles supports each one.
+
+- **Medical detox:** Safe, medically supervised withdrawal management as your first step.
+- **Residential treatment:** Structured, around-the-clock care in a private setting.
+- **Dual diagnosis treatment:** Integrated care when a substance use disorder and a mental health condition occur together [4].
+
+We treat alcohol, opioids, and other substances. Afterward, aftercare planning helps you sustain progress once treatment ends.
+
+## What Luxury Rehab in Los Angeles Costs
+
+Cost is often the first question, and honesty helps. Luxury residential programs in California generally range widely, largely because privacy, staffing, and location drive the price.
+
+Fortunately, cost is rarely the whole story. Under the Mental Health Parity and Addiction Equity Act, insurers must cover substance use treatment comparably to medical care. As a result, PPO plans often provide meaningful benefits, even out of network. So before you rule anything out, verify your coverage.
+
+## How to Choose the Right Luxury Rehab in Los Angeles
+
+Amenities can dazzle, yet they should never be your first filter. Instead, start with the clinical basics.
+
+- **Accreditation:** Look for state licensing and Joint Commission or CARF standards.
+- **Staff credentials:** Confirm licensed clinicians and medical oversight.
+- **Individualized care:** Ask how plans are built and adjusted [2].
+- **Aftercare:** Recovery is long-term, so continuing support is essential [1].
+
+When those pillars are solid, the private rooms and gourmet meals become a genuine bonus rather than a distraction.
+
+## Addiction Treatment at Wellness Detox of LA
+
+You deserve care that respects your privacy and your dignity. At Wellness Detox of LA, our luxury rehab in Los Angeles combines a discreet, comfortable setting with clinical care that meets national standards. From medical detox to residential treatment and dual diagnosis support, we build your plan around you.
+
+The hardest step is often the first, yet you do not have to take it alone. If you are ready, or simply have questions, reach out today. Call ${site.phone} to speak with our admissions team.
+
+## FAQs
+
+### What makes a luxury rehab in Los Angeles different from standard rehab?
+
+The clinical foundation is the same, but a luxury rehab in Los Angeles adds private accommodations, smaller client numbers, and holistic therapies. As a result, you receive more individual attention in a calmer setting.
+
+### Does luxury rehab actually improve recovery outcomes?
+
+Amenities alone do not guarantee results. However, the privacy and comfort can help you engage more fully in evidence-based care, which is what genuinely drives recovery [1][6].
+
+### Will insurance cover luxury rehab in Los Angeles?
+
+Often, at least partially. Federal parity law requires comparable coverage for addiction treatment, and PPO plans frequently offer out-of-network benefits. Therefore, always verify your coverage first.
+
+### What levels of care are available?
+
+Most programs, including ours, offer medical detox, residential treatment, and dual diagnosis care. Additionally, aftercare planning supports you once treatment ends.
+
+### How do I choose the right luxury rehab in Los Angeles?
+
+Prioritize accreditation, licensed staff, and individualized care. Then weigh the amenities. In short, let clinical quality lead your decision.
+
+## Sources
+
+1. National Institute on Drug Abuse. *Principles of Drug Addiction Treatment: A Research-Based Guide.* NIDA, National Institutes of Health — [nida.nih.gov](https://nida.nih.gov/research-topics/treatment)
+2. American Society of Addiction Medicine. *About The ASAM Criteria.* ASAM — [asam.org](https://www.asam.org/asam-criteria/about-the-asam-criteria)
+3. Substance Abuse and Mental Health Services Administration. *The ASAM Criteria for Patients with Addiction and Co-occurring Conditions.* SAMHSA — [samhsa.gov](https://www.samhsa.gov/resource/ebp/asam-criteria-patients-addiction-co-occurring-conditions)
+4. Substance Abuse and Mental Health Services Administration. *FindTreatment.gov / National Helpline (1-800-662-HELP).* SAMHSA — [findtreatment.samhsa.gov](https://findtreatment.samhsa.gov)
+5. National Institute on Drug Abuse. *NIDA Guide Details Research-Based Principles of Drug Addiction Treatment.* NIDA Archives — [archives.drugabuse.gov](https://archives.drugabuse.gov/news-events/nida-notes/1999/12/nida-guide-details-research-based-principles-drug-addiction-treatment)
+6. Pearson, F. S., et al. (2011). *Meta-Analyses of Seven of NIDA's Principles of Drug Addiction Treatment.* Journal of Substance Abuse Treatment — [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC3290709)
+`,
+  },
+  {
     slug: "why-fentanyl-addiction-is-so-dangerous",
     title: "Why Fentanyl Addiction Has Become So Dangerous",
     date: "2026-05-20",
