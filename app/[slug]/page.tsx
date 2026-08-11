@@ -19,13 +19,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  // Fall back to the on-page title/excerpt when no SEO override is authored.
+  const title = post.metaTitle ?? post.title;
+  const description = post.metaDescription ?? post.excerpt;
   return {
-    title: post.title,
-    description: post.excerpt,
+    title,
+    description,
     ...pageMeta({
       path: `/${slug}`,
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description,
       type: "article",
       image: { url: post.hero, alt: post.title },
       publishedTime: post.date,

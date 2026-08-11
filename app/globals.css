@@ -37,6 +37,68 @@
   --shadow-card: 0 4px 24px -8px rgba(35, 39, 47, 0.12);
 }
 
+/* ---------------------------------------------------------------------------
+   Type scale + measure
+   ---------------------------------------------------------------------------
+   Before this existed, each component picked its own sizes ad hoc: H2 was
+   `text-3xl sm:text-4xl` in SectionHeading but `text-2xl sm:text-3xl` in
+   ContentPage, so the same semantic level rendered at two different sizes
+   depending on which template a page happened to use. These classes are the
+   single source of truth — components reference the level, never a raw size.
+
+   Steps are a ~1.2 modular scale, fluid via clamp() so there is no jump at the
+   breakpoint and no separate sm:/lg: variant to keep in sync.
+--------------------------------------------------------------------------- */
+@layer components {
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+  }
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 1.08rem + 0.5vw, 1.45rem);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+  .t-h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  /* Standfirst — the intro paragraph under an H1/H2. */
+  .t-lead {
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    line-height: 1.65;
+  }
+  .t-body {
+    font-size: 1.0125rem;
+    line-height: 1.72;
+  }
+}
+
+/* Reading measure. `max-w-3xl` (48rem) ran ~95–105 characters per line, well
+   past the 60–75 that sustained reading wants. `ch` tracks the actual font, so
+   this stays correct if the type scale moves. */
+.measure {
+  max-width: 68ch;
+}
+.measure-wide {
+  max-width: 78ch;
+}
+
 :root {
   --background: var(--color-cream);
   --foreground: var(--color-ink);
@@ -143,13 +205,17 @@ p {
   color: var(--color-ink);
 }
 
-/* H2s become clear section breaks that echo the jump nav */
+/* H2s become clear section breaks that echo the jump nav. Sizes reference the
+   same clamps as `.t-h2` / `.t-h3` so article headings and template headings
+   render identically — they were previously fixed rems that drifted from the
+   component scale at both ends of the viewport range. */
 .prose h2 {
-  font-size: 1.7rem;
-  line-height: 1.25;
-  margin-top: 3rem;
-  margin-bottom: 0.35rem;
-  padding-top: 1.6rem;
+  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  margin-top: 3.25rem;
+  margin-bottom: 0.4rem;
+  padding-top: 1.75rem;
   border-top: 1px solid var(--color-line);
 }
 .prose > h2:first-child {
@@ -158,8 +224,10 @@ p {
   border-top: none;
 }
 .prose h3 {
-  font-size: 1.25rem;
-  margin-top: 1.8rem;
+  font-size: clamp(1.2rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-top: 2rem;
   margin-bottom: 0.25rem;
 }
 .prose h4 {

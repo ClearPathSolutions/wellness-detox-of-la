@@ -4,6 +4,8 @@ import { site } from "@/lib/site";
 export const admissionsPages: ContentPageData[] = [
   {
     slug: "admissions-process",
+    metaDescription:
+      "How admission works at Wellness Detox of LA: one call, a pre-assessment, insurance verification, and a coordinated arrival. Confidential, 24/7.",
     metaTitle: "Admissions Process",
     eyebrow: "Admissions",
     h1: "The Admissions Process",
@@ -21,7 +23,7 @@ export const admissionsPages: ContentPageData[] = [
         heading: "Step 2: Pre-Assessment & Treatment Planning",
         body: [
           "Once we've connected, we'll move into a confidential pre-assessment to make sure you (or your loved one) receive the right level of care. One of our admissions specialists will walk you through simple questions about substance use history, mental and physical health, family history, medications, and previous treatment experiences.",
-          "After the pre-assessment, our clinical team reviews everything and begins preparing your individualized plan of care. From here, we'll guide you step-by-step through insurance verification and financial options so there are no surprises.",
+          "After the pre-assessment, our clinical team reviews everything and begins preparing your individualized plan of care. From here, we'll guide you step-by-step through [insurance verification](/admissions/verify-your-insurance) and financial options so there are no surprises.",
         ],
       },
       {
@@ -49,6 +51,8 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "help-for-yourself",
+    metaDescription:
+      "Ready to get help for yourself? Confidential, judgment-free admissions for drug and alcohol treatment in Los Angeles. Speak with a specialist 24/7.",
     form: "contact",
     metaTitle: "Get Help For Yourself",
     eyebrow: "You don't have to face addiction alone",
@@ -82,6 +86,8 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "help-for-loved-one",
+    metaDescription:
+      "Worried about someone you love? Learn how to approach the conversation and start treatment for a loved one. Confidential guidance, available 24/7.",
     form: "contact",
     metaTitle: "Get Help For A Loved One",
     eyebrow: "Your support can change everything",
@@ -93,7 +99,7 @@ export const admissionsPages: ContentPageData[] = [
       {
         heading: "Take the First Step to Help Someone You Love",
         body: [
-          "At Wellness Detox LA, we provide evidence-based treatment — including medical detox, residential inpatient, and dual diagnosis care — in a safe, supportive environment. Our team is here 24/7 to help families understand treatment options and get their loved one into care as smoothly as possible.",
+          "At Wellness Detox LA, we provide evidence-based treatment — including [medical detox](/treatment/detox), residential inpatient, and [dual diagnosis care](/treatment/dual-diagnosis) — in a safe, supportive environment. Our team is here 24/7 to help families understand treatment options and get their loved one into care as smoothly as possible.",
           "You don't have to navigate this on your own. From the moment you call, we'll walk with you through every part of the process, helping your loved one begin recovery and helping you feel confident and supported.",
         ],
       },
@@ -117,6 +123,8 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "addiction-faq",
+    metaDescription:
+      "Clear, clinically accurate answers about drug and alcohol addiction, withdrawal, brain science, and recovery from the team at Wellness Detox of LA.",
     metaTitle: "Substance Addiction FAQ",
     eyebrow: "Substance Addiction FAQ",
     h1: "Substance Addiction FAQ",
@@ -142,6 +150,8 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "insurance-admissions-faq",
+    metaDescription:
+      "Answers on insurance verification, coverage, costs, confidentiality, and what to expect when starting treatment at Wellness Detox of LA.",
     metaTitle: "Admissions & Insurance FAQ",
     eyebrow: "Insurance & Admissions FAQ",
     h1: "Your Guide to Starting Treatment at Wellness Detox LA",
@@ -167,6 +177,8 @@ export const admissionsPages: ContentPageData[] = [
   },
   {
     slug: "treatment-faq",
+    metaDescription:
+      "How addiction treatment works, from detox and residential care to dual diagnosis and aftercare — with answers grounded in NIDA and SAMHSA guidance.",
     metaTitle: "Addiction Treatment FAQ",
     eyebrow: "Treatment FAQ",
     h1: "Addiction Treatment FAQ",

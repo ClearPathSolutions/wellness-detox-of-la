@@ -7,6 +7,8 @@ import { site } from "@/lib/site";
 export const treatmentSubstances: ContentPageData[] = [
   {
     slug: "alcohol-addiction",
+    metaDescription:
+      "Alcohol addiction treatment in Los Angeles: medically supervised detox, residential care, and dual diagnosis support from licensed clinicians.",
     metaTitle: "Alcohol Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Alcohol Addiction Treatment in Los Angeles, CA",
@@ -89,6 +91,8 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "benzo-addiction",
+    metaDescription:
+      "Benzodiazepine addiction treatment in Los Angeles. Medically guided tapers for Xanax, Klonopin, Ativan, and Valium with 24/7 clinical monitoring.",
     metaTitle: "Benzo Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Benzo Addiction Treatment in Los Angeles, CA",
@@ -99,8 +103,8 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "What Is Benzo Addiction?",
         body: [
-          "Benzodiazepine addiction occurs when the brain becomes dependent on sedative medications used to treat anxiety, insomnia, and panic disorders. Over time, people often need higher doses to feel the same calming effects, leading to tolerance and physical dependence. Once dependence develops, stopping suddenly can trigger severe withdrawal symptoms such as seizures, hallucinations, and intense rebound anxiety.",
-          "Commonly misused benzodiazepines include Xanax (alprazolam), Klonopin (clonazepam), Ativan (lorazepam), and Valium. According to the National Institute on Drug Abuse (NIDA), 10,870 overdose deaths in the U.S. involved benzodiazepines in 2023, with the majority occurring when benzos were combined with opioids or alcohol. This makes professional medical detox essential for anyone physically dependent on these medications.",
+          "Benzodiazepine addiction happens when the brain comes to depend on sedatives prescribed for anxiety, insomnia, and panic. Over time it takes a higher dose to get the same calm. That is tolerance, and physical dependence follows. Once you are dependent, stopping suddenly can trigger severe withdrawal — including seizures.",
+          "Commonly misused benzodiazepines include Xanax (alprazolam), Klonopin (clonazepam), Ativan (lorazepam), and Valium. According to the National Institute on Drug Abuse (NIDA), 10,870 overdose deaths in the U.S. involved benzodiazepines in 2023, with the majority occurring when benzos were combined with opioids or alcohol. This makes professional [medical detox](/treatment/detox) essential for anyone physically dependent on these medications.",
         ],
         stats: [
           { value: "10,870", label: "overdose deaths involving benzodiazepines, 2023", source: "NIDA" },
@@ -117,7 +121,7 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "Benzo Withdrawal & Why You Shouldn't Detox Cold-Turkey",
         body: [
-          "Benzodiazepines work by enhancing GABA, the brain's main calming neurotransmitter. With long-term use, the brain reduces its own GABA production and becomes dependent on the drug to stay regulated. When benzos are reduced or stopped, GABA levels crash and glutamate surges — creating nervous-system hyperactivity that raises heart rate, blood pressure, anxiety, and seizure risk. This is why benzo withdrawal can be intense and medically dangerous without supervision.",
+          "Benzodiazepines boost GABA, the brain's main calming chemical. Use them long enough and the brain makes less GABA of its own, relying on the drug to stay level. Cut back or stop and GABA crashes while glutamate surges. The nervous system goes into overdrive, driving up heart rate and blood pressure and, at worst, causing seizures.",
         ],
         groupsDisplay: "timeline",
         groups: [
@@ -138,8 +142,8 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "Dual Diagnosis & Benzo Addiction",
         body: [
-          "Benzo addiction rarely exists on its own. Many people struggling with Xanax, Klonopin, or Ativan dependence also experience anxiety disorders, panic attacks, insomnia, trauma, or depression. These conditions often worsen during withdrawal and require clinical attention to prevent relapse.",
-          "Our dual diagnosis program treats both the addiction and the underlying mental-health conditions at the same time. Clients receive psychiatric support, medication management when appropriate, and evidence-based therapies designed to rebuild emotional stability and reduce long-term reliance on benzos.",
+          "Benzo addiction rarely travels alone. Many people dependent on Xanax, Klonopin, or Ativan also live with anxiety, panic attacks, insomnia, trauma, or depression. Withdrawal usually makes those worse, so they need clinical attention too — otherwise relapse is likely.",
+          "Our [dual diagnosis](/treatment/dual-diagnosis) program treats both the addiction and the underlying mental-health conditions at the same time. Clients receive psychiatric support, medication management when appropriate, and evidence-based therapies designed to rebuild emotional stability and reduce long-term reliance on benzos.",
         ],
       },
     ],
@@ -160,6 +164,8 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "cocaine-addiction",
+    metaDescription:
+      "Cocaine and crack addiction treatment in Los Angeles. Structured, evidence-based care for cravings, mood instability, and long-term recovery.",
     metaTitle: "Cocaine Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Cocaine Addiction Treatment in Los Angeles, CA",
@@ -201,7 +207,7 @@ export const treatmentSubstances: ContentPageData[] = [
         heading: "Dual Diagnosis & Cocaine Addiction",
         body: [
           "Cocaine addiction is strongly linked to mental-health conditions such as anxiety, depression, PTSD, and bipolar-spectrum disorders. According to NIDA, more than 40% of people with a substance use disorder also have a co-occurring mental-health condition. Many individuals use cocaine to self-medicate emotional pain or mood instability, which fuels the cycle of dependence.",
-          "Our dual diagnosis program treats both the addiction and the underlying mental-health disorders at the same time, with psychiatric assessment, medication management when appropriate, and evidence-based therapies designed to stabilize mood and reduce relapse risk.",
+          "Our [dual diagnosis](/treatment/dual-diagnosis) program treats both the addiction and the underlying mental-health disorders at the same time, with psychiatric assessment, medication management when appropriate, and evidence-based therapies designed to stabilize mood and reduce relapse risk.",
         ],
         stats: [
           { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition", source: "NIDA" },
@@ -225,6 +231,8 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "fentanyl-addiction",
+    metaDescription:
+      "Fentanyl addiction treatment in Los Angeles. Medical detox and residential care with medication-assisted treatment and 24/7 monitoring.",
     metaTitle: "Fentanyl Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Fentanyl Addiction Treatment in Los Angeles, CA",
@@ -235,7 +243,7 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "What Is Fentanyl Addiction?",
         body: [
-          "Fentanyl is a synthetic opioid up to 50 times stronger than heroin and 100 times stronger than morphine, making it one of the most dangerous and addictive substances in the United States. Because illicit fentanyl is often mixed into cocaine, heroin, counterfeit pills, and party drugs without the user's knowledge, addiction can develop rapidly — sometimes after just a few uses.",
+          "Fentanyl is a synthetic opioid up to 50 times stronger than heroin and 100 times stronger than morphine. That makes it one of the most dangerous and addictive drugs in the country. It is often mixed into cocaine, heroin, counterfeit pills, and party drugs without the buyer knowing, so addiction — and overdose — can happen fast.",
           "According to the CDC, over 74,000 overdose deaths in 2022 involved synthetic opioids like fentanyl, making it the leading driver of the overdose crisis in the U.S. Fentanyl's extreme potency overwhelms the brain's opioid receptors, leading to intense dependence, severe withdrawal, and a high risk of accidental overdose.",
         ],
         stats: [
@@ -255,7 +263,7 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "Fentanyl Withdrawal & Why You Shouldn't Detox Cold-Turkey",
         body: [
-          "Fentanyl withdrawal is intense because long-term opioid use disrupts the brain's natural ability to regulate pain, stress, and dopamine. When fentanyl is removed, the body experiences a sudden drop in opioid activity, triggering severe physical discomfort, emotional instability, and powerful cravings. While withdrawal is rarely life-threatening, it can become dangerous without medical supervision due to dehydration, rapid heart rate, and relapse risk.",
+          "Fentanyl withdrawal is intense. Long-term opioid use wrecks the brain's ability to manage pain, stress, and dopamine on its own. Take the fentanyl away and opioid activity drops sharply, bringing severe physical pain, mood swings, and powerful cravings. It is rarely fatal by itself, but the relapse and overdose risk during withdrawal is high.",
         ],
         groupsDisplay: "timeline",
         groups: [
@@ -277,7 +285,7 @@ export const treatmentSubstances: ContentPageData[] = [
         heading: "Dual Diagnosis & Fentanyl Addiction",
         body: [
           "Fentanyl addiction is closely tied to underlying mental-health conditions such as anxiety, depression, PTSD, chronic stress, and trauma-related disorders. According to NIDA, more than 40% of people with a substance use disorder also have a co-occurring mental-health condition.",
-          "Our dual diagnosis program treats both fentanyl addiction and the mental-health challenges driving it, with psychiatric evaluation, medication management when appropriate, and evidence-based therapies designed to stabilize mood and strengthen coping skills.",
+          "Our [dual diagnosis](/treatment/dual-diagnosis) program treats both fentanyl addiction and the mental-health challenges driving it, with psychiatric evaluation, medication management when appropriate, and evidence-based therapies designed to stabilize mood and strengthen coping skills.",
         ],
         stats: [
           { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition", source: "NIDA" },
@@ -302,6 +310,8 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "heroin-addiction",
+    metaDescription:
+      "Heroin addiction treatment in Los Angeles. Medically supervised detox, MAT, and residential care to manage withdrawal safely.",
     metaTitle: "Heroin Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Heroin Addiction Treatment in Los Angeles, CA",
@@ -352,7 +362,7 @@ export const treatmentSubstances: ContentPageData[] = [
         heading: "Dual Diagnosis & Heroin Addiction",
         body: [
           "Heroin addiction rarely exists on its own. Many people struggling with opioid dependence also experience anxiety, depression, PTSD, bipolar disorder, or chronic stress. According to NIDA, over 40% of people with a substance use disorder have a co-occurring mental-health condition.",
-          "Our dual diagnosis program addresses both heroin addiction and the mental-health challenges fueling it — with psychiatric evaluation, medication support when appropriate, and evidence-based therapies to stabilize mood and reduce relapse risk.",
+          "Our [dual diagnosis](/treatment/dual-diagnosis) program addresses both heroin addiction and the mental-health challenges fueling it — with psychiatric evaluation, medication support when appropriate, and evidence-based therapies to stabilize mood and reduce relapse risk.",
         ],
         stats: [
           { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition", source: "NIDA" },
@@ -377,6 +387,8 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "meth-addiction",
+    metaDescription:
+      "Methamphetamine addiction treatment in Los Angeles. Psychiatric monitoring, craving management, and residential care for meth recovery.",
     metaTitle: "Meth Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Meth Addiction Treatment in Los Angeles, CA",
@@ -427,7 +439,7 @@ export const treatmentSubstances: ContentPageData[] = [
         heading: "Dual Diagnosis & Meth Addiction",
         body: [
           "Meth addiction is strongly connected to underlying mental-health challenges such as anxiety, depression, trauma, bipolar-spectrum disorders, and stimulant-induced psychosis. According to NIDA, more than 40% of people with a substance use disorder also have a co-occurring mental-health condition.",
-          "At Wellness Detox LA, our dual diagnosis program treats both meth addiction and the mental-health conditions that drive or worsen stimulant use.",
+          "At Wellness Detox LA, our [dual diagnosis](/treatment/dual-diagnosis) program treats both meth addiction and the mental-health conditions that drive or worsen stimulant use.",
         ],
         stats: [
           { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition", source: "NIDA" },
@@ -452,6 +464,8 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "opioid-addiction",
+    metaDescription:
+      "Opioid addiction treatment in Los Angeles for prescription and illicit opioids. Medical detox, MAT, and residential care with 24/7 support.",
     metaTitle: "Opioid Addiction Treatment in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Opioid Addiction Treatment in Los Angeles, CA",
@@ -462,7 +476,7 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "What Is Opioid Addiction?",
         body: [
-          "Opioid addiction occurs when the brain becomes dependent on opioids to manage pain, stress, or emotional discomfort. Opioids bind to the brain's reward and pain-regulation centers, creating powerful feelings of relief and euphoria. Over time, the brain struggles to function without them, leading to compulsive use, physical dependence, and dangerous withdrawal symptoms.",
+          "Opioid addiction happens when the brain comes to depend on opioids to handle pain, stress, or emotional discomfort. Opioids attach to the brain's reward and pain centers, producing strong relief and euphoria. Over time the brain struggles to work without them, which drives compulsive use, physical dependence, and a serious overdose risk.",
           "Common opioids include prescription medications (oxycodone, hydrocodone, morphine, codeine), illicit opioids (heroin, illicit fentanyl), and synthetics (tramadol, methadone when misused). According to the CDC, over 80,000 overdose deaths in 2022 involved opioids, making opioid addiction one of the most critical health issues in the United States today.",
         ],
         stats: [
@@ -480,7 +494,7 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "Opioid Withdrawal & Why You Shouldn't Detox Cold-Turkey",
         body: [
-          "Opioid withdrawal occurs when the brain and nervous system can no longer function normally without opioids. After prolonged use, the body becomes dependent on opioids to regulate pain, mood, and stress, so stopping use triggers intense physical and emotional symptoms. While rarely life-threatening, it can be extremely uncomfortable and carries a high risk of relapse without medical supervision.",
+          "Opioid withdrawal sets in once the brain and nervous system can no longer run normally without the drug. After prolonged use the body leans on opioids to regulate pain, mood, and stress. Stop, and intense physical and emotional symptoms follow. It is rarely life-threatening, but it is extremely uncomfortable — and that is what sends most people back to using without support.",
         ],
         groupsDisplay: "timeline",
         groups: [
@@ -502,7 +516,7 @@ export const treatmentSubstances: ContentPageData[] = [
         heading: "Dual Diagnosis & Opioid Addiction",
         body: [
           "Opioid addiction is deeply connected to mental-health challenges. Many individuals struggling with opioid dependence also experience anxiety, depression, PTSD, bipolar disorders, or chronic stress. According to NIDA, more than 40% of people with a substance use disorder also have a co-occurring mental-health condition.",
-          "Our dual diagnosis program addresses both the addiction and the underlying emotional or psychiatric issues driving it, with a full psychiatric assessment, medication support when clinically appropriate, and evidence-based therapies.",
+          "Our [dual diagnosis](/treatment/dual-diagnosis) program addresses both the addiction and the underlying emotional or psychiatric issues driving it, with a full psychiatric assessment, medication support when clinically appropriate, and evidence-based therapies.",
         ],
         stats: [
           { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition", source: "NIDA" },
@@ -527,7 +541,9 @@ export const treatmentSubstances: ContentPageData[] = [
   },
   {
     slug: "prescription-drug-addiction",
-    metaTitle: "Prescription Drug Addiction Treatment in Los Angeles",
+    metaDescription:
+      "Prescription drug addiction treatment in Los Angeles. Discreet, medically managed detox and residential care for opioid, benzo, and stimulant misuse.",
+    metaTitle: "Prescription Drug Rehab in Los Angeles",
     eyebrow: "What We Treat",
     h1: "Prescription Drug Addiction Treatment in Los Angeles, CA",
     intro:
@@ -537,8 +553,8 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "What Is Prescription Drug Addiction?",
         body: [
-          "Prescription drug addiction occurs when the brain becomes dependent on medications that were originally intended for medical treatment. The most commonly misused prescription drugs include opioid painkillers (oxycodone, hydrocodone, morphine, codeine), benzodiazepines (Xanax, Ativan, Valium, Klonopin), stimulants (Adderall, Ritalin, Vyvanse), and sleep medications (Ambien, Lunesta).",
-          "Over 14 million Americans misused prescription drugs in 2022. Even when taken correctly, some medications carry a high dependence risk — long-term use changes brain chemistry, making it difficult for the body to regulate pain, anxiety, or sleep without the drug.",
+          "Prescription drug addiction happens when the brain comes to depend on medication that was prescribed for a real medical reason. The drugs most often misused are opioid painkillers (oxycodone, hydrocodone, morphine, codeine), benzodiazepines (Xanax, Ativan, Valium, Klonopin), and stimulants (Adderall, Ritalin).",
+          "Over 14 million Americans misused prescription drugs in 2022. Even taken exactly as directed, some medications carry a high risk of dependence. Long-term use changes brain chemistry, so the body struggles to manage pain, anxiety, or sleep without the drug.",
         ],
         stats: [
           { value: "14M+", label: "Americans misused prescription drugs in 2022" },
@@ -555,7 +571,7 @@ export const treatmentSubstances: ContentPageData[] = [
       {
         heading: "Prescription Drug Withdrawal & Why Professional Detox Matters",
         body: [
-          "Prescription drug withdrawal can be unpredictable and, in some cases, dangerous — especially with opioids, benzodiazepines, sedatives, and high-dose stimulants. Withdrawal varies by drug class, which is why a personalized, medically supervised taper is so important.",
+          "Prescription drug withdrawal is unpredictable, and sometimes dangerous — especially with opioids, benzodiazepines, sedatives, and high-dose stimulants. What happens depends on the drug class. That is why the taper has to be medically supervised and built for you.",
         ],
         groupsDisplay: "timeline",
         groups: [
@@ -578,7 +594,7 @@ export const treatmentSubstances: ContentPageData[] = [
           "Prescription drug addiction is deeply intertwined with mental-health conditions. Over 40% of people with a substance use disorder also have a co-occurring mental-health condition. Treating both the addiction and the underlying condition together leads to stronger, longer-lasting recovery.",
         ],
         stats: [
-          { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition" },
+          { value: "40%+", label: "of people with a substance use disorder also have a co-occurring mental-health condition", source: "NIDA" },
         ],
       },
     ],

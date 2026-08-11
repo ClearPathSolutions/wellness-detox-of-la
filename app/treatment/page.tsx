@@ -56,7 +56,7 @@ export default function TreatmentPage() {
                 <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
                   <Icon width={22} height={22} />
                 </span>
-                <h3 className="text-lg text-ink">{title}</h3>
+                <h3 className="t-h3 text-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{blurb}</p>
               </div>
             ))}

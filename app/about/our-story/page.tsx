@@ -16,7 +16,7 @@ export default function OurStoryPage() {
   return (
     <>
       <PageHero
-        crumb="Our Story"
+        crumb="About / Our Story"
         eyebrow="Our Story"
         title="A new facility built on experience and proven results"
         intro="Wellness Detox of LA is a new Los Angeles treatment center built on more than 15 years of recovery excellence through the Quadrant Health Group."
@@ -72,7 +72,7 @@ export default function OurStoryPage() {
       <Container className="py-16 lg:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow mb-3">Our Vision for the Future</p>
-          <h2 className="text-3xl text-ink sm:text-4xl">Recovery that lasts, for every person we serve</h2>
+          <h2 className="t-h2 text-ink">Recovery that lasts, for every person we serve</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">
             We envision a Los Angeles where quality addiction treatment is accessible, compassionate,
             and effective. As we grow, our commitment stays the same: to meet each person with

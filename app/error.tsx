@@ -25,7 +25,7 @@ export default function Error({
     <Container className="py-16 lg:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <p className="eyebrow mb-3">Something went wrong</p>
-        <h1 className="text-3xl text-ink sm:text-4xl">This page didn&apos;t load properly</h1>
+        <h1 className="t-h1 text-ink">This page didn&apos;t load properly</h1>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           Sorry — something on our end failed. Please try again. If you need to speak with someone
           about treatment, our admissions team is available 24/7 and can help you right now.

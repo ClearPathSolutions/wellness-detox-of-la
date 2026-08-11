@@ -9,8 +9,8 @@ import { ArrowRight, Container, SectionHeading } from "@/components/ui";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Founded in 2025, Wellness Detox LA brings the proven quality and compassion of the Quadrant Health Group to Los Angeles — backed by 15+ years of recovery experience.",
-  ...pageMeta({ path: "/about", title: "About Us", description: "Founded in 2025, Wellness Detox LA brings the proven quality and compassion of the Quadrant Health Group to Los Angeles — backed by 15+ years of recovery experience." }),
+    "Founded in 2025, Wellness Detox LA brings the Quadrant Health Group's care to Los Angeles, backed by 15+ years of recovery experience.",
+  ...pageMeta({ path: "/about", title: "About Us", description: "Founded in 2025, Wellness Detox LA brings the Quadrant Health Group's care to Los Angeles, backed by 15+ years of recovery experience." }),
 };
 
 const links = [
@@ -39,13 +39,13 @@ export default function AboutPage() {
         cta={{ label: "Read Our Story", href: "/about/our-story" }}
       >
         <p>
-          As part of one of the nation&apos;s most respected treatment networks, our Los Angeles center
-          provides medically supervised detox, residential inpatient care, and personalized treatment
-          for those beginning their recovery journey.
+          Our Los Angeles center is part of the Quadrant Health Group. We provide medically
+          supervised detox, residential inpatient care, and treatment planned around the person —
+          for anyone at the start of recovery.
         </p>
         <p>
-          Every program reflects the Quadrant Health Group&apos;s long-standing values: safety,
-          integrity, and lasting transformation — delivered in a calm, restorative environment.
+          Three values run through every program: safety, integrity, and change that lasts. The
+          setting is calm and restorative, because that is what makes them possible.
         </p>
       </SplitFeature>
 
@@ -58,14 +58,13 @@ export default function AboutPage() {
         cta={{ label: "See How We Help", href: "/treatment" }}
       >
         <p>
-          Our programs are led by licensed professionals specializing in substance use disorders and
-          co-occurring mental health conditions. We offer medical detox, residential treatment, dual
-          diagnosis support, and evidence-based therapies designed to help clients stabilize safely.
+          Licensed professionals lead every program. They specialize in substance use disorders and
+          the mental health conditions that often come with them. We offer medical detox, residential
+          treatment, dual diagnosis support, and proven therapies to help you stabilize safely.
         </p>
         <p>
-          Our approach includes proven modalities such as CBT, DBT, trauma-informed care, relapse
-          prevention planning, family involvement, and holistic support — with a personalized
-          treatment plan for every client.
+          The methods are proven ones: CBT, DBT, trauma-informed care, relapse prevention, family
+          involvement, and whole-person support. Every client gets their own treatment plan.
         </p>
       </SplitFeature>
 
@@ -79,7 +78,7 @@ export default function AboutPage() {
                 href={l.href}
                 className="group rounded-2xl border border-line bg-white p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft"
               >
-                <h3 className="flex items-center gap-2 text-xl text-ink">
+                <h3 className="flex items-center gap-2 t-h3 text-ink">
                   {l.label}
                   <ArrowRight width={18} height={18} className="text-rose-dark transition-transform group-hover:translate-x-1" />
                 </h3>

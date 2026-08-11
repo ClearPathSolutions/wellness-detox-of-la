@@ -24,8 +24,11 @@ export default function BlogIndex() {
         intro="Our blog brings together helpful insights on addiction, mental health, treatment options, and life in recovery — written to support individuals and families across Los Angeles as they navigate healing with clarity and confidence."
       />
 
-      {/* Latest posts — authored and managed in the Clarion dashboard. */}
-      <Container className="py-14 lg:py-20">
+      {/* Latest posts — authored and managed in the Clarion dashboard.
+          The vertical padding lives on the embed's own mount, not here, so that
+          when the embed has nothing to show the whole band collapses instead of
+          leaving an empty gap between the hero and the archive. */}
+      <Container>
         <ClarionBlog />
       </Container>
 
@@ -35,7 +38,7 @@ export default function BlogIndex() {
         <Container className="py-14 lg:py-20">
           <div className="mb-8 max-w-2xl">
             <p className="eyebrow mb-3">From the archive</p>
-            <h2 className="font-display text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+            <h2 className="t-h2 text-ink">
               Earlier articles
             </h2>
             <p className="mt-3 leading-relaxed text-muted">
@@ -61,7 +64,7 @@ export default function BlogIndex() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="eyebrow mb-2 text-[0.65rem]">{post.displayDate}</p>
-                  <h3 className="font-display text-lg font-semibold leading-snug text-ink group-hover:text-rose-dark">
+                  <h3 className="t-h3 text-ink group-hover:text-rose-dark">
                     {post.title}
                   </h3>
                   <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">{post.excerpt}</p>

@@ -22,6 +22,7 @@ import {
   HeartIcon,
   LeafIcon,
   MapPinIcon,
+  Prose,
   ShieldIcon,
   SparkIcon,
   UsersIcon,
@@ -73,7 +74,7 @@ export function ProgramGrid() {
             <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-rose-soft text-rose-dark transition-colors group-hover:bg-rose group-hover:text-white">
               <Icon width={22} height={22} />
             </span>
-            <h3 className="text-xl text-ink">{p.title}</h3>
+            <h3 className="t-h3 text-ink">{p.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">{p.blurb}</p>
             <ul className="mt-4 space-y-2">
               {p.points.map((pt) => (
@@ -120,7 +121,7 @@ export function TherapyGrid() {
       {therapies.map((t) => {
         const card = (
           <>
-            <h3 className="font-display text-base font-semibold text-ink">{t.title}</h3>
+            <h3 className="t-h4 text-ink">{t.title}</h3>
             <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.blurb}</p>
           </>
         );
@@ -153,7 +154,7 @@ export function AdmissionsTimeline() {
       {admissionSteps.map((s) => (
         <div key={s.step} className="relative rounded-2xl bg-white p-6 shadow-card">
           <span className="font-display text-4xl font-bold text-rose/25">{s.step}</span>
-          <h3 className="mt-2 text-lg text-ink">{s.title}</h3>
+          <h3 className="t-h3 mt-2 text-ink">{s.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-muted">{s.blurb}</p>
         </div>
       ))}
@@ -175,7 +176,7 @@ export function PrinciplesGrid() {
             <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
               <Icon width={20} height={20} />
             </span>
-            <h3 className="text-lg text-ink">{p.title}</h3>
+            <h3 className="t-h3 text-ink">{p.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">{p.blurb}</p>
           </div>
         );
@@ -251,8 +252,11 @@ export function TourGallery() {
     <div className="space-y-14">
       {galleryCategories.map((cat) => (
         <div key={cat.label}>
+          {/* H3, not H2: these are subdivisions of the "Explore the space, room
+              by room" section heading above them. As H2 they were siblings of
+              their own parent, which flattened the tour page's outline. */}
           <div className="mb-6 flex items-center gap-4">
-            <h2 className="text-2xl text-ink sm:text-3xl">{cat.label}</h2>
+            <h3 className="t-h3 text-ink">{cat.label}</h3>
             <span className="h-px flex-1 bg-line" />
           </div>
           <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
@@ -290,9 +294,9 @@ export function CtaBanner({
     <section className="px-5 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[2rem] bg-ink px-6 py-14 text-center sm:px-12 lg:py-20">
         {/* rose-soft, not rose: this sits on the dark ink panel. */}
-        <span className="eyebrow text-rose-soft">Get Started Today</span>
-        <h2 className="mx-auto mt-3 max-w-2xl text-3xl text-white sm:text-4xl">{title}</h2>
-        <p className="mx-auto mt-4 max-w-xl text-white/70">{intro}</p>
+        <p className="eyebrow text-rose-soft">Get Started Today</p>
+        <h2 className="t-h2 mx-auto mt-3 max-w-3xl text-white">{title}</h2>
+        <p className="t-lead mx-auto mt-4 max-w-2xl text-white/70">{intro}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button href={site.phoneHref} size="lg" trackAs="cta-banner">
             Call {site.phone}
@@ -336,9 +340,9 @@ export function SplitFeature({
       }`}
     >
       <div className={reverse ? "lg:order-2" : ""}>
-        <h2 className="text-3xl leading-tight text-ink sm:text-4xl">{title}</h2>
-        {eyebrow && <p className="eyebrow mt-3">{eyebrow}</p>}
-        <div className="mt-5 space-y-4 text-base leading-relaxed text-muted">{children}</div>
+        {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+        <h2 className="t-h2 text-ink">{title}</h2>
+        <Prose className="mt-5">{children}</Prose>
         {cta && (
           <div className="mt-7">
             <Button href={cta.href} variant="dark">
@@ -376,9 +380,9 @@ export function InsuranceStrip() {
       <div className="mx-auto max-w-[1600px]">
         <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <h2 className="text-3xl text-ink sm:text-4xl">We work with most insurance providers</h2>
-            <p className="eyebrow mt-3">Insurance &amp; Coverage</p>
-            <p className="mt-4 max-w-xl text-muted">
+            <p className="eyebrow mb-3">Insurance &amp; Coverage</p>
+            <h2 className="t-h2 text-ink">We work with most insurance providers</h2>
+            <p className="t-body measure mt-4 text-muted">
               Getting help should never feel out of reach. We work with most major insurance providers
               to make treatment as accessible and affordable as possible — and we&apos;ll verify your
               benefits for you, quickly and confidentially.
@@ -396,7 +400,7 @@ export function InsuranceStrip() {
           </div>
           <div className="rounded-2xl bg-white p-7 shadow-card">
             <ShieldIcon width={28} height={28} className="text-rose-dark" />
-            <h3 className="mt-3 text-xl text-ink">Verify your benefits</h3>
+            <h3 className="t-h3 mt-3 text-ink">Verify your benefits</h3>
             <p className="mt-2 text-sm text-muted">
               Send us your information and our team will confirm your coverage — no obligation.
             </p>
@@ -570,7 +574,7 @@ export function SubsectionCards({ items }: { items: Subsection[] }) {
             <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose-soft text-rose-dark transition-colors group-hover:bg-rose group-hover:text-white">
               <Icon width={20} height={20} />
             </span>
-            <h3 className="font-display text-base font-semibold text-ink">{ss.heading}</h3>
+            <h3 className="t-h4 text-ink">{ss.heading}</h3>
             <p className="mt-1.5 text-sm leading-relaxed text-muted">{ss.body}</p>
           </div>
         );

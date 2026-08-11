@@ -24,7 +24,7 @@ export function Footer() {
       <div className="border-b border-white/10">
         <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-6 px-5 py-12 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:py-14">
           <div className="max-w-xl">
-            <h2 className="text-2xl text-white sm:text-3xl">Your journey to wellness begins today</h2>
+            <h2 className="t-h2 text-white">Your journey to wellness begins today</h2>
             <p className="mt-3 text-white/70">
               Reach out for a confidential conversation. Our admissions team is here 24/7 to answer
               your questions and help you take the next step.
@@ -136,7 +136,12 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-white/60 sm:flex-row sm:px-6 lg:px-8">
-          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+          {/* No year. Every page here is statically prerendered, so
+              `new Date().getFullYear()` froze at build time and displayed the
+              previous year from each January 1 until the next deploy. A year is
+              not required for copyright to hold, and omitting it is the only
+              option that cannot render something false. */}
+          <p>© {site.name}. All rights reserved.</p>
           <div className="flex items-center gap-5">
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/contact" className="hover:text-white">Contact</Link>

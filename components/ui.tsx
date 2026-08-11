@@ -87,6 +87,17 @@ export function Button({
 
 /* ----------------------------- SectionHeading ---------------------------- */
 
+/**
+ * Eyebrow → heading → intro.
+ *
+ * This order was previously inverted (heading, then eyebrow beneath it as a
+ * kicker). An eyebrow's whole job is to frame the heading *before* you read it —
+ * placed after, it reads as an orphaned uppercase fragment, and a screen reader
+ * announces the heading and then a stray label with no antecedent. It also made
+ * the site internally inconsistent, because ContentPage rendered section
+ * eyebrows the correct way round, so the same element sat on opposite sides of
+ * the heading depending on which template drew the page.
+ */
 export function SectionHeading({
   eyebrow,
   title,
@@ -105,15 +116,120 @@ export function SectionHeading({
   const alignCls = align === "center" ? "text-center mx-auto" : "text-left";
   const titleColor = tone === "light" ? "text-white" : "text-ink";
   const introColor = tone === "light" ? "text-white/75" : "text-muted";
+  const eyebrowColor = tone === "light" ? "text-rose-soft" : "";
   return (
-    <div className={`max-w-2xl ${alignCls} ${className}`}>
-      {/* Heading leads, eyebrow sits beneath it as a kicker. Swapped per the
-          visual review, which asked for the small rose label and the heading to
-          trade places across every section. */}
-      <h2 className={`text-3xl sm:text-4xl leading-[1.12] ${titleColor}`}>{title}</h2>
-      {eyebrow && <p className="eyebrow mt-3">{eyebrow}</p>}
-      {intro && <p className={`mt-4 text-base sm:text-lg leading-relaxed ${introColor}`}>{intro}</p>}
+    <div className={`measure-wide ${alignCls} ${className}`}>
+      {eyebrow && <p className={`eyebrow mb-3 ${eyebrowColor}`}>{eyebrow}</p>}
+      <h2 className={`t-h2 ${titleColor}`}>{title}</h2>
+      {intro && <p className={`t-lead mt-4 ${introColor}`}>{intro}</p>}
     </div>
+  );
+}
+
+/* -------------------------------- RichText ------------------------------- */
+
+/**
+ * Renders `[label](/path)` inside a content string as a real link.
+ *
+ * Content-page body copy is stored as plain strings, which meant no paragraph
+ * anywhere on a treatment, admissions or area page could link to another page —
+ * every internal link on those pages came from a nav widget. This is the minimum
+ * that fixes it without opening an HTML injection path.
+ *
+ * Deliberately restrictive: only root-relative hrefs are honoured. Anything else
+ * (`http:`, `javascript:`, protocol-relative) renders as literal text rather
+ * than a link, so even if authoring later moves to a CMS this cannot emit an
+ * off-site or scripted URL.
+ */
+/** Built per call: a module-level `/g` regex carries `lastIndex` between
+ *  invocations, so a shared instance would skip matches on the second and
+ *  subsequent paragraphs rendered in the same pass. */
+const linkPattern = () => /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+
+export function RichText({ children }: { children: string }) {
+  const parts: ReactNode[] = [];
+  const re = linkPattern();
+  let last = 0;
+  let m: RegExpExecArray | null;
+
+  while ((m = re.exec(children)) !== null) {
+    if (m.index > last) parts.push(children.slice(last, m.index));
+    parts.push(
+      <Link
+        key={`${m.index}-${m[2]}`}
+        href={m[2]}
+        className="font-medium text-rose-dark underline decoration-line underline-offset-2 transition-colors hover:decoration-rose"
+      >
+        {m[1]}
+      </Link>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < children.length) parts.push(children.slice(last));
+  return <>{parts}</>;
+}
+
+/* --------------------------------- Prose --------------------------------- */
+
+/**
+ * Body copy at a controlled measure with consistent paragraph rhythm. Replaces
+ * the `space-y-4 text-base leading-relaxed` incantation that was repeated, with
+ * slightly different values, at every call site.
+ */
+export function Prose({
+  children,
+  tone = "dark",
+  className = "",
+}: {
+  children: ReactNode;
+  tone?: "dark" | "light";
+  className?: string;
+}) {
+  const color = tone === "light" ? "text-white/75" : "text-muted";
+  return (
+    <div className={`measure t-body space-y-4 ${color} ${className}`}>{children}</div>
+  );
+}
+
+/* ------------------------------- Breadcrumb ------------------------------ */
+
+export type Crumb = { label: string; href?: string };
+
+/**
+ * Renders the visible trail. Every level except the current page is a real
+ * link — the previous version flattened intermediate levels into a single
+ * unlinked string ("Treatment / Detox"), so a two-level trail had exactly one
+ * working link and the middle level was invisible to both users and crawlers.
+ *
+ * The matching BreadcrumbList JSON-LD is emitted by `breadcrumbLd()` in
+ * lib/seo.ts, driven off the same array so the two cannot drift.
+ */
+export function Breadcrumb({ items, tone = "dark" }: { items: Crumb[]; tone?: "dark" | "light" }) {
+  const base = tone === "light" ? "text-white/70" : "text-muted";
+  const hover = tone === "light" ? "hover:text-white" : "hover:text-rose-dark";
+  const current = tone === "light" ? "text-white/90" : "text-ink-700";
+  return (
+    <nav aria-label="Breadcrumb" className={`mb-5 text-xs ${base}`}>
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        {items.map((c, i) => {
+          const isLast = i === items.length - 1;
+          return (
+            <li key={`${c.label}-${i}`} className="flex items-center gap-2">
+              {c.href && !isLast ? (
+                <Link href={c.href} className={`transition-colors ${hover}`}>
+                  {c.label}
+                </Link>
+              ) : (
+                <span className={isLast ? current : undefined} aria-current={isLast ? "page" : undefined}>
+                  {c.label}
+                </span>
+              )}
+              {!isLast && <span aria-hidden>/</span>}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }
 

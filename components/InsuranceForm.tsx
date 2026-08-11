@@ -99,7 +99,7 @@ export function InsuranceForm() {
         <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rose-soft text-rose-dark">
           <CheckIcon width={26} height={26} />
         </span>
-        <h3 className="text-xl text-ink">Thank you — we&apos;ve got your details</h3>
+        <h3 className="t-h3 text-ink">Thank you — we&apos;ve got your details</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm text-muted">
           Our team will verify your benefits confidentially and get back to you — usually the same
           day. Prefer to verify by phone right now? We&apos;re available 24/7.

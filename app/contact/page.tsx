@@ -22,18 +22,21 @@ export default function ContactPage() {
 
   return (
     <>
+      {/* H1 was "Your journey to wellness starts today" — a near-verbatim copy of
+          the footer CTA heading that appears lower on this very page, and it
+          carried no contact intent. */}
       <PageHero
         crumb="Contact"
         eyebrow="Reach Out Today"
-        title="Your journey to wellness starts today"
+        title="Contact our Los Angeles admissions team"
         intro="If you or a loved one is struggling with drug or alcohol addiction and/or mental health challenges, our treatment team is here to help — confidentially and without pressure."
       />
 
       <Container className="grid gap-10 py-14 lg:grid-cols-[1fr_1.1fr] lg:py-20">
         {/* Details */}
         <div>
-          <h2 className="text-2xl text-ink">Write us directly</h2>
-          <p className="mt-3 text-muted">
+          <h2 className="t-h2 text-ink">Write us directly</h2>
+          <p className="t-body measure mt-3 text-muted">
             Fill out the form and our admissions team will contact you shortly to answer questions,
             verify insurance, and help you take the next step toward treatment.
           </p>

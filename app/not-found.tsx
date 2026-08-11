@@ -30,7 +30,7 @@ export default function NotFound() {
     <Container className="py-16 lg:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <p className="eyebrow mb-3">Error 404</p>
-        <h1 className="text-3xl text-ink sm:text-4xl">We couldn&apos;t find that page</h1>
+        <h1 className="t-h1 text-ink">We couldn&apos;t find that page</h1>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           The page you&apos;re looking for may have moved or no longer exists. If you&apos;re trying
           to reach someone about treatment, our admissions team is available right now — 24/7 and
@@ -58,7 +58,7 @@ export default function NotFound() {
               href={d.href}
               className="group rounded-2xl border border-line bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:border-rose hover:shadow-soft"
             >
-              <h3 className="flex items-center gap-2 font-display text-base font-semibold text-ink">
+              <h3 className="flex items-center gap-2 t-h4 text-ink">
                 {d.label}
                 <ArrowRight
                   width={15}

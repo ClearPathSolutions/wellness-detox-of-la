@@ -16,8 +16,8 @@ import {
 export const metadata: Metadata = {
   title: "Tour the Facility",
   description:
-    "Explore Wellness Detox of LA — from serene bedrooms to bright common areas and peaceful outdoor spaces, our home-like facility is designed to promote comfort, calm, and healing.",
-  ...pageMeta({ path: "/tour", title: "Tour the Facility", description: "Explore Wellness Detox of LA — from serene bedrooms to bright common areas and peaceful outdoor spaces, our home-like facility is designed to promote comfort, calm, and healing." }),
+    "Tour Wellness Detox of LA: serene bedrooms, bright common areas, and peaceful outdoor spaces in a home-like Pomona residence built for healing.",
+  ...pageMeta({ path: "/tour", title: "Tour the Facility", description: "Tour Wellness Detox of LA: serene bedrooms, bright common areas, and peaceful outdoor spaces in a home-like Pomona residence built for healing." }),
 };
 
 const amenities = [
@@ -52,7 +52,7 @@ export default function TourPage() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
             <p className="eyebrow mb-3">Step Inside</p>
-            <h2 className="text-3xl text-ink sm:text-4xl">Recovery in a real home, not a hospital</h2>
+            <h2 className="t-h2 text-ink">Recovery in a real home, not a hospital</h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-muted">
               <p>
                 Wellness Detox LA is set in a spacious, beautifully renovated residence in a quiet
@@ -67,7 +67,7 @@ export default function TourPage() {
             </div>
           </div>
           <div className="rounded-2xl border border-line bg-white p-6 shadow-card sm:p-8">
-            <h3 className="font-display text-lg font-semibold text-ink">What&apos;s inside</h3>
+            <h3 className="t-h3 text-ink">What&apos;s inside</h3>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {amenities.map((a) => (
                 <li key={a} className="flex items-start gap-2.5 text-sm text-ink-700">
@@ -77,6 +77,22 @@ export default function TourPage() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Moved up from below the photo tour, where these three cards sat in a
+            bare <Container> with no heading of their own — so their H3s read as
+            part of "Explore the space, room by room". They restate the themes of
+            the section above them, so they belong to it. */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+          {highlights.map(({ icon: Icon, title, blurb }) => (
+            <div key={title} className="rounded-2xl border border-line bg-white p-6 shadow-card">
+              <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
+                <Icon width={20} height={20} />
+              </span>
+              <h3 className="t-h3 text-ink">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{blurb}</p>
+            </div>
+          ))}
         </div>
       </Container>
 
@@ -93,20 +109,6 @@ export default function TourPage() {
         </Container>
       </section>
 
-      <Container className="py-14 lg:py-20">
-        <div className="grid gap-5 sm:grid-cols-3">
-          {highlights.map(({ icon: Icon, title, blurb }) => (
-            <div key={title} className="rounded-2xl border border-line bg-white p-6 shadow-card">
-              <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose-soft text-rose-dark">
-                <Icon width={20} height={20} />
-              </span>
-              <h3 className="text-lg text-ink">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{blurb}</p>
-            </div>
-          ))}
-        </div>
-      </Container>
-
       {/* Location / travel proximity */}
       <section className="bg-ink px-5 py-16 sm:px-6 lg:px-8 lg:py-24">
         <Container className="px-0">
@@ -115,7 +117,7 @@ export default function TourPage() {
               <p className="mb-3 font-display text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-rose-soft">
                 Location & Access
               </p>
-              <h2 className="text-3xl text-white sm:text-4xl">
+              <h2 className="t-h2 text-white">
                 Recovery in a calm setting, close to major travel routes
               </h2>
               <p className="mt-5 text-base leading-relaxed text-white/75">

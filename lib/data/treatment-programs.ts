@@ -17,14 +17,14 @@ export const treatmentPrograms: ContentPageData[] = [
         body: [
           "Medical detox is the first and most important step in safely overcoming drug or alcohol dependence. At Wellness Detox LA, detox takes place in a controlled, medically supervised environment where licensed professionals monitor your health, manage withdrawal symptoms, and help your body begin stabilizing after prolonged substance use.",
           "During detox, the body starts clearing the alcohol, opioids, benzodiazepines, stimulants, or other substances from the system. This process can cause uncomfortable and dangerous withdrawal symptoms. That's why medical detox is the safest and most effective way to begin recovery. Our team provides 24/7 clinical monitoring, supportive medications when appropriate, and compassionate care to keep you comfortable and protected at every stage.",
-          "Medical detox isn't just about removing substances, it's about creating the physical and emotional stability you need to move into deeper treatment. Once withdrawal has been safely managed, clients are better prepared to continue their recovery through residential treatment, therapy, and long-term support.",
+          "Medical detox isn't just about removing substances, it's about creating the physical and emotional stability you need to move into deeper treatment. Once withdrawal has been safely managed, clients are better prepared to continue their recovery through [residential treatment](/treatment/residential), therapy, and long-term support.",
         ],
       },
       {
         heading: "The Danger of Withdrawal Symptoms",
         body: [
-          "Withdrawal can be unpredictable — and in some cases, life-threatening. When someone stops using drugs or alcohol, the body goes into a state of physiological shock. Over time, the brain adapts to the constant presence of substances by altering how it produces, regulates, and responds to key neurotransmitters such as dopamine, GABA, glutamate, and adrenaline.",
-          "When the substance is abruptly removed, the brain's regulatory systems become destabilized. This sudden imbalance causes the central nervous system to become overactive or underactive, triggering a wave of physical and psychological withdrawal symptoms that can range from uncomfortable to dangerously severe without medical supervision.",
+          "Withdrawal is unpredictable, and sometimes life-threatening. When you stop using, the body goes into shock. Here is why: with steady use, the brain adapts. It changes how it makes and responds to key chemicals — dopamine, GABA, glutamate, adrenaline.",
+          "Take the substance away suddenly and that balance breaks. The nervous system swings too high or too low. The result is a wave of physical and mental symptoms — uncomfortable at best, dangerous without medical supervision.",
         ],
         bullets: [
           "Alcohol: shaking, hallucinations, rapid heartbeat, dangerous blood pressure spikes, seizures, and in severe cases delirium tremens (DTs).",
@@ -36,7 +36,7 @@ export const treatmentPrograms: ContentPageData[] = [
       {
         heading: "How Our Medical Detox Program Helps You Through Withdrawal",
         body: [
-          "As the brain and body struggle to rebalance during withdrawal, symptoms can escalate quickly without proper support. Instead of facing unpredictable symptoms alone, clients receive round-the-clock care, targeted medical interventions, and emotional support designed to stabilize the nervous system, reduce discomfort, and prevent dangerous complications.",
+          "While the brain and body rebalance, symptoms can escalate fast. You should not face that alone. You get round-the-clock care, medical treatment when it is needed, and emotional support — to settle the nervous system, ease discomfort, and head off complications.",
         ],
         subsections: [
           { heading: "Medical Stabilization", body: "Licensed medical staff intervene early to manage dangerous symptoms such as high blood pressure, dehydration, seizures, tremors, and severe anxiety, keeping the body stable while the nervous system adjusts." },
@@ -48,8 +48,8 @@ export const treatmentPrograms: ContentPageData[] = [
       {
         heading: "Why Choose Wellness Detox LA for Detox in Los Angeles",
         body: [
-          "Choosing where to begin detox is one of the most important decisions in your recovery, and Wellness Detox LA offers an environment built for safety and peace of mind. Our medical team brings extensive experience in addiction medicine and withdrawal management, ensuring you receive attentive, individualized care from the moment you arrive.",
-          "Our facility is located in a quiet, easily accessible area of Los Angeles County, close enough for loved ones to stay involved yet set apart from the noise and stress of the city. At Wellness Detox LA, you receive more than medical stabilization — you get a compassionate team, a healing environment, and a smooth, guided transition into the next phase of care.",
+          "Where you detox is one of the most important choices you will make. Our setting is built for safety and calm. Our medical team is experienced in addiction medicine and withdrawal, and your care is individual from the moment you arrive.",
+          "We are in a quiet, easy-to-reach part of Los Angeles County. Close enough that family can stay involved, far enough from the noise of the city. You get more than medical stabilization here — a team that cares, a place that heals, and a clear path forward.",
         ],
       },
     ],
@@ -73,7 +73,7 @@ export const treatmentPrograms: ContentPageData[] = [
   },
   {
     slug: "residential",
-    metaTitle: "Residential Inpatient Addiction Treatment in Los Angeles",
+    metaTitle: "Residential Inpatient Rehab in Los Angeles",
     metaDescription:
       "Residential inpatient addiction treatment in Los Angeles with 24/7 clinical care, evidence-based therapy, and a structured, home-like environment for recovery.",
     eyebrow: "Residential Inpatient",
@@ -84,13 +84,13 @@ export const treatmentPrograms: ContentPageData[] = [
       {
         heading: "What Is Residential Inpatient Treatment?",
         body: [
-          "Residential inpatient treatment is a highly structured level of care where clients live on-site and receive 24/7 supervision, clinical support, and intensive therapeutic programming.",
-          "While medical detox focuses on safely managing withdrawal and stabilizing the body, residential treatment shifts the focus to healing the mind, understanding the root causes of addiction, and addressing the emotional and psychological patterns that drive substance use.",
+          "In residential inpatient treatment you live on site. Care is highly structured, supervision runs 24/7, and therapy is intensive.",
+          "[Medical detox](/treatment/detox) is about getting through withdrawal safely and steadying the body. Residential treatment picks up from there and turns to the mind — what caused the addiction, and the feelings and patterns that keep it going.",
         ],
       },
       {
         heading: "Who Is Inpatient Rehab For?",
-        body: ["Residential inpatient treatment is ideal for individuals who need a higher level of support, structure, and stability than outpatient care can provide."],
+        body: ["Residential treatment suits people who need more support, structure, and stability than outpatient care can give."],
         bullets: [
           "Have completed detox and require continued 24/7 supervision",
           "Experience strong cravings or a history of relapse in early recovery",
@@ -103,15 +103,15 @@ export const treatmentPrograms: ContentPageData[] = [
       {
         heading: "Benefits of Our Inpatient Program",
         subsections: [
-          { heading: "24/7 Clinical Support", body: "Clients receive round-the-clock medical and therapeutic care, ensuring safety, accountability, and consistent progress during the most vulnerable stages of recovery." },
-          { heading: "Structured, Trigger-Free Environment", body: "Living on-site removes everyday stressors, negative influences, and access to substances, creating the stability needed to fully focus on healing." },
-          { heading: "Supportive Peer Community", body: "Residents share their recovery journey with others who understand their struggles, fostering connection, motivation, and a sense of belonging." },
-          { heading: "Evidence-Based, Personalized Therapies", body: "Our clinical team uses proven approaches such as CBT, DBT, trauma-informed care, and family therapy to address the deeper roots of substance use." },
+          { heading: "24/7 Clinical Support", body: "Medical and therapeutic care around the clock. That keeps you safe and moving forward through the hardest stretch of recovery." },
+          { heading: "Structured, Trigger-Free Environment", body: "Living on site takes away daily stress, bad influences, and any access to substances. What is left is room to heal." },
+          { heading: "Supportive Peer Community", body: "You recover alongside people who get it. That builds connection, motivation, and a sense of belonging." },
+          { heading: "Evidence-Based, Personalized Therapies", body: "Our clinical team uses proven methods — CBT, DBT, trauma-informed care, family therapy — to reach what sits underneath the substance use." },
         ],
       },
       {
         heading: "What to Expect in Residential Treatment",
-        body: ["Each day is intentionally designed to balance clinical therapy, emotional stabilization, wellness activities, and personal growth."],
+        body: ["Every day is built to balance four things: therapy, emotional stability, wellness, and personal growth."],
         bullets: [
           "Individual therapy sessions to explore triggers, past experiences, and recovery goals",
           "Group therapy focused on peer support, communication, and relapse prevention",
@@ -152,9 +152,9 @@ export const treatmentPrograms: ContentPageData[] = [
       {
         heading: "What Is Dual Diagnosis?",
         body: [
-          "Dual diagnosis (also known as co-occurring disorders) refers to when someone is experiencing both a substance use disorder and a mental health condition at the same time. This is extremely common, especially in Los Angeles, where high stress, trauma exposure, and fast-paced lifestyles often contribute to both emotional struggles and substance misuse.",
-          "What makes dual diagnosis different from standard addiction treatment is that both conditions must be treated at the same time. Mental health symptoms like anxiety, depression, trauma, or bipolar disorder can fuel addiction, and addiction can make those symptoms dramatically worse. When only one condition is treated, relapse becomes much more likely.",
-          "At Wellness Detox LA, our clinical and psychiatric team uses an integrated, evidence-based approach designed to stabilize the body, support the mind, and help you understand the root causes of addiction. This ensures that your treatment is not just about staying sober — it's about actually healing.",
+          "Dual diagnosis means having a substance use disorder and a mental health condition at the same time. Clinicians also call it co-occurring disorders. It is very common — and stress, trauma, and the pace of life in Los Angeles all feed both.",
+          "The difference is that both have to be treated together. Anxiety, depression, trauma, and bipolar disorder can all drive addiction. Addiction then makes those symptoms far worse. Treat only one side and the risk of relapse climbs.",
+          "Our clinical and psychiatric team treats both at once, using proven methods. The aim is to steady the body, support the mind, and get at what caused the addiction. Not just staying sober — actually healing.",
         ],
       },
       {
@@ -235,7 +235,7 @@ export const treatmentPrograms: ContentPageData[] = [
       {
         heading: "What Is Aftercare?",
         body: [
-          "Aftercare is the continued support you receive after completing structured drug & alcohol addiction treatment such as detox, residential care, PHP, or IOP. It focuses on helping you maintain stability, build healthy routines, and navigate real-life stressors without returning to substance use.",
+          "Aftercare is the support that continues once structured treatment ends — after detox, residential care, PHP, or IOP. It helps you hold your stability, build routines that work, and handle real-life stress without going back to using.",
           "Through ongoing therapy, mental health support, and personalized recovery planning, our aftercare program strengthens the foundation you built in treatment and prepares you for lasting change.",
         ],
       },
