@@ -20,10 +20,15 @@ const isDev = process.env.NODE_ENV === "development";
  *                               Phone calls are the primary conversion, so this
  *                               is functional; without it in script-src the
  *                               tracking number swap silently stops working.
- *   clarionlabs.ai            — Clarion Labs chat widget (widget.v1.js) and
+ *   www.clarionlabs.ai        — Clarion Labs chat widget (widget.v1.js) and
  *                               form capture (forms-capture.v1.js), loaded in the
  *                               root layout. Without this the widget is blocked
  *                               and Clarion form submissions fail silently.
+ *   api.clarionlabs.ai        — where BOTH of those scripts actually POST
+ *                               (data-api). A separate host from www, and not
+ *                               covered by it: connect-src has no wildcard, so
+ *                               omitting this blocks every form submission and
+ *                               every chat message at the CSP layer.
  */
 const csp = [
   "default-src 'self'",
@@ -31,7 +36,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://*.googleusercontent.com https://www.google-analytics.com https://www.googletagmanager.com https://*.gstatic.com https://maps.gstatic.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.clarionlabs.ai https://*.tctm.co",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.clarionlabs.ai https://api.clarionlabs.ai https://*.tctm.co",
   "frame-src https://www.google.com https://maps.google.com",
   "object-src 'none'",
   "base-uri 'self'",

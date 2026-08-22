@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { Analytics } from "@/components/Analytics";
 import Clarion from "@/components/Clarion";
+import { CampaignTracker } from "@/components/CampaignTracker";
+import { CAMPAIGN_BOOTSTRAP } from "@/lib/attribution";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -124,8 +126,26 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable} antialiased`}>
       <head>
-        {/* Site-wide tracking script — loads on every page. */}
-        <script async src="//264810.tctm.co/t.js" />
+        {/* Must be the first script on the page: it restores the first-touch
+            campaign into the URL, and both CallTrackingMetrics below and
+            Clarion's forms-capture read the URL after this point. */}
+        <script dangerouslySetInnerHTML={{ __html: CAMPAIGN_BOOTSTRAP }} />
+        {/* Trims the handshake off the render-blocking request below. */}
+        <link rel="preconnect" href="https://264810.tctm.co" crossOrigin="" />
+        {/* CallTrackingMetrics — loads on every page, including campaign landing
+            pages. Absolute https rather than protocol-relative //, which resolves
+            against file:// when a page is opened from disk.
+
+            Deliberately synchronous, against @next/next/no-sync-scripts: t.js
+            performs the dynamic phone-number swap, and phone calls are this
+            site's primary conversion. Any strategy that runs after first paint —
+            async, or next/script's beforeInteractive, which in the App Router is
+            a preload plus a runtime injection rather than a blocking tag — lets
+            a visitor see and dial the untracked number before the swap lands,
+            and that call is then unattributable. The cost is a third-party
+            request on the critical path of every page. */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://264810.tctm.co/t.js" />
       </head>
       <body className="flex min-h-dvh flex-col bg-cream">
         <script
@@ -151,6 +171,9 @@ export default function RootLayout({
         {/* Clarion Labs chat widget + form capture. Functional rather than
             analytical — it carries the lead pipeline — so it loads site-wide. */}
         <Clarion />
+        {/* Keeps the first-touch campaign on the URL across client-side
+            navigations, so it is still there when a form is submitted. */}
+        <CampaignTracker />
         {/* Google Analytics. Loads gtag itself, only after the visitor opts in —
             the raw <Script> tags that used to sit here loaded it unconditionally,
             which would defeat the consent gate if both were kept. */}

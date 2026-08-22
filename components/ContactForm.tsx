@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { site } from "@/lib/site";
 import { CLARION_FORM_KEY } from "@/lib/clarion";
+import { campaignFields } from "@/lib/attribution";
 import { CheckIcon, PhoneIcon } from "./ui";
 
 /**
@@ -43,9 +44,11 @@ export function ContactForm() {
     let captured = false;
     try {
       if (window.ClarionForms) {
+        // campaignFields() last: attribution must never be shadowed by a field
+        // the visitor typed. The vendor adds its own top-level utm/gclid.
         const res = await window.ClarionForms.submit({
           form_key: CLARION_FORM_KEY.contact,
-          data: { ...raw, intent: "contact" },
+          data: { ...raw, intent: "contact", ...campaignFields() },
         });
         captured = res.ok;
       }
