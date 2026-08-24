@@ -34,6 +34,7 @@ const LAST_UPDATED = "August 11, 2026";
  *
  * Every factual claim here was checked against the code:
  *   - Google Analytics       components/Analytics.tsx  (consent-gated)
+ *   - Google Tag Manager     components/Analytics.tsx  (consent-gated)
  *   - Google Maps            components/MapEmbed.tsx   (click-to-load)
  *   - Clarion Labs           components/Clarion.tsx, lib/leads.ts
  *   - Call tracking          app/layout.tsx  (loads unconditionally)
@@ -81,7 +82,7 @@ export default function PrivacyPage() {
           <p>
             Our web host records standard server logs, including IP address, browser type, and the
             pages requested. Beyond that, this site is deliberately conservative about third-party
-            tracking, and two of the three services below do not load unless you allow them:
+            tracking, and three of the four services below do not load unless you allow them:
           </p>
           <ul>
             <li>
@@ -90,6 +91,12 @@ export default function PrivacyPage() {
               visitors use the site. It loads <em>only</em>{" "}after you choose &quot;Allow
               analytics&quot; in the banner, and IP addresses are anonymised. Decline and it is never
               loaded.
+            </li>
+            <li>
+              <strong className="font-semibold text-ink">Google Tag Manager</strong> — a container
+              that manages the measurement tags described here. Like Google Analytics, it loads{" "}
+              <em>only</em>{" "}after you choose &quot;Allow analytics&quot;. Decline and it is never
+              loaded, and no tag it manages can run.
             </li>
             <li>
               <strong className="font-semibold text-ink">Google Maps</strong> — the map on our contact
