@@ -67,6 +67,28 @@ export function Analytics() {
     <>
       {consent === "granted" && (
         <>
+          {/* Google Tag Manager.
+              
+              Behind the consent gate rather than in <head>, which is where GTM's
+              own install guide puts it. Two reasons. The banner promises
+              "Nothing is loaded unless you agree", and GTM is not a passive
+              script — the container decides at runtime which tags fire, so an
+              ungated GTM is an open door for any tag added later, including
+              ones nobody reviewed against this page set. Second, URLs here name
+              a condition (/treatment/heroin-addiction); pairing that with an IP
+              is precisely what HHS OCR's tracking-technologies guidance covers.
+
+              Single inline snippet, not an init script plus a src script:
+              dataLayer must exist before gtm.js evaluates, and next/script does
+              not guarantee ordering between two afterInteractive tags.
+
+              No <noscript> iframe. The standard one fires without JavaScript,
+              which would mean firing without consent, since the gate needs JS
+              to read a choice. */}
+          <Script id="gtm-loader" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${site.gtmId}');`}
+          </Script>
+
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`}
             strategy="afterInteractive"

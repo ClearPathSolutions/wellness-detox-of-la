@@ -33,6 +33,9 @@ export const site = {
     linkedin: "https://www.linkedin.com/company/wellness-detox-la/",
   },
   analyticsId: "GT-WP5ML73R",
+  /** Google Tag Manager container. Loaded by components/Analytics.tsx behind the
+   *  same consent gate as gtag — see the note there on why it is not in <head>. */
+  gtmId: "GTM-PFMWPSWC",
   widgets: {
     // Clarion Labs — chat widget + insurance/contact form capture.
     // Keys pulled from this site's Clarion snippet.
