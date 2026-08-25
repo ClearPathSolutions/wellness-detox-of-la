@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { clarionSiteKey } from "@/lib/clarion-server";
 
 /**
  * Clarion Labs chat widget + forms-capture loader.
@@ -18,7 +19,13 @@ const BRAND = {
 };
 
 export default function Clarion() {
-  const { siteKey, api } = site.widgets.clarion;
+  const { api } = site.widgets.clarion;
+  const siteKey = clarionSiteKey();
+  // Without a key the vendor scripts load and then silently do nothing, which is
+  // indistinguishable from a healthy install. Render nothing instead; the error
+  // is logged in clarionSiteKey().
+  if (!siteKey) return null;
+
   return (
     <>
       <style

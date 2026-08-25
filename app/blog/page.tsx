@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui";
 import ClarionBlog from "@/components/ClarionBlog";
+import { clarionSiteKey } from "@/lib/clarion-server";
 import { postsByDate } from "@/lib/data/blog";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function BlogIndex() {
           when the embed has nothing to show the whole band collapses instead of
           leaving an empty gap between the hero and the archive. */}
       <Container>
-        <ClarionBlog />
+        <ClarionBlog siteKey={clarionSiteKey()} />
       </Container>
 
       {/* Earlier articles from the original site, preserved alongside the new

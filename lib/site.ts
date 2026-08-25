@@ -37,10 +37,15 @@ export const site = {
    *  same consent gate as gtag — see the note there on why it is not in <head>. */
   gtmId: "GTM-PFMWPSWC",
   widgets: {
-    // Clarion Labs — chat widget + insurance/contact form capture.
-    // Keys pulled from this site's Clarion snippet.
+    // Clarion Labs — chat widget, blog embed, and contact/insurance form capture.
+    //
+    // The site key is NOT here: it comes from the CLARION_SITE_KEY environment
+    // variable, read by the server components that render the Clarion scripts
+    // (components/Clarion.tsx and app/blog/page.tsx). This module is imported by
+    // client components too, and a non-NEXT_PUBLIC_ variable read from one is
+    // inlined as `undefined` at build time — so the key has to be read server-side
+    // and passed down, never sourced from here.
     clarion: {
-      siteKey: "cpx_z3FKaToYcnTHoiq_DkjggXUUisaY3zfA",
       api: "https://api.clarionlabs.ai",
     },
   },

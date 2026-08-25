@@ -17,13 +17,19 @@ import { site } from "@/lib/site";
  */
 const BLOG_EMBED_SRC = "https://www.clarionlabs.ai/blog-embed.v1.js";
 
-export default function ClarionBlog() {
-  const { siteKey, api } = site.widgets.clarion;
+/**
+ * `siteKey` arrives as a prop rather than from lib/site: it comes from
+ * CLARION_SITE_KEY, which is server-only, and a client component reading it
+ * directly would compile to `undefined` and silently break the embed.
+ */
+export default function ClarionBlog({ siteKey }: { siteKey: string | null }) {
+  const { api } = site.widgets.clarion;
   const mountRef = useRef<HTMLDivElement>(null);
   // Hidden until the embed proves it rendered real posts. See `hasPosts` below.
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    if (!siteKey) return; // nothing to load; the missing key is logged server-side
     // Capture the node now: by cleanup time the ref may point elsewhere (or at
     // null), which would leave the injected markup behind on unmount.
     const mount = mountRef.current;
