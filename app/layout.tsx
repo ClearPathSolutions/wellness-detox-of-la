@@ -130,22 +130,30 @@ export default function RootLayout({
             campaign into the URL, and both CallTrackingMetrics below and
             Clarion's forms-capture read the URL after this point. */}
         <script dangerouslySetInnerHTML={{ __html: CAMPAIGN_BOOTSTRAP }} />
-        {/* Trims the handshake off the render-blocking request below. */}
+        {/* Gets the connection open early without blocking the parser. */}
         <link rel="preconnect" href="https://264810.tctm.co" crossOrigin="" />
-        {/* CallTrackingMetrics — loads on every page, including campaign landing
-            pages. Absolute https rather than protocol-relative //, which resolves
-            against file:// when a page is opened from disk.
+        {/* CallTrackingMetrics — root layout, so it is on every page including
+            campaign landing pages. Absolute https, never protocol-relative
+            //264810.tctm.co/..., which resolves against file:// off-server.
 
-            Deliberately synchronous, against @next/next/no-sync-scripts: t.js
-            performs the dynamic phone-number swap, and phone calls are this
-            site's primary conversion. Any strategy that runs after first paint —
-            async, or next/script's beforeInteractive, which in the App Router is
-            a preload plus a runtime injection rather than a blocking tag — lets
-            a visitor see and dial the untracked number before the swap lands,
-            and that call is then unattributable. The cost is a third-party
-            request on the critical path of every page. */}
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="https://264810.tctm.co/t.js" />
+            MUST stay async. A synchronous tag in <head> runs before <body>
+            exists, and CTM's number scan defaults its root to document.body and
+            no-ops when that is null — it finds nothing to swap, so every visitor
+            sees the hardcoded number and CTM can only guess which session an
+            inbound call belongs to. On React it fails twice over: a pre-hydration
+            rewrite is reverted when React replaces the server HTML.
+
+            Measured on the deployed site while this tag was synchronous:
+            __ctm_tracked_numbers was empty and every tel: link was still the
+            hardcoded number. Both failures are silent — __ctm.config.sid is a
+            valid 24-hex id either way, so CTM looks healthy while swapping
+            nothing. Verify with Object.keys(window.__ctm_tracked_numbers).length,
+            not with the presence of the tag.
+
+            Count copies with script[src*="tctm.co/t.js"] — it must be exactly 1.
+            Do not use script[src*="tctm.co"]: that matches 2 on a correct
+            install because t.js injects its own p.js beacon. */}
+        <script async src="https://264810.tctm.co/t.js" />
       </head>
       <body className="flex min-h-dvh flex-col bg-cream">
         <script
