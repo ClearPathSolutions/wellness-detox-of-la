@@ -109,10 +109,18 @@ gtag('config', '${site.analyticsId}', { anonymize_ip: true });`}
         // 1512px screen — so links near the bottom of the page silently did
         // nothing. Verified with a real browser: `elementFromPoint` returned
         // this div, not the link. The card re-enables pointer events for itself.
+        //
+        // `bottom-36` on mobile, not `bottom-16`: the Clarion chat bubble is a
+        // 58px circle pinned bottom-right at z-index 2147483000, and at
+        // bottom-16 it sat over the right 45px of the "Allow analytics" button —
+        // clipping the label to "Allow analyti…" and eating taps there.
+        // Measured on an iPhone 13 viewport: bubble y530–588, button y525–567.
+        // The widget's z-index cannot be beaten, so the card clears it instead.
+        // 144px lifts the card above the bubble and the 61px mobile call bar.
         <div
           role="region"
           aria-label="Privacy and analytics consent"
-          className="pointer-events-none fixed inset-x-0 bottom-16 z-50 px-3 pb-3 lg:bottom-0 lg:px-6 lg:pb-6"
+          className="pointer-events-none fixed inset-x-0 bottom-36 z-50 px-3 pb-3 lg:bottom-0 lg:px-6 lg:pb-6"
         >
           <div className="pointer-events-auto mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft sm:flex-row sm:items-center sm:gap-6">
             <p className="text-sm leading-relaxed text-ink-700">
