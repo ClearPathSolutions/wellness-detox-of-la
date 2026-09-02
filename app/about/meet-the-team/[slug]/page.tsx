@@ -28,6 +28,13 @@ const withBio = ALL.filter((m) => m.bio?.length);
  */
 const CANONICAL_AT_PARENT: Record<string, string> = {
   "pamela-tambini": "https://www.quadranthealthgroup.com/team/pamela-tambini/",
+  "shawn-young": "https://www.quadranthealthgroup.com/team/shawn-young/",
+  "michael-mcarthur": "https://www.quadranthealthgroup.com/team/michael-mcarthur/",
+  "riky-hanaumi": "https://www.quadranthealthgroup.com/team/riky-hanaumi/",
+  "jacob-cameron": "https://www.quadranthealthgroup.com/team/jacob-cameron/",
+  "jeremiah-ross": "https://www.quadranthealthgroup.com/team/jeremiah-ross/",
+  "monica-olivares": "https://www.quadranthealthgroup.com/team/monica-olivares/",
+  "bj-thome": "https://www.quadranthealthgroup.com/team/bj-thome/",
 };
 
 export function generateStaticParams() {
