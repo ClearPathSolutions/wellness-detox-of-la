@@ -24,6 +24,13 @@ const isDev = process.env.NODE_ENV === "development";
  *                               form capture (forms-capture.v1.js), loaded in the
  *                               root layout. Without this the widget is blocked
  *                               and Clarion form submissions fail silently.
+ *   images.unsplash.com       — cover images on Clarion-authored blog posts.
+ *                               Clarion stores the cover as the author's chosen
+ *                               Unsplash URL rather than rehosting it, so
+ *                               without this the post renders with a broken
+ *                               image. img-src only; Unsplash needs no other
+ *                               permission. Remove it if covers are ever moved
+ *                               onto api.clarionlabs.ai instead.
  *   api.clarionlabs.ai        — where BOTH of those scripts actually POST
  *                               (data-api). A separate host from www, and not
  *                               covered by it: connect-src has no wildcard, so
@@ -34,7 +41,7 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarionlabs.ai https://*.tctm.co`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://api.clarionlabs.ai https://*.googleusercontent.com https://www.google-analytics.com https://www.googletagmanager.com https://*.gstatic.com https://maps.gstatic.com",
+  "img-src 'self' data: blob: https://api.clarionlabs.ai https://images.unsplash.com https://*.googleusercontent.com https://www.google-analytics.com https://www.googletagmanager.com https://*.gstatic.com https://maps.gstatic.com",
   "font-src 'self' data:",
   "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.clarionlabs.ai https://api.clarionlabs.ai https://*.tctm.co",
   "frame-src https://www.google.com https://maps.google.com",

@@ -109,6 +109,42 @@ export default function ClarionBlog({ siteKey }: { siteKey: string | null }) {
     });
     observer.observe(mount, { childList: true, subtree: true });
 
+    /**
+     * Scroll in-page links explicitly instead of leaving it to the browser.
+     *
+     * The post is injected long after load, so a click that lands before the
+     * ids exist sets the hash and scrolls nowhere — and because the hash now
+     * already matches, clicking that same link again fires no hashchange, so it
+     * stays dead until a reload. Handling the click ourselves removes the
+     * dependency on that timing entirely.
+     *
+     * `block: "start"` honours the scroll-mt applied in assignAnchorTargets, so
+     * the heading clears the fixed header.
+     */
+    const onClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const anchor = target.closest("a");
+      if (!anchor || !mount.contains(anchor)) return;
+
+      const href = anchor.getAttribute("href") ?? "";
+      if (!href.startsWith("#") || href === "#") return;
+      const id = decodeURIComponent(href.slice(1));
+
+      // The click may arrive before the observer has run for this post.
+      assignAnchorTargets(mount);
+      const destination = document.getElementById(id);
+      if (!destination) return; // unknown target: leave the browser to it
+
+      event.preventDefault();
+      destination.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Keep the hash shareable without discarding the App Router's state.
+      history.replaceState(history.state, "", `#${id}`);
+    };
+    mount.addEventListener("click", onClick);
+
     const script = document.createElement("script");
     script.src = BLOG_EMBED_SRC;
     script.async = true;
@@ -118,6 +154,7 @@ export default function ClarionBlog({ siteKey }: { siteKey: string | null }) {
 
     return () => {
       observer.disconnect();
+      mount.removeEventListener("click", onClick);
       script.remove();
       mount.innerHTML = "";
     };

@@ -297,3 +297,15 @@ p {
   text-decoration: none;
   white-space: nowrap;
 }
+
+/* Clarion blog embed — post body links.
+   The embed renders outside `.prose`, so nothing was restoring link styling
+   after Preflight's `a { color: inherit; text-decoration: inherit }`. A post's
+   table of contents and its citations were rendering as plain body text that
+   gave no sign of being clickable. Scoped to the post body so the card links
+   in the listing keep their own treatment. */
+[data-clarion-blog] .clarion-blog-body a {
+  color: var(--color-rose-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
