@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
+import { uniqueSlug } from "@/lib/slug";
 
 /**
  * Clarion Labs blog embed.
@@ -16,6 +17,56 @@ import { site } from "@/lib/site";
  * Reuses the same site key / API as the chat widget (see components/Clarion.tsx).
  */
 const BLOG_EMBED_SRC = "https://www.clarionlabs.ai/blog-embed.v1.js";
+
+/** Matches BlogPostView's heading offset so both post types clear the fixed header. */
+const HEADING_SCROLL_MT = "scroll-mt-24 lg:scroll-mt-36";
+
+/**
+ * Give the embed's own in-page links something to land on.
+ *
+ * Posts authored in Clarion carry a "Table of Contents" of `[Section](#section)`
+ * links and numbered `#ref1`-style citations, written as if the renderer emitted
+ * GitHub-style heading anchors. It does not: the embed renders the <a> tags but
+ * puts no `id` on any element in the post body, so every one of those links is a
+ * dead anchor and clicking it scrolls nowhere. Measured on a live post: 19
+ * headings, 0 ids, 18 broken links.
+ *
+ * Ids come from the same `uniqueSlug` that BlogPostView uses for first-party
+ * posts, which is what makes them line up with hrefs Clarion already wrote —
+ * verified against a published post, where it resolves every section link.
+ *
+ * Only fills in what is missing, so if the vendor starts emitting ids this
+ * quietly stops doing anything rather than fighting it.
+ */
+function assignAnchorTargets(mount: HTMLElement) {
+  const post = mount.querySelector<HTMLElement>(".clarion-blog-post") ?? mount;
+  const headings = Array.from(post.querySelectorAll<HTMLElement>("h2, h3, h4"));
+
+  // Seed with ids already present so a generated one can never collide with them.
+  const seen = new Set<string>(headings.map((h) => h.id).filter(Boolean));
+  for (const h of headings) {
+    if (h.id) continue;
+    h.id = uniqueSlug(h.textContent?.trim() ?? "", seen);
+    h.classList.add(...HEADING_SCROLL_MT.split(" "));
+  }
+
+  // Citations are numbered by position in the references list rather than
+  // slugged — `#ref1` carries no text to derive an id from.
+  const refHeading = headings.find((h) =>
+    /references|sources|citations/i.test(h.textContent ?? "")
+  );
+  if (!refHeading) return;
+  let el = refHeading.nextElementSibling;
+  while (el && !/^H[1-4]$/.test(el.tagName)) {
+    if (el.tagName === "OL" || el.tagName === "UL") {
+      Array.from(el.children).forEach((li, i) => {
+        if (!li.id) li.id = `ref${i + 1}`;
+      });
+      return;
+    }
+    el = el.nextElementSibling;
+  }
+}
 
 /**
  * `siteKey` arrives as a prop rather than from lib/site: it comes from
@@ -49,7 +100,13 @@ export default function ClarionBlog({ siteKey }: { siteKey: string | null }) {
      */
     const hasPosts = () => !!mount.querySelector("a[href], article");
 
-    const observer = new MutationObserver(() => setReady(hasPosts()));
+    // Runs on every content change, so it also covers opening a second post
+    // without a page load. Observing childList only — assigning ids is an
+    // attribute mutation and cannot re-trigger this.
+    const observer = new MutationObserver(() => {
+      setReady(hasPosts());
+      assignAnchorTargets(mount);
+    });
     observer.observe(mount, { childList: true, subtree: true });
 
     const script = document.createElement("script");
