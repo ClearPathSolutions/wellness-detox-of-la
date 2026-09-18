@@ -51,7 +51,8 @@ export default function Home() {
             src="/images/DSC_6289-HDR.webp"
             alt=""
             fill
-            priority
+            preload
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-center"
           />

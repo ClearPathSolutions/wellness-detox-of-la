@@ -114,7 +114,8 @@ export function BlogPostView({ post }: { post: BlogPost }) {
                 src={post.hero}
                 alt={post.title}
                 fill
-                priority
+                preload
+                fetchPriority="high"
                 sizes="(max-width: 1024px) 100vw, 768px"
                 className="object-cover"
               />
