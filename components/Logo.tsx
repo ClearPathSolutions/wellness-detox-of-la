@@ -20,7 +20,6 @@ export function Logo({
         alt=""
         width={240}
         height={133}
-        priority
         className="h-8 w-auto sm:h-9 transition-transform duration-300 group-hover:scale-105"
       />
       <span className="flex flex-col leading-none">

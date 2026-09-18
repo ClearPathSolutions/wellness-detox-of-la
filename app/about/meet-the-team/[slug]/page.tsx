@@ -89,7 +89,8 @@ export default async function TeamMemberPage({
                     fill
                     sizes="(max-width: 768px) 100vw, 280px"
                     className="object-cover"
-                    priority
+                    preload
+                    fetchPriority="high"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">

@@ -155,7 +155,8 @@ export function ContentPage({ page }: { page: ContentPageData }) {
               src={page.hero}
               alt={page.h1}
               fill
-              priority
+              preload
+              fetchPriority="high"
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
             />
