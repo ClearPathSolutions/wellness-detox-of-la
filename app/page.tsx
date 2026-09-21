@@ -73,7 +73,13 @@ export default function Home() {
           <div className="max-w-2xl animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
               <ShieldIcon width={15} height={15} />
-              Licensed Los Angeles Treatment Center
+              {/* "Los Angeles County", not "Los Angeles": the facility is at
+                  625 E Phillips Blvd, Pomona — inside the county, not inside
+                  the city. This badge sits beside a shield icon and the DHCS
+                  licence number, so it reads as a statement about where the
+                  licence is held; "Pomona Treatment Center" is equally accurate
+                  if the more specific wording is preferred. */}
+              Licensed Los Angeles County Treatment Center
             </span>
             <h1 className="mt-5 t-h1 text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.55),0_2px_18px_rgba(0,0,0,0.45)]">
               Drug &amp; Alcohol Addiction Treatment in{" "}
