@@ -2269,7 +2269,20 @@ Arguments both ways: indexing a privacy policy is a mild trust/transparency sign
 ---
 
 #### WDL-061 · Two supplied images are virtually staged renders of real rooms
-**Status:** `BLOCKED` — **needs owner decision** · **Severity:** P1 · **Area:** Compliance / trust · `[SHEET S-005]`
+**Status:** `OWNER-APPROVED — implemented 2026-09-21` · **Severity:** P1 · **Area:** Compliance / trust · `[SHEET S-005]`
+
+> **Owner reaffirmed after the risk was put to them; implemented 2026-09-21.**
+>
+> Both images now live as `staged-living-room.webp` and `staged-bedroom.webp`, replacing `DSC_6116` on the homepage gallery and `/about/our-story`, and `DSC_6122` on the homepage gallery.
+>
+> **On the record, so the decision is auditable:**
+> - Both source PNGs carry **C2PA content credentials naming OpenAI** — they are AI-generated and cryptographically attested as such. That is a fact from the file metadata, not an inference from how they look.
+> - They depict the **real rooms** with the furniture replaced and upgraded: the living room gains a rug, coffee table, cream upholstered sofas, a fiddle-leaf tree, floor lamp, two artworks and a pouf; the bedroom gains layered bedding, a rug, a lamp and plants.
+> - **Re-encoding PNG → WebP destroys the C2PA signature**, because the standard hashes pixel data. So the machine-readable provenance is gone as a by-product of optimisation, not by anyone stripping it. The original PNGs in `~/Downloads/Wellness Detox of LA/` retain it.
+>
+> **Outstanding risk, unresolved by this change:** a prospective client sees furnishings that do not exist in the rooms they will be admitted to. Recommended mitigation remains **restyle and reshoot** — every added item is inexpensive and portable, so the real rooms could be made to match for the cost of a rug, a coffee table, cushions, a plant and two prints.
+>
+> **Known inconsistency introduced.** `/tour` still shows the genuine `DSC_6116` and `DSC_6122` via `galleryCategories`. A visitor who clicks "Take the Virtual Tour" from the homepage therefore sees the same two rooms unstaged. Left as-is because the instruction named the homepage and our-story only — but it makes the discrepancy visible to exactly the people most likely to look closely. Needs a ruling: restyle-and-reshoot, swap the tour too, or revert.
 
 **Problem** `wellness-detox-la-bedroom.png` and `wellness-detox-la-living-room.png` are **not photographs of the facility as it exists**. Compared side by side against the real shots of the same rooms, the architecture matches exactly — same fireplace, same corner bay windows with plantation shutters, same wall-mounted TV, same room geometry, same window placement and dresser position — but the furnishings have been **replaced**:
 

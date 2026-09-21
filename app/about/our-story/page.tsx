@@ -25,8 +25,8 @@ export default function OurStoryPage() {
       <SplitFeature
         eyebrow="The Wellness Detox LA Story"
         title="Transforming recovery in Los Angeles with decades of expertise"
-        image="/images/DSC_6116-HDR.webp"
-        imageAlt="A warm, comfortable common area inside the Wellness Detox of LA facility"
+        image="/images/staged-living-room.webp"
+        imageAlt="Shared living room with a fireplace and lounge seating"
         cta={{ label: "See Our Programs", href: "/treatment" }}
       >
         <p>

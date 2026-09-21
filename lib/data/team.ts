@@ -26,30 +26,16 @@ export type TeamMember = {
 };
 
 /** Staff based at the Pomona facility. */
-export const facilityTeam: TeamMember[] = [
-  {
-    slug: "janee-young",
-    name: "Janee Young, LMFT",
-    role: "Clinical Director",
-    photo: "/images/team-janee-young.webp",
-  },
-  {
-    slug: "adrian-diaz",
-    name: "Adrian Diaz, RADT",
-    role: "Director of Operations",
-    photo: "/images/team-adrian-diaz.webp",
-  },
-  {
-    slug: "selin-simmonds",
-    name: "Selin Simmonds",
-    role: "Fitness Guru",
-  },
-  {
-    slug: "crystal-clements",
-    name: "Crystal Clements",
-    role: "Fitness Guru",
-  },
-];
+/**
+ * Staff based at the Pomona facility.
+ *
+ * Emptied 2026-09-21 at the owner's request — the four previous entries
+ * (Janee Young, Adrian Diaz, Selin Simmonds, Crystal Clements) were removed.
+ * The team page hides this whole section while the list is empty rather than
+ * rendering a heading over nothing, so repopulating here is all that is needed
+ * to bring it back.
+ */
+export const facilityTeam: TeamMember[] = [];
 
 /**
  * Southern California regional leadership. Each bio below states the
