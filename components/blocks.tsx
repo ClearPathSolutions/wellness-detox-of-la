@@ -427,9 +427,9 @@ export function InsuranceStrip() {
                 sibling sites, without checking with Chelsea first. */}
             <Image
               src="/images/Insurance-Visual-LA.png"
-              alt="Insurers we can verify benefits with, including Aetna, Humana, Anthem, Blue Cross Blue Shield, Cigna, Ambetter, TRICARE, VA, and 35+ more"
-              width={750}
-              height={500}
+              alt="Insurers we can verify benefits with: Aetna, Anthem, Blue Cross Blue Shield, Cigna, Carelon, Claritev, EmblemHealth, HealthPartners, Humana, Magellan, Medica, Medical Mutual, MVP, VA, TRICARE, and more"
+              width={1500}
+              height={1000}
               sizes="(max-width: 768px) 100vw, 768px"
               className="h-auto w-full"
             />
