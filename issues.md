@@ -2269,7 +2269,32 @@ Arguments both ways: indexing a privacy policy is a mild trust/transparency sign
 ---
 
 #### WDL-061 · Two supplied images are virtually staged renders of real rooms
-**Status:** `OWNER-APPROVED — implemented 2026-09-21` · **Severity:** P1 · **Area:** Compliance / trust · `[SHEET S-005]`
+**Status:** `RESOLVED — /tour stays genuine, 2026-09-21` · **Severity:** P1 · **Area:** Compliance / trust · `[SHEET S-005]`
+
+> ### Follow-up resolved: `/tour` keeps its real photographs
+>
+> The styled images shipped to the homepage and `/about/our-story` (live 2026-09-21). The open question was whether `/tour` should follow, since it shows the same two rooms unstaged one click away.
+>
+> **Investigated before acting, and the framing was wrong.** It is not a two-frame mismatch:
+> - `DSC_6116` *is* the same living room as `staged-living-room` — same fireplace, mantel, TV position and corner window bay.
+> - `DSC_6122`'s bedroom has three siblings still in the tour (`DSC_6209`, `DSC_6143-HDR-1`, `DSC_6254`) that are identical in character — bare floors, plain comforters, towel bundles.
+>
+> So eight interior frames carry the unstaged look, not two.
+>
+> **Both code-only fixes make things worse:**
+> | Option | Outcome |
+> | --- | --- |
+> | Swap the 2 frames for the staged versions | The other six real interiors still contradict the homepage. Cosmetic. |
+> | Remove the 2 frames | The real living room then appears **nowhere on the site**. Conceals rather than corrects. |
+>
+> **Decision: `/tour` stays genuine.** It is the one page a prospective client opens specifically to see what the facility actually looks like. Keeping it truthful is what limits the exposure the styled homepage images create — a visitor who wants the real thing can still find it, which is the difference between optimistic marketing and a misrepresentation.
+>
+> **The real fix is physical, not code.** Everything the renders added is inexpensive and portable. Restyle the two rooms and rephotograph them, and the styled look becomes true — then homepage, our-story and tour can all show it honestly.
+>
+> Living room: area rug · round wood coffee table · two cream sofa covers or slipcovers · 2 framed prints · large potted plant · floor lamp · 3–4 throw pillows and a blanket · woven basket · pouf.
+> Bedroom: area rug · layered bedding in place of the flat comforters · 2–3 decorative pillows · table lamp · small plant · a wood nightstand.
+>
+> Shoot from the same camera positions as `DSC_6116` and `DSC_6122` so the new frames drop straight into `galleryCategories` and the homepage `gallery`, replacing the renders. At that point WDL-061 closes completely and the C2PA/AI-provenance exposure goes away with it.
 
 > **Owner reaffirmed after the risk was put to them; implemented 2026-09-21.**
 >

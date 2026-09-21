@@ -175,7 +175,6 @@ export function InsuranceForm() {
             <option value="Magellan" />
             <option value="Optum" />
             <option value="TRICARE" />
-            <option value="UnitedHealthcare" />
           </datalist>
           {errors.provider && <p className="mt-1 text-xs text-rose-dark">{errors.provider}</p>}
         </div>

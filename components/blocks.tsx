@@ -421,10 +421,10 @@ export function InsuranceStrip() {
             Insurers we verify benefits with
           </p>
           <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl bg-white p-5 shadow-card sm:p-8">
-            {/* United Healthcare was the first cell of this grid and has been
-                removed from the artwork at their request; they had asked more
-                than once. Do not reinstate it, here or on the sibling sites,
-                and keep their marks out of the alt text too. */}
+            {/* One carrier was removed from this grid at their request, along
+                with their name in the alt text and their entry in the insurance
+                form's datalist. Do not add any carrier back here, or on the
+                sibling sites, without checking with Chelsea first. */}
             <Image
               src="/images/Insurance-Visual-LA.png"
               alt="Insurers we can verify benefits with, including Aetna, Humana, Anthem, Blue Cross Blue Shield, Cigna, Ambetter, TRICARE, VA, and 35+ more"
