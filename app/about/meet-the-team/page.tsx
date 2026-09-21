@@ -62,16 +62,22 @@ export default function MeetTheTeamPage() {
           </p>
         </div>
 
-        <h2 className="mb-6 t-h2 text-ink">Our Pomona Team</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {facilityTeam.map((m) => (
-            <MemberCard key={m.slug} m={m} />
-          ))}
-        </div>
+        {/* Hidden while the roster is empty — a heading with no cards under it
+            reads as a broken page rather than an intentionally short one. */}
+        {facilityTeam.length > 0 && (
+          <>
+            <h2 className="mb-6 t-h2 text-ink">Our Pomona Team</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {facilityTeam.map((m) => (
+                <MemberCard key={m.slug} m={m} />
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Regional leadership — scope stated so these roles are never read as
             Pomona-exclusive; each remit spans several Southern California centers. */}
-        <div className="mt-16">
+        <div className={facilityTeam.length > 0 ? "mt-16" : ""}>
           <h2 className="t-h2 text-ink">Southern California Leadership</h2>
           <p className="mt-2 max-w-2xl text-muted">
             Quadrant Health Group leaders who support Wellness Detox of LA alongside our other

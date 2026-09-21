@@ -304,8 +304,8 @@ export const galleryCategories: GalleryCategory[] = [
 /** Curated flat mix used for the homepage tour preview. */
 export const gallery: GalleryImage[] = [
   { src: "/images/DSC_6233-HDR.webp", alt: "Brick walkway leading to the arched front entrance across a green lawn" },
-  { src: "/images/DSC_6116-HDR.webp", alt: "Bright, comfortable shared living room with a fireplace and wall-mounted television" },
-  { src: "/images/DSC_6122-HDR.webp", alt: "A bright, home-like bedroom with fresh linens and welcome amenities" },
+  { src: "/images/staged-living-room.webp", alt: "Shared living room with a fireplace, lounge seating, and natural light" },
+  { src: "/images/staged-bedroom.webp", alt: "Client bedroom with two beds and natural light" },
   { src: "/images/DJI_20250325105814_0096_D.webp", alt: "Aerial view of the Wellness Detox of LA property with the San Gabriel Mountains beyond" },
   { src: "/images/DSC_6302-HDR.webp", alt: "Open dining area and fully equipped kitchen with stainless appliances" },
   { src: "/images/DSC_6257-HDR.webp", alt: "Warm, home-like common room with sectional seating" },
