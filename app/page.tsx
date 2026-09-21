@@ -108,7 +108,7 @@ export default function Home() {
                 <ClockIcon width={16} height={16} className="text-rose-soft" /> Available 24/7
               </span>
               <span className="flex items-center gap-2">
-                <HeartIcon width={16} height={16} className="text-rose-soft" /> Most insurance accepted
+                <HeartIcon width={16} height={16} className="text-rose-soft" /> Insurance verified free
               </span>
             </div>
           </div>

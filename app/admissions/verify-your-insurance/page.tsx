@@ -47,9 +47,9 @@ export default function VerifyInsurancePage() {
               ))}
             </div>
             <div className="mt-8 rounded-2xl bg-rose-soft/60 p-6">
-              <h3 className="t-h3 text-ink">We accept most insurances</h3>
+              <h3 className="t-h3 text-ink">We verify most insurances</h3>
               <p className="mt-2 text-sm text-muted">
-                We partner with most major insurance companies to make treatment accessible and
+                We check benefits with most major insurance companies to make treatment accessible and
                 affordable. If you prefer to verify over the phone, call us anytime at{" "}
                 <a href={site.phoneHref} className="font-semibold text-rose-dark">{site.phone}</a>.
               </p>
