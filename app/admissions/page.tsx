@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "Will my insurance cover treatment?",
-    a: "We work with most major insurance providers and will verify your benefits for you at no cost, explaining exactly what your plan covers for detox, residential, and mental health services.",
+    a: "We verify benefits with most major insurance providers at no cost, explaining exactly what your plan covers for detox, residential, and mental health services, and what any out-of-pocket cost would be.",
   },
   {
     q: "What should I bring on admission day?",

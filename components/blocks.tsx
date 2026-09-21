@@ -35,7 +35,7 @@ export function TrustBar() {
     { icon: ShieldIcon, label: "State-Licensed", sub: site.license },
     { icon: ClockIcon, label: "24/7 Admissions", sub: "Confidential support" },
     { icon: SparkIcon, label: `${site.yearsExperience} Years`, sub: "Recovery experience" },
-    { icon: HeartIcon, label: "Most Insurance", sub: "Accepted & verified" },
+    { icon: HeartIcon, label: "Insurance", sub: "Verified free, no obligation" },
   ];
   return (
     <div className="border-y border-line bg-white/60">
@@ -381,11 +381,11 @@ export function InsuranceStrip() {
         <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <p className="eyebrow mb-3">Insurance &amp; Coverage</p>
-            <h2 className="t-h2 text-ink">We work with most insurance providers</h2>
+            <h2 className="t-h2 text-ink">We verify your insurance benefits</h2>
             <p className="t-body measure mt-4 text-muted">
-              Getting help should never feel out of reach. We work with most major insurance providers
-              to make treatment as accessible and affordable as possible — and we&apos;ll verify your
-              benefits for you, quickly and confidentially.
+              Getting help should never feel out of reach. We check your benefits with your insurer
+              directly and explain exactly what your plan covers, quickly and confidentially — including
+              what out-of-network benefits may apply.
             </p>
             <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-700">
               {["Detox coverage", "Residential inpatient", "Mental health services", "Dual diagnosis"].map(
@@ -415,15 +415,19 @@ export function InsuranceStrip() {
           </div>
         </div>
 
-        {/* Accepted insurance carriers */}
+        {/* Insurers we can verify benefits with */}
         <div className="mt-10">
           <p className="mb-5 text-center font-display text-sm font-semibold uppercase tracking-wider text-ink-700">
-            Providers we work with
+            Insurers we verify benefits with
           </p>
           <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl bg-white p-5 shadow-card sm:p-8">
+            {/* United Healthcare was the first cell of this grid and has been
+                removed from the artwork at their request; they had asked more
+                than once. Do not reinstate it, here or on the sibling sites,
+                and keep their marks out of the alt text too. */}
             <Image
               src="/images/Insurance-Visual-LA.png"
-              alt="Insurance providers we work with, including United Healthcare, Aetna, Humana, Anthem, Blue Cross Blue Shield, Cigna, Ambetter, TRICARE, VA, and 35+ more"
+              alt="Insurers we can verify benefits with, including Aetna, Humana, Anthem, Blue Cross Blue Shield, Cigna, Ambetter, TRICARE, VA, and 35+ more"
               width={750}
               height={500}
               sizes="(max-width: 768px) 100vw, 768px"
