@@ -168,7 +168,7 @@ export function ContentPage({ page }: { page: ContentPageData }) {
         {/* Single reading column. Capped near the prose measure so paragraphs
             fill the width rather than trailing off into a dead right-hand gutter. */}
         <div className={`mx-auto ${READING_WIDTH}`}>
-          <div className="min-w-0">
+          <div className="min-w-0" suppressHydrationWarning>
             {page.sections.map((s, i) => (
               <PageSection key={i} id={sectionIds[i]} first={i === 0}>
                 {s.eyebrow && <p className="eyebrow mb-2">{s.eyebrow}</p>}
@@ -257,7 +257,7 @@ export function ContentPage({ page }: { page: ContentPageData }) {
                   to you. Prefer to talk now? Call{" "}
                   <a
                     href={site.phoneHref}
-                    className="font-semibold text-rose-dark underline underline-offset-2"
+                    className="font-semibold text-rose-dark underline underline-offset-2" suppressHydrationWarning
                   >
                     {site.phone}
                   </a>

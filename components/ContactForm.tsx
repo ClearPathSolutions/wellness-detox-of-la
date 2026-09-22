@@ -88,7 +88,7 @@ export function ContactForm() {
         </p>
         <a
           href={site.phoneHref}
-          className="mt-5 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 font-display text-sm font-semibold text-white shadow-card"
+          className="mt-5 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 font-display text-sm font-semibold text-white shadow-card" suppressHydrationWarning
         >
           <PhoneIcon width={17} height={17} />
           Call {site.phone}
@@ -110,12 +110,12 @@ export function ContactForm() {
           <input id="name" name="name" type="text" autoComplete="name" className={field} placeholder="Your name" />
           {errors.name && <p className="mt-1 text-xs text-rose-dark">{errors.name}</p>}
         </div>
-        <div>
+        <div suppressHydrationWarning>
           <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ink">
             Phone
           </label>
           <input id="phone" name="phone" type="tel" autoComplete="tel" className={field} placeholder="(000) 000-0000" />
-          {errors.phone && <p className="mt-1 text-xs text-rose-dark">{errors.phone}</p>}
+          {errors.phone && <p className="mt-1 text-xs text-rose-dark" suppressHydrationWarning>{errors.phone}</p>}
         </div>
         <div>
           <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink">

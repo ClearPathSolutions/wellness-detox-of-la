@@ -97,7 +97,7 @@ export function SubmitButton({
 /** Form-level error banner. Announced politely so it doesn't interrupt typing. */
 export function FormError({ message }: { message?: string }) {
   return (
-    <div aria-live="polite" className="empty:hidden">
+    <div aria-live="polite" className="empty:hidden" suppressHydrationWarning>
       {message && (
         <div className="mb-5 rounded-xl border border-rose-dark bg-rose-soft px-4 py-3 text-sm text-ink">
           <p className="font-semibold text-rose-dark">{message}</p>
@@ -106,7 +106,7 @@ export function FormError({ message }: { message?: string }) {
             // Distinct label: calls from here mean the lead pipeline rejected a
             // submission. A spike in this event is an outage signal, not a win.
             data-call-location="form-delivery-failure"
-            className="mt-1 inline-flex items-center gap-1.5 font-display font-semibold text-rose-dark underline"
+            className="mt-1 inline-flex items-center gap-1.5 font-display font-semibold text-rose-dark underline" suppressHydrationWarning
           >
             <PhoneIcon width={15} height={15} />
             Call {site.phone}
@@ -132,7 +132,7 @@ export function SuccessPanel({ title, body }: { title: string; body: string }) {
       <a
         href={site.phoneHref}
         data-call-location="form-success-panel"
-        className="mt-5 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 font-display text-sm font-semibold text-white shadow-card"
+        className="mt-5 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 font-display text-sm font-semibold text-white shadow-card" suppressHydrationWarning
       >
         <PhoneIcon width={17} height={17} />
         Call {site.phone}

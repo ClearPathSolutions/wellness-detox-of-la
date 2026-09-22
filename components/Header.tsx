@@ -164,7 +164,7 @@ export function Header() {
           <div className="hidden items-center gap-2 lg:flex">
             <a
               href={site.phoneHref}
-              className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-ink transition-colors hover:text-rose-dark"
+              className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-ink transition-colors hover:text-rose-dark" suppressHydrationWarning
             >
               <PhoneIcon width={16} height={16} className="text-rose-dark" />
               {site.phone}
@@ -179,7 +179,7 @@ export function Header() {
             <a
               href={site.phoneHref}
               aria-label={`Call ${site.phone}`}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-rose text-white shadow-card transition-transform active:scale-95"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-rose text-white shadow-card transition-transform active:scale-95" suppressHydrationWarning
             >
               <PhoneIcon width={18} height={18} />
             </a>

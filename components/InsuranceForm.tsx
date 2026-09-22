@@ -109,7 +109,7 @@ export function InsuranceForm() {
         </p>
         <a
           href={site.phoneHref}
-          className="mt-5 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 font-display text-sm font-semibold text-white shadow-card"
+          className="mt-5 inline-flex items-center gap-2 rounded-full bg-rose px-6 py-3 font-display text-sm font-semibold text-white shadow-card" suppressHydrationWarning
         >
           <PhoneIcon width={17} height={17} />
           Call {site.phone}
@@ -124,7 +124,7 @@ export function InsuranceForm() {
   const req = <span className="text-rose-dark">*</span>;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="rounded-2xl border border-line bg-white p-6 shadow-card sm:p-8">
+    <form onSubmit={onSubmit} noValidate className="rounded-2xl border border-line bg-white p-6 shadow-card sm:p-8" suppressHydrationWarning>
       <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-rose-dark">
         <ShieldIcon width={18} height={18} />
         100% private &amp; protected
@@ -135,10 +135,10 @@ export function InsuranceForm() {
           <input id="name" name="name" type="text" autoComplete="name" className={field} placeholder="Jane Doe" />
           {errors.name && <p className="mt-1 text-xs text-rose-dark">{errors.name}</p>}
         </div>
-        <div>
+        <div suppressHydrationWarning>
           <label htmlFor="phone" className={label}>Phone {req}</label>
           <input id="phone" name="phone" type="tel" autoComplete="tel" className={field} placeholder="(555) 123-4567" />
-          {errors.phone && <p className="mt-1 text-xs text-rose-dark">{errors.phone}</p>}
+          {errors.phone && <p className="mt-1 text-xs text-rose-dark" suppressHydrationWarning>{errors.phone}</p>}
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="email" className={label}>Email</label>
@@ -200,13 +200,13 @@ export function InsuranceForm() {
       {status === "error" && (
         <p className="mt-3 text-sm text-rose-dark">
           Something went wrong. Please try again or call{" "}
-          <a href={site.phoneHref} className="font-semibold underline">{site.phone}</a>.
+          <a href={site.phoneHref} className="font-semibold underline" suppressHydrationWarning>{site.phone}</a>.
         </p>
       )}
       <p className="mt-3 text-xs text-muted">
         Your information is 100% confidential and used only to verify your coverage. Prefer to talk
         now? Call{" "}
-        <a href={site.phoneHref} className="font-semibold text-rose-dark underline">{site.phone}</a>.
+        <a href={site.phoneHref} className="font-semibold text-rose-dark underline" suppressHydrationWarning>{site.phone}</a>.
       </p>
     </form>
   );

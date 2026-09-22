@@ -14,7 +14,7 @@ export function MobileCallBar() {
         <a
           href={site.phoneHref}
           data-call-location="mobile-sticky-bar"
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-rose py-3 font-display text-sm font-semibold text-white shadow-card active:scale-[0.98]"
+          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-rose py-3 font-display text-sm font-semibold text-white shadow-card active:scale-[0.98]" suppressHydrationWarning
         >
           <PhoneIcon width={17} height={17} />
           Call Now

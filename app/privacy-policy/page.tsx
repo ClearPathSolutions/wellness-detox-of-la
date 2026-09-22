@@ -72,7 +72,7 @@ export default function PrivacyPage() {
             Because of what we do, information you send us may reveal that you are seeking treatment
             for substance use. Please share only what you are comfortable putting in writing — if you
             would rather not, call us at{" "}
-            <a href={site.phoneHref} className="font-medium text-rose-dark underline underline-offset-2">
+            <a href={site.phoneHref} className="font-medium text-rose-dark underline underline-offset-2" suppressHydrationWarning>
               {site.phone}
             </a>
             .
@@ -103,7 +103,7 @@ export default function PrivacyPage() {
               and tour pages is click-to-load. Nothing is requested from Google until you choose to
               view it. Our address and a directions link work without it.
             </li>
-            <li>
+            <li suppressHydrationWarning>
               <strong className="font-semibold text-ink">Call tracking</strong> — we load a
               call-attribution script from <code className="text-ink">264810.tctm.co</code> on every
               page. It assigns tracking numbers so we can tell which sources lead people to call us.
@@ -159,7 +159,7 @@ export default function PrivacyPage() {
             these rights. Because we do not sell or share personal information for behavioural
             advertising, there is nothing to opt out of on that front.
           </p>
-          <p>
+          <p suppressHydrationWarning>
             To make a request, email{" "}
             <a href={`mailto:${site.email}`} className="font-medium text-rose-dark underline underline-offset-2">
               {site.email}
@@ -183,7 +183,7 @@ export default function PrivacyPage() {
           </p>
 
           <h2>Contact us</h2>
-          <p>
+          <p suppressHydrationWarning>
             Questions about this policy, or about information we hold:{" "}
             <a href={`mailto:${site.email}`} className="font-medium text-rose-dark underline underline-offset-2">
               {site.email}

@@ -49,7 +49,7 @@ export default function GlobalError({
               borderRadius: "9999px",
               fontWeight: 600,
               textDecoration: "none",
-            }}
+            }} suppressHydrationWarning
           >
             Call {site.phone}
           </a>

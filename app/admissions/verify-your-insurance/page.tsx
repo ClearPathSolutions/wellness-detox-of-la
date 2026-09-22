@@ -51,7 +51,7 @@ export default function VerifyInsurancePage() {
               <p className="mt-2 text-sm text-muted">
                 We check benefits with most major insurance companies to make treatment accessible and
                 affordable. If you prefer to verify over the phone, call us anytime at{" "}
-                <a href={site.phoneHref} className="font-semibold text-rose-dark">{site.phone}</a>.
+                <a href={site.phoneHref} className="font-semibold text-rose-dark" suppressHydrationWarning>{site.phone}</a>.
               </p>
             </div>
           </div>

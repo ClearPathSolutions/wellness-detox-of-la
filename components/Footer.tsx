@@ -114,7 +114,7 @@ export function Footer() {
           </h3>
           <ul className="space-y-3 text-sm">
             <li>
-              <a href={site.phoneHref} className="flex items-start gap-2.5 hover:text-white">
+              <a href={site.phoneHref} className="flex items-start gap-2.5 hover:text-white" suppressHydrationWarning>
                 <PhoneIcon width={16} height={16} className="mt-0.5 flex-shrink-0 text-rose-soft" />
                 {site.phone}
               </a>
