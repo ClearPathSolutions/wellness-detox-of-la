@@ -106,27 +106,6 @@ export const regionalTeam: TeamMember[] = [
     ],
   },
   {
-    slug: "justin-white",
-    name: "Justin White",
-    role: "Program Director",
-    photo: "/images/team-justin-white.webp",
-    bio: [
-      "Justin White serves as Program Director for Quadrant Health Group's Southern California facilities, providing operational leadership and program oversight across the organization's behavioral health treatment centers. In this role, he works closely with multidisciplinary teams to ensure each facility delivers high-quality, individualized care while maintaining excellence in clinical programming, regulatory compliance, and day-to-day operations.",
-      "A Registered Addiction Counselor, Justin brings extensive experience in both detoxification and residential treatment settings. His leadership is rooted in the belief that recovery is never one-size-fits-all, and he is committed to fostering treatment environments where every client feels respected, supported, and empowered throughout their healing journey.",
-      "Known for his compassionate and collaborative leadership style, Justin is passionate about developing strong teams and creating programs that promote lasting recovery. He believes meaningful change begins with genuine human connection and is dedicated to helping both clients and staff reach their fullest potential. Through his leadership, he continues to advance Quadrant Health Group's mission of providing exceptional, evidence-based behavioral healthcare across Southern California.",
-    ],
-  },
-  {
-    slug: "jacob-cameron",
-    name: "Jacob Cameron",
-    role: "Client Care Director",
-    photo: "/images/team-jacob-cameron.webp",
-    bio: [
-      "Jacob Cameron serves as Client Care Director at Quadrant Health Group and is a Registered Substance Use Disorder Counselor (SUDCC I). Passionate about helping individuals navigate the recovery process, Jacob is dedicated to creating a treatment experience that is both meaningful and engaging. He believes lasting recovery is built through genuine connection, compassionate support, and an environment where clients feel valued every step of the way.",
-      "In his role, Jacob works to ensure that each client receives personalized care and experiences a sense of belonging throughout their treatment journey. His goal is to help individuals not only achieve recovery but also discover that life in recovery can be fulfilling, rewarding, and enjoyable. Through his commitment to client-centered care, Jacob strives to make a lasting positive impact on the lives of those he serves.",
-    ],
-  },
-  {
     slug: "jeremiah-ross",
     name: "Jeremiah Ross",
     role: "Nursing Supervisor",
@@ -141,10 +120,10 @@ export const regionalTeam: TeamMember[] = [
     // it Olivares and is authoritative on names.
     slug: "monica-olivares",
     name: "Monica Olivares",
-    role: "Clinical Supervisor",
+    role: "Clinical Operations Director",
     photo: "/images/team-monica-olivares.webp",
     bio: [
-      "Monica Olivares serves as Clinical Supervisor for Quadrant Health Group's California facilities, bringing over 11 years of experience in the behavioral health field and a deeply personal passion for recovery and healing. Throughout her career, Monica has worked across nearly every level of care — detox, residential, IOP, PHP, and outpatient — while holding a wide range of roles from Behavioral Health Technician and Case Manager to Program Manager and Program Director.",
+      "Monica Olivares serves as Clinical Operations Director for Quadrant Health Group's California facilities, bringing over 11 years of experience in the behavioral health field and a deeply personal passion for recovery and healing. Throughout her career, Monica has worked across nearly every level of care — detox, residential, IOP, PHP, and outpatient — while holding a wide range of roles from Behavioral Health Technician and Case Manager to Program Manager and Program Director.",
       "Monica holds a CADC II certification and has extensive experience supporting individuals struggling with substance use disorders, co-occurring mental health conditions, and eating disorders. Her leadership style is rooted in compassion, authenticity, accountability, and connection, helping create treatment environments where clients feel genuinely supported, understood, and empowered throughout their recovery journey.",
       "In addition to her professional experience, Monica brings 13 years of personal recovery experience to the work she does each day. Her lived experience allows her to connect with clients on a deeper level while helping foster hope, trust, and meaningful change. She believes recovery should be individualized, engaging, and centered around human connection, and that healing can happen while still embracing joy, humor, and community.",
       "Known for her energy, heart, and dedication, Monica is passionate about helping both clients and staff grow while cultivating strong, supportive treatment teams across the California programs.",

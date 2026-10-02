@@ -214,7 +214,7 @@ Independently sourced agreement on a facility with no staff records materially r
 | Shawn Young | Executive Director, SoCal | `California/CA-Shawn Young.png` | 1254×1254 | 1.8 MB |
 | Michael McArthur | Nursing Director | `California/CA-MichaelMcArthur.png` | 1254×1254 | 1.8 MB |
 | Riky Hanaumi | Clinical Director | `California/CA-Riky Hanaumi.png` | 1086×1448 | 1.9 MB |
-| Monica Olivares ⚠️ | Clinical Supervisor | `California/CA-Monica-Olivires.webp` | 1536×2048 | 96 KB |
+| Monica Olivares ⚠️ | Clinical Operations Director | `California/CA-Monica-Olivires.webp` | 1536×2048 | 96 KB |
 | Jacob Cameron | Client Care Director | `California/CA-Jacob Cameron.png` | 1254×1254 | 1.8 MB |
 | Justin White | Program Director | `Cali SOUTH/CA-Justin White.png` | 1122×1402 | 1.8 MB |
 | Elizabeth Wald | Program Director | `Cali SOUTH/CA-Elizabeth-Wald.webp` | 1536×2048 | 52 KB |
@@ -2076,7 +2076,7 @@ Still outstanding, and cheap to answer: are all four current, and are the names,
 - Shawn Young — Executive Director *("Executive Director of Southern California… leading a team of dedicated professionals across several substance abuse treatment facilities")*
 - Michael McArthur — Nursing Director
 - Riky Hanaumi — Clinical Director
-- Monica Olivares — Clinical Supervisor
+- Monica Olivares — Clinical Operations Director
 - Jacob Cameron — Client Care Director
 
 **Cali SOUTH** (4 — each bio explicitly says "Southern California facilities")

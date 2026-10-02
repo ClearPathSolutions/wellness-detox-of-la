@@ -98,6 +98,10 @@ const nextConfig: NextConfig = {
       { source: "/contact-us", destination: "/contact", permanent: true },
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/our-team", destination: "/about/meet-the-team", permanent: true },
+
+      // Staff no longer listed — send their old bio URLs to the team page.
+      { source: "/about/meet-the-team/justin-white", destination: "/about/meet-the-team", permanent: true },
+      { source: "/about/meet-the-team/jacob-cameron", destination: "/about/meet-the-team", permanent: true },
       { source: "/gallery", destination: "/tour", permanent: true },
       { source: "/programs", destination: "/treatment", permanent: true },
     ];

@@ -31,7 +31,6 @@ const CANONICAL_AT_PARENT: Record<string, string> = {
   "shawn-young": "https://www.quadranthealthgroup.com/team/shawn-young/",
   "michael-mcarthur": "https://www.quadranthealthgroup.com/team/michael-mcarthur/",
   "riky-hanaumi": "https://www.quadranthealthgroup.com/team/riky-hanaumi/",
-  "jacob-cameron": "https://www.quadranthealthgroup.com/team/jacob-cameron/",
   "jeremiah-ross": "https://www.quadranthealthgroup.com/team/jeremiah-ross/",
   "monica-olivares": "https://www.quadranthealthgroup.com/team/monica-olivares/",
   "bj-thome": "https://www.quadranthealthgroup.com/team/bj-thome/",
