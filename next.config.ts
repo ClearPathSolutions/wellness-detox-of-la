@@ -84,6 +84,8 @@ const nextConfig: NextConfig = {
       // anything unmapped falls through to app/not-found.tsx.
       // ---------------------------------------------------------------------
       { source: "/about/blog", destination: "/blog", permanent: true },
+      // Alanna McMurtrey is off the roster; her profile page is retired.
+      { source: "/about/meet-the-team/alanna-mcmurtrey", destination: "/about/meet-the-team", permanent: true },
 
       // Common WordPress cruft that would otherwise render the 404.
       { source: "/feed", destination: "/blog", permanent: true },
