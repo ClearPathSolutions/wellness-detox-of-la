@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
+import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner } from "@/components/blocks";
 import { Container } from "@/components/ui";
@@ -15,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 function MemberCard({ m }: { m: TeamMember }) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+  const card = (
+    <div className="h-full overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-shadow group-hover:shadow-lg">
       <div className="relative aspect-[4/5] bg-rose-soft">
         {m.photo ? (
           <Image src={m.photo} alt={m.name} fill sizes="(max-width: 640px) 100vw, 25vw" className="object-cover" />
@@ -29,8 +30,21 @@ function MemberCard({ m }: { m: TeamMember }) {
       <div className="p-5">
         <h3 className="t-h3 text-ink">{m.name}</h3>
         <p className="mt-0.5 text-sm text-rose-dark">{m.role}</p>
+        {m.bio?.length ? (
+          <p className="mt-3 text-sm font-medium text-ink/70 underline underline-offset-4 group-hover:text-rose-dark">
+            Read bio →
+          </p>
+        ) : null}
       </div>
     </div>
+  );
+
+  // Only people with approved bio copy have a page (see [slug]/page.tsx).
+  if (!m.bio?.length) return card;
+  return (
+    <Link href={`/about/meet-the-team/${m.slug}`} className="group block h-full">
+      {card}
+    </Link>
   );
 }
 

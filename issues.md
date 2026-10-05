@@ -219,7 +219,7 @@ Independently sourced agreement on a facility with no staff records materially r
 | Justin White | Program Director | `Cali SOUTH/CA-Justin White.png` | 1122×1402 | 1.8 MB |
 | Elizabeth Wald | Program Director | `Cali SOUTH/CA-Elizabeth-Wald.webp` | 1536×2048 | 52 KB |
 | Jeremiah Ross | Nursing Supervisor | `Cali SOUTH/CA-Jeremiah Ross.jpg` | 1254×1254 | 252 KB |
-| Alanna McMurtrey | Lead Case Manager | `Cali SOUTH/CA-Alanna McMurtrey.png` | 1254×1254 | 1.7 MB |
+| Alanna McMurtrey | Program Director | `Cali SOUTH/CA-Alanna McMurtrey.png` | 1254×1254 | 1.7 MB |
 
 **⚠️ Name discrepancy — must be resolved before publishing.** S-003's bio reads **"Monica Olivares"**; the headshot filename reads **"Monica-Olivires"**. One is misspelled. Given that S-001's only `CRITICAL` content row portfolio-wide is V0054 *"wrong person biography"*, a misspelled surname on a published staff bio is the same error class. Do not publish either spelling unverified. → tracked in **WDL-057**.
 
@@ -2049,7 +2049,7 @@ Still outstanding, and cheap to answer: are all four current, and are the names,
 > | Justin White | Program Director | `team-justin-white.webp` | 3 paragraphs |
 > | Elizabeth Wald | Program Director | `team-elizabeth-wald.webp` | 3 paragraphs |
 > | Jeremiah Ross | Nursing Supervisor | `team-jeremiah-ross.webp` | 2 paragraphs |
-> | Alanna McMurtrey | Lead Case Manager | `team-alanna-mcmurtrey.webp` | 3 paragraphs |
+> | Alanna McMurtrey | Program Director | `team-alanna-mcmurtrey.webp` | 3 paragraphs |
 >
 > **Files**
 > - **New** [`lib/data/team.ts`](lib/data/team.ts) — `facilityTeam` (4 Pomona) + `regionalTeam` (4 regional), `TeamMember` type with `slug`/`bio`, shared `initials()` helper. Also **advances WDL-050**: the roster now lives in data with slugs and full bios, which is the prerequisite for per-person pages.
@@ -2083,7 +2083,7 @@ Still outstanding, and cheap to answer: are all four current, and are the names,
 - Justin White — Program Director
 - Elizabeth Wald — Program Director
 - Jeremiah Ross — Nursing Supervisor
-- Alanna McMurtrey — Lead Case Manager
+- Alanna McMurtrey — Program Director
 
 This directly addresses **WDL-030** (two "Coming Soon" placeholders) and gives **WDL-050** (per-staff pages) real material — the bios are already written, so it is a data-entry task, not a copywriting one.
 
