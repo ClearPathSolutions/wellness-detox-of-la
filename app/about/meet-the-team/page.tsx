@@ -30,11 +30,6 @@ function MemberCard({ m }: { m: TeamMember }) {
       <div className="p-5">
         <h3 className="t-h3 text-ink">{m.name}</h3>
         <p className="mt-0.5 text-sm text-rose-dark">{m.role}</p>
-        {m.bio?.length ? (
-          <p className="mt-3 text-sm font-medium text-ink/70 underline underline-offset-4 group-hover:text-rose-dark">
-            Read bio →
-          </p>
-        ) : null}
       </div>
     </div>
   );
