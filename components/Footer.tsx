@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
+import { editorialPolicyServed, EDITORIAL_POLICY_PATH } from "@/lib/editorial";
 import {
   Button,
   FacebookIcon,
@@ -144,6 +145,10 @@ export function Footer() {
           <p>© {site.name}. All rights reserved.</p>
           <div className="flex items-center gap-5">
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+            {/* Withheld until signed off — see lib/editorial.ts. */}
+            {editorialPolicyServed && (
+              <Link href={EDITORIAL_POLICY_PATH} className="hover:text-white">Editorial Policy</Link>
+            )}
             <Link href="/contact" className="hover:text-white">Contact</Link>
           </div>
         </div>

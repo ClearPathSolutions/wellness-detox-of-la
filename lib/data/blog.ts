@@ -16,6 +16,19 @@ export type BlogPost = {
   metaDescription?: string;
   hero: string;
   body: string; // markdown
+  /** ISO date of the last substantive edit. Falls back to `date`. */
+  modified?: string;
+  /*
+   * Editorial policy per-post fields (the package's written_by, reviewed_by,
+   * last_reviewed). People are team slugs from lib/data/team.ts with a bio
+   * page, so every name links to one; an unknown slug fails the build.
+   * Unset means no line: never fill these with a default or site-wide person.
+   * The reviewer line shows only when BOTH reviewedBy and lastReviewed are set.
+   */
+  writtenBy?: string;
+  reviewedBy?: string;
+  /** YYYY-MM-DD. */
+  lastReviewed?: string;
 };
 
 export const blogPosts: BlogPost[] = [

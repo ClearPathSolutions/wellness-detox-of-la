@@ -298,6 +298,67 @@ p {
   white-space: nowrap;
 }
 
+/* Article byline (editorial policy package: templates/article-byline.css),
+   on the site's tokens. Sits under the post H1. */
+.article-byline {
+  margin: 1rem 0 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-ink-700);
+}
+.article-byline p {
+  margin: 0.15rem 0;
+}
+.article-byline .byline-meta {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+.article-byline a {
+  color: var(--color-rose-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Editorial policy page (same package file). The template's own
+   <article class="editorial-policy"> sits between .prose and its blocks, so
+   the .prose child rhythm is re-applied one level down. */
+.editorial-policy > * + * {
+  margin-top: 1.15rem;
+}
+.editorial-policy > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+/* Terminology table: scrolls inside its wrapper on phones (375px) instead of
+   widening the page. */
+.editorial-policy .table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.editorial-policy table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 28rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.editorial-policy th,
+.editorial-policy td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.editorial-policy th {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
 /* Clarion blog embed — post body links.
    The embed renders outside `.prose`, so nothing was restoring link styling
    after Preflight's `a { color: inherit; text-decoration: inherit }`. A post's

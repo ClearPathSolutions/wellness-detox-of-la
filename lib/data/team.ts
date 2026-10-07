@@ -23,6 +23,12 @@ export type TeamMember = {
   photo?: string;
   /** Approved bio, one string per paragraph. */
   bio?: string[];
+  /**
+   * Post-nominal credentials (e.g. "MD"), appended to the name in article
+   * bylines and output as honorificSuffix. Real, verifiable values only — leave
+   * unset rather than guess, and omit when `name` already carries them.
+   */
+  credentials?: string;
 };
 
 /** Staff based at the Pomona facility. */

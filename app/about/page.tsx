@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { editorialPolicyServed, EDITORIAL_POLICY_PATH } from "@/lib/editorial";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner, SplitFeature, TrustBar } from "@/components/blocks";
 import { ArrowRight, Container, SectionHeading } from "@/components/ui";
@@ -96,6 +97,18 @@ export default function AboutPage() {
               {site.network}
             </a>
           </p>
+          {editorialPolicyServed && (
+            <p className="mt-3 text-sm text-muted">
+              Learn how we research, write and review the health information on this site in our{" "}
+              <Link
+                href={EDITORIAL_POLICY_PATH}
+                className="underline decoration-line underline-offset-2 transition-colors hover:text-rose-dark"
+              >
+                Editorial Policy
+              </Link>
+              .
+            </p>
+          )}
         </Container>
       </section>
 

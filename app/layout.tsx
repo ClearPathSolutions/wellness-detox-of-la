@@ -9,6 +9,12 @@ import Clarion from "@/components/Clarion";
 import { CampaignTracker } from "@/components/CampaignTracker";
 import { CAMPAIGN_BOOTSTRAP } from "@/lib/attribution";
 import { site } from "@/lib/site";
+import {
+  CORRECTIONS_ANCHOR,
+  EDITORIAL_POLICY_URL,
+  editorialPolicyReady,
+  ORGANIZATION_ID,
+} from "@/lib/editorial";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -68,7 +74,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  "@id": `${site.url}/#business`,
+  "@id": ORGANIZATION_ID,
   name: site.name,
   description: site.description,
   url: site.url,
@@ -112,6 +118,14 @@ const jsonLd = {
     name: site.network,
     url: site.networkUrl,
   },
+  // Editorial policy: merged into this node, never a second Organization node.
+  // Only once the policy is signed off and public (lib/editorial.ts).
+  ...(editorialPolicyReady
+    ? {
+        publishingPrinciples: EDITORIAL_POLICY_URL,
+        correctionsPolicy: `${EDITORIAL_POLICY_URL}#${CORRECTIONS_ANCHOR}`,
+      }
+    : {}),
 };
 
 export const viewport: Viewport = {

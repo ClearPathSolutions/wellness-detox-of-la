@@ -5,6 +5,9 @@ import type { BlogPost } from "@/lib/data/blog";
 import { site } from "@/lib/site";
 import { uniqueSlug } from "@/lib/slug";
 import { breadcrumbLd, crumbsFrom } from "@/lib/seo";
+import { getByline, type BylinePerson } from "@/lib/byline";
+import { ORGANIZATION_ID } from "@/lib/editorial";
+import { ArticleByline } from "./ArticleByline";
 import { CtaBanner } from "./blocks";
 import { ArrowRight, Breadcrumb, Container, READING_WIDTH } from "./ui";
 
@@ -66,21 +69,47 @@ function renderPost(body: string): { html: string } {
 
 export function BlogPostView({ post }: { post: BlogPost }) {
   const { html } = renderPost(post.body);
-  const blogLd = {
+  const byline = getByline(post);
+  const url = `${site.url}/${post.slug}`;
+  const orgRef = { "@id": ORGANIZATION_ID };
+  const personLd = (p: BylinePerson) => ({
+    "@type": "Person",
+    "@id": p.personId,
+    name: p.name,
+    url: `${site.url}${p.bioPath}`,
+    ...(p.credentials ? { honorificSuffix: p.credentials } : {}),
+  });
+  // Editorial policy package: schema/clinical-article.jsonld. reviewedBy and
+  // lastReviewed appear only for a reviewed post — never a default reviewer.
+  const articleLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    image: `${site.url}${post.hero}`,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: { "@type": "Organization", name: site.name, url: site.url },
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-      logo: { "@type": "ImageObject", url: `${site.url}/images/icon-512.png` },
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/${post.slug}` },
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: post.title,
+        ...(byline.reviewer && byline.lastReviewed
+          ? { lastReviewed: byline.lastReviewed, reviewedBy: personLd(byline.reviewer) }
+          : {}),
+        publisher: orgRef,
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        image: `${site.url}${post.hero}`,
+        mainEntityOfPage: { "@id": `${url}#webpage` },
+        datePublished: post.date,
+        dateModified: byline.modified,
+        // No named writer: credit the publishing organisation, as before,
+        // rather than inventing a person.
+        author: byline.author ? personLd(byline.author) : orgRef,
+        // A reference to the site's one Organization node, not a second copy.
+        publisher: orgRef,
+      },
+    ],
   };
   // Same trail treatment as every other page, including the JSON-LD the
   // hand-rolled two-link nav here never emitted.
@@ -91,7 +120,7 @@ export function BlogPostView({ post }: { post: BlogPost }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(blogLd).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(articleLd).replace(/</g, "\\u003c"),
         }}
       />
       <script
@@ -107,6 +136,7 @@ export function BlogPostView({ post }: { post: BlogPost }) {
             <div>
               <p className="eyebrow mb-3">{post.displayDate}</p>
               <h1 className="t-h1 text-ink">{post.title}</h1>
+              <ArticleByline byline={byline} />
               <p className="t-lead mt-5 text-muted">{post.excerpt}</p>
             </div>
             <div className="relative mt-9 aspect-[16/8] overflow-hidden rounded-[1.75rem] shadow-soft">

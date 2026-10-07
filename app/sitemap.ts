@@ -4,6 +4,7 @@ import { treatmentSlugs } from "@/lib/data/treatment";
 import { admissionsSlugs } from "@/lib/data/admissions";
 import { areaSlugs } from "@/lib/data/areas";
 import { blogPosts, postSlugs } from "@/lib/data/blog";
+import { editorialPolicyReady, EDITORIAL_POLICY_PATH } from "@/lib/editorial";
 
 /**
  * Last-modified dates.
@@ -39,7 +40,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const areas = areaSlugs.map((s) => `/about/areas-we-serve/${s}`);
   const posts = postSlugs.map((s) => `/${s}`);
 
-  const all = [...core, ...treatment, ...admissions, ...areas, ...posts];
+  // Listed only once the policy is signed off and indexable (lib/editorial.ts).
+  const editorialPolicy = editorialPolicyReady ? [EDITORIAL_POLICY_PATH] : [];
+
+  const all = [...core, ...treatment, ...admissions, ...areas, ...posts, ...editorialPolicy];
 
   return all.map((path) => ({
     url: `${site.url}${path}`,
