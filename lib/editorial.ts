@@ -35,7 +35,7 @@ export const editorial: EditorialFields = {
   // As shown on the site; the tel: form is derived from site.phoneHref.
   phone: site.phone,
   phoneTel: site.phoneHref.replace(/^tel:/, ""),
-  lastReviewed: "",
+  lastReviewed: "2026-10-07",
   contentSignoff: "",
 };
 
