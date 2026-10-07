@@ -106,6 +106,15 @@ const nextConfig: NextConfig = {
       { source: "/about/meet-the-team/jacob-cameron", destination: "/about/meet-the-team", permanent: true },
       { source: "/gallery", destination: "/tour", permanent: true },
       { source: "/programs", destination: "/treatment", permanent: true },
+
+      // Job listings live on ADP. Temporary, not permanent: browsers cache a
+      // 308 indefinitely, and this URL changes whenever ADP is reconfigured.
+      {
+        source: "/careers",
+        destination:
+          "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e1094ba9-8b93-4f55-9dab-3102a4eaaa49&ccId=9200857811822_2&lang=en_US",
+        permanent: false,
+      },
     ];
   },
 };
