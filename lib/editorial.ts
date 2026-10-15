@@ -36,7 +36,7 @@ export const editorial: EditorialFields = {
   phone: site.phone,
   phoneTel: site.phoneHref.replace(/^tel:/, ""),
   lastReviewed: "2026-10-07",
-  contentSignoff: "",
+  contentSignoff: "2026-10-15",
 };
 
 // No trailing slash: no route on this site has one, and Next redirects the
