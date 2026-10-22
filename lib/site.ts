@@ -25,7 +25,7 @@ export const site = {
   /** Parent network site. The network is named 20+ times across the site and the
    *  "15+ years" claim rests on it, so the affiliation is linked rather than
    *  merely asserted. */
-  networkUrl: "https://quadranthealthgroup.com",
+  networkUrl: "https://www.quadranthealthgroup.com",
   yearsExperience: "15+",
   social: {
     facebook: "https://www.facebook.com/wellnessdetoxla",

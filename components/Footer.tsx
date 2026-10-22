@@ -76,6 +76,7 @@ export function Footer() {
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-rose hover:text-white"
               >
                 <Icon width={17} height={17} />
+                <span className="sr-only">{label}</span>
               </a>
             ))}
           </div>

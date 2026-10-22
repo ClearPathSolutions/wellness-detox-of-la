@@ -73,7 +73,10 @@ export const metadata: Metadata = {
  */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
+  // MedicalClinic alongside MedicalBusiness: medicalSpecialty and
+  // availableService are only defined on MedicalClinic (and similar), so on a
+  // plain MedicalBusiness every page was reported with markup errors.
+  "@type": ["MedicalBusiness", "MedicalClinic"],
   "@id": ORGANIZATION_ID,
   name: site.name,
   description: site.description,
@@ -96,7 +99,7 @@ const jsonLd = {
     "Residential Inpatient Treatment",
     "Dual Diagnosis Treatment",
     "Aftercare Program",
-  ],
+  ].map((name) => ({ "@type": "MedicalTherapy", name })),
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],

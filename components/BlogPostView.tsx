@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Marked } from "marked";
-import type { BlogPost } from "@/lib/data/blog";
+import { postsByDate, type BlogPost } from "@/lib/data/blog";
 import { site } from "@/lib/site";
 import { uniqueSlug } from "@/lib/slug";
 import { breadcrumbLd, crumbsFrom } from "@/lib/seo";
@@ -67,8 +67,21 @@ function renderPost(body: string): { html: string } {
   return { html };
 }
 
+/**
+ * Three neighbouring posts (next two, previous one, wrapping) so every post is
+ * linked from other posts, not only from /blog.
+ */
+function morePosts(slug: string): BlogPost[] {
+  const at = postsByDate.findIndex((p) => p.slug === slug);
+  if (at < 0) return postsByDate.filter((p) => p.slug !== slug).slice(0, 3);
+  return [1, 2, -1]
+    .map((offset) => postsByDate[(at + offset + postsByDate.length) % postsByDate.length])
+    .filter((p, i, arr) => p.slug !== slug && arr.findIndex((q) => q.slug === p.slug) === i);
+}
+
 export function BlogPostView({ post }: { post: BlogPost }) {
   const { html } = renderPost(post.body);
+  const more = morePosts(post.slug);
   const byline = getByline(post);
   const url = `${site.url}/${post.slug}`;
   const orgRef = { "@id": ORGANIZATION_ID };
@@ -165,6 +178,28 @@ export function BlogPostView({ post }: { post: BlogPost }) {
                 className="prose measure"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
+              {more.length > 0 && (
+                <nav
+                  aria-labelledby="more-articles"
+                  className="measure mt-12 border-t border-line pt-8"
+                >
+                  <h2 id="more-articles" className="font-display text-xl font-semibold text-ink">
+                    More articles
+                  </h2>
+                  <ul className="mt-4 space-y-2">
+                    {more.map((p) => (
+                      <li key={p.slug}>
+                        <Link
+                          href={`/${p.slug}`}
+                          className="font-display font-semibold text-rose-dark hover:underline"
+                        >
+                          {p.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
               <div className="measure mt-12 border-t border-line pt-8">
                 <Link
                   href="/blog"

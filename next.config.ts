@@ -78,6 +78,15 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // Canonical host. The apex is primary; www answered 200 with the same
+      // pages (canonicals already point at the apex), i.e. a duplicate copy of
+      // the site. Send it to the apex instead.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.wellnessdetoxla.com" }],
+        destination: "https://wellnessdetoxla.com/:path*",
+        permanent: true,
+      },
       // ---------------------------------------------------------------------
       // WordPress → Next migration map.
       // Add every old URL that has inbound links or search visibility here;

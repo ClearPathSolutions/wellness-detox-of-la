@@ -182,6 +182,7 @@ export function Header() {
               className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-rose text-white shadow-card transition-transform active:scale-95" suppressHydrationWarning
             >
               <PhoneIcon width={18} height={18} />
+              <span className="sr-only">Call {site.phone}</span>
             </a>
             <button
               type="button"
