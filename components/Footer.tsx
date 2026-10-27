@@ -62,8 +62,12 @@ export function Footer() {
             A licensed drug &amp; alcohol detox and residential treatment center providing safe,
             compassionate, evidence-based care in the Los Angeles area.
           </p>
-          <p className="mt-4 text-xs text-white/60">
-            {site.license} · Expires {site.licenseExpires}
+          <p className="mt-4 text-xs leading-relaxed text-white/60">
+            Licensed by the California Department of Health Care Services · {site.license} · Expires{" "}
+            {site.licenseExpires} ·{" "}
+            <a href={site.licenseVerifyUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white">
+              Verify on DHCS website
+            </a>
           </p>
           <div className="mt-5 flex items-center gap-2.5">
             {socials.map(({ label, href, Icon }) => (

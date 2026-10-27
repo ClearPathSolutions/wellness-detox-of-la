@@ -21,6 +21,11 @@ export const site = {
   },
   license: "DHCS License #191425AP",
   licenseExpires: "4/30/2027",
+  // DHCS BHIN 22-022: license number, expiry, and a link to the DHCS page that
+  // lists both must be shown on the site. The GIS Data Hub table is DHCS's
+  // public register of licensed SUD facilities (number + expiration columns).
+  licenseVerifyUrl:
+    "https://gis.dhcs.ca.gov/datasets/CADHCS::sud-recovery-treatment-facilities/explore?showTable=true",
   network: "Quadrant Health Group",
   /** Parent network site. The network is named 20+ times across the site and the
    *  "15+ years" claim rests on it, so the affiliation is linked rather than
