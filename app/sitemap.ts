@@ -34,6 +34,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/admissions/verify-your-insurance",
     "/contact",
     "/blog",
+    "/privacy-policy",
+    "/notice-of-privacy-practices",
+    "/sms-terms",
   ];
   const treatment = treatmentSlugs.map((s) => `/treatment/${s}`);
   const admissions = admissionsSlugs.map((s) => `/admissions/${s}`);

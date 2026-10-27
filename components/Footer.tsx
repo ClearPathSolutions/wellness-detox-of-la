@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
 import { editorialPolicyServed, EDITORIAL_POLICY_PATH } from "@/lib/editorial";
+import { LEGAL_PATHS } from "@/lib/legal";
 import {
   Button,
   FacebookIcon,
@@ -148,8 +149,10 @@ export function Footer() {
               not required for copyright to hold, and omitting it is the only
               option that cannot render something false. */}
           <p>© {site.name}. All rights reserved.</p>
-          <div className="flex items-center gap-5">
-            <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link href={LEGAL_PATHS.privacy} className="hover:text-white">Privacy Policy</Link>
+            <Link href={LEGAL_PATHS.npp} className="hover:text-white">Notice of Privacy Practices</Link>
+            <Link href={LEGAL_PATHS.sms} className="hover:text-white">SMS Terms</Link>
             {/* Withheld until signed off — see lib/editorial.ts. */}
             {editorialPolicyServed && (
               <Link href={EDITORIAL_POLICY_PATH} className="hover:text-white">Editorial Policy</Link>
