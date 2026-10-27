@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
     "/notice-of-privacy-practices",
     "/sms-terms",
+    "/terms-of-service",
   ];
   const treatment = treatmentSlugs.map((s) => `/treatment/${s}`);
   const admissions = admissionsSlugs.map((s) => `/admissions/${s}`);

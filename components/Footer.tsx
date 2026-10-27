@@ -157,6 +157,7 @@ export function Footer() {
             {editorialPolicyServed && (
               <Link href={EDITORIAL_POLICY_PATH} className="hover:text-white">Editorial Policy</Link>
             )}
+            <Link href={LEGAL_PATHS.terms} className="hover:text-white">Terms of Service</Link>
             <Link href="/contact" className="hover:text-white">Contact</Link>
           </div>
         </div>
