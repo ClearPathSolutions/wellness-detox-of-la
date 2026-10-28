@@ -370,3 +370,12 @@ p {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+/* Clarion blog embed — listing card covers.
+   The embed boxes them at 16:9, but Clarion draws its covers at 1200x630 with
+   the headline near the left edge, so object-fit: cover was trimming the
+   artwork's sides. Matching the cover's own shape shows all of it. The post
+   view already sizes its cover naturally (aspect-ratio: auto). */
+[data-clarion-blog] .clarion-blog-card .clarion-blog-cover {
+  aspect-ratio: 1200 / 630;
+}
