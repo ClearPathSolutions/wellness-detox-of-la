@@ -34,6 +34,7 @@ const CANONICAL_AT_PARENT: Record<string, string> = {
   "jeremiah-ross": "https://www.quadranthealthgroup.com/team/jeremiah-ross/",
   "monica-olivares": "https://www.quadranthealthgroup.com/team/monica-olivares/",
   "bj-thome": "https://www.quadranthealthgroup.com/team/bj-thome/",
+  "casey-hyatt": "https://www.quadranthealthgroup.com/team/casey-hyatt/",
 };
 
 export function generateStaticParams() {
