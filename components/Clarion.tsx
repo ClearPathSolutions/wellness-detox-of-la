@@ -11,7 +11,7 @@ import { clarionSiteKey } from "@/lib/clarion-server";
  * the matching --clarion-chat-* CSS variables. No deeper styling is possible.
  */
 const BRAND = {
-  color: "#d86c97", // site rose/mauve accent (--color-rose)
+  color: "#7e6b74", // site purple-mauve accent (--color-rose)
   headerText: "#ffffff",
   title: "Chat with us",
   position: "right" as const, // "left" | "right"

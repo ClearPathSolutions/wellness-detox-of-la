@@ -3,15 +3,15 @@
 /* ---------------------------------------------------------------------------
    Wellness Detox of LA — design tokens
    Brand palette derived from the existing site:
-   rose/mauve · cream #F6F2EF · soft pink #f7dede · charcoal #282828
+   purple-mauve #7e6b74 (was rose #bd4b79, switched Nov 2026) · cream #F6F2EF · charcoal #282828
    · deep navy #262c3c
 
    The rose ramp is tuned so every real usage clears WCAG AA (4.5:1):
      --color-rose       is a BACKGROUND behind white text (buttons, badges).
-                        White on it = 4.72:1.
+                        White on it = 4.95:1.
      --color-rose-dark  is TEXT on light surfaces (links, eyebrows, errors).
-                        5.66:1 on white, 5.12:1 on cream, 4.76:1 on rose-soft.
-     --color-rose-soft  is text/icons on the dark ink surfaces. 12.6:1 on ink.
+                        6.49:1 on white, 5.88:1 on cream, 5.42:1 on rose-soft.
+     --color-rose-soft  is text/icons on the dark ink surfaces. 12.5:1 on ink.
    Because rose is dark enough to carry white text, it is NOT legible as text on
    ink — use rose-soft there instead.
 --------------------------------------------------------------------------- */
@@ -21,9 +21,9 @@
   --color-ink: #23272f;
   --color-ink-700: #333a45;
   --color-ink-500: #5a616c;
-  --color-rose: #bd4b79;
-  --color-rose-dark: #a8446d;
-  --color-rose-soft: #f8e7ef;
+  --color-rose: #7e6b74;
+  --color-rose-dark: #6b5963;
+  --color-rose-soft: #efe9ec;
   --color-muted: #61646e; /* clears WCAG AA (4.5:1) on cream/sand */
   --color-line: #e7ddd3;
 

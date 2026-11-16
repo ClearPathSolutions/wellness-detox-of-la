@@ -43,7 +43,7 @@ export default function GlobalError({
             href={site.phoneHref}
             style={{
               display: "inline-block",
-              background: "#bd4b79",
+              background: "#7e6b74",
               color: "#ffffff",
               padding: "0.9rem 1.75rem",
               borderRadius: "9999px",
