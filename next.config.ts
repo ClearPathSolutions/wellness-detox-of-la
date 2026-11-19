@@ -72,6 +72,19 @@ const nextConfig: NextConfig = {
   // Don't advertise the framework version.
   poweredByHeader: false,
 
+  // Clarion blog images are served from this domain: Clarion's embed is told
+  // (once it verifies this rule) to use /blog-images/<key>, and this hands the
+  // same bytes back (no redirect), so the image address and any image-search
+  // credit are this site's, not api.clarionlabs.ai.
+  async rewrites() {
+    return [
+      {
+        source: "/blog-images/:path*",
+        destination: "https://api.clarionlabs.ai/blog/public/image-inline/:path*",
+      },
+    ];
+  },
+
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
